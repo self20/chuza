@@ -120,7 +120,7 @@ function do_header($title, $id='home') {
 	echo '<link rel="alternate" type="application/rss+xml" title="'._('pendientes').'" href="http://'.get_server_name().$globals['base_url'].'rss2.php?status=queued" />'."\n";
 	echo '<link rel="alternate" type="application/rss+xml" title="'._('comentarios').'" href="http://'.get_server_name().$globals['base_url'].'comments_rss2.php" />'."\n";
 
-	if (! $globals['favicon']) $globals['favicon'] = 'img/favicons/favicon4.ico';
+	if (! $globals['favicon']) $globals['favicon'] = 'favicon.ico';
 	echo '<link rel="shortcut icon" href="'.$globals['base_static'].$globals['favicon'].'" type="image/x-icon"/>' . "\n";
 
 
@@ -139,6 +139,40 @@ function do_header($title, $id='home') {
 
 	echo '</head>' . "\n";
 	echo "<body id=\"$id\" ". $globals['body_args']. ">\n";
+	echo '
+	<center>
+	<table width="1200" border="0" cellspacing="0" cellpadding="10">
+  <tr>
+    <td bgcolor="#FFFF99"><p>Esta é unha web de probas da nova versión da rede social chuza! Cando o proxecto estiver finalizado, a web será accesíbel no enderezo habitual, www.chuza.gl</p>
+      <p>Todos os datos armacenados serán borrados no lanzamento da web 
+        definitiva e as accións realizadas polas(os) usuarias(os) perderanse.<br />
+        Agradecemos a túa colaboración se desexas participar neste período de 
+        probas, pero lembra que deberás volver a rexistrarte canda da 
+      inauguración definitiva da nova chuza!</p>
+      <p>Se desexas entrar en contacto co equipo de persoas que está a 
+        traballar na nova versión de chuza!, podes facelo a través do e-mail 
+      chuza.gl@gmail.com</p>
+      <p>Grazas pola visita e pola túa comprensión e colaboración!<br />
+        -----<br />
+      Esta é uma web de teste da nova versão da rede social chuza! Quando o
+processo estiver finalizado, a web será acessível no endereço habitual. www.chuza.gl</p>
+      <p>Todos os dados arquivados serão apagados no lançamento da web 
+        definitiva, do mesmo jeito que as ações realizadas pelas(os) 
+        usuárias(os) até à altura. Agradecemos a sua colaboração, caso desejar 
+        participar neste período de teste, mas lembre que deverá voltar a 
+      registrar-se quando da inauguração definitiva da nova chuza!</p>
+      <p>Se deseja contatar com a equipe de pessoas que está a trabalhar na 
+        nova versão de chuza!, pode fazê-lo a travês do e-mail 
+      chuza.gl@gmail.com</p>
+      <p>Obrigado pela visita e pela sua compreensão e colaboração! </p></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+	</center>
+	
+	';
 	echo '<div id="wrap">' . "\n";
 
 	echo '<div id="header">' . "\n";
@@ -166,7 +200,8 @@ function do_header($title, $id='home') {
 	echo '</li>' . "\n";
 	// form
 
-	echo '<li><a href="http://meneame.wikispaces.com/Comenzando">'._('ayuda').' <img src="'.$globals['base_static'].'img/common/help-bt-02.png" alt="help button" title="'._('ayuda').'" width="13" height="16" /></a></li>';
+	echo '<li><a href="http://chuzar.gl/equipa/index.php?page=axuda">'._('ayuda').' <img src="'.$globals['base_static'].'img/common/help-bt-02.png" alt="help button" title="'._('ayuda').'" width="13" height="16" /></a></li>';
+	echo '<li><a href="http://chuzar.gl/equipa/index.php?page=o-novo-chuza">O novo chuza</a></li>';
 	if ($current_user->admin) {
 		echo '<li><a href="'.$globals['base_url'].'admin/bans.php">admin <img src="'.$globals['base_static'].'img/common/tools-bt-02.png" alt="tools button" title="herramientas" width="16" height="16" /> </a></li>' . "\n";
 	}
@@ -572,8 +607,8 @@ function print_categories_form($selected = 0) {
 	$metas = $db->get_results("SELECT category_id, category_name FROM categories WHERE category_parent = 0 ORDER BY category_name ASC");
 	foreach ($metas as $meta) {
 		echo '<dl class="categorylist"><dt>'.$meta->category_name.'</dt>'."\n";
-		//$categories = $db->get_results("SELECT category_id, category_name FROM categories WHERE category_parent = $meta->category_id ORDER BY category_name ASC");
-		$categories = $db->get_results("SELECT category_id, category_name FROM categories WHERE category_parent = 0 ORDER BY category_name ASC");
+		$categories = $db->get_results("SELECT category_id, category_name FROM categories WHERE category_parent = $meta->category_id ORDER BY category_name ASC");
+		//$categories = $db->get_results("SELECT category_id, category_name FROM categories WHERE category_parent = 0 ORDER BY category_name ASC");
 		foreach ($categories as $category) {
 			echo '<dd><input name="category" type="radio" ';
 			if ($selected == $category->category_id) echo '  checked="true" ';

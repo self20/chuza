@@ -2,9 +2,12 @@
 # Copyleft (CC:BY-NC-SA) 2010
 # This file is distributed under the same license as the meneame.net package.
 # G11n  <http://www.g11n.net/>, 2010.
+# Tradución inicial g11n.net
+# Revisión elaborada colaborativamente por toda a comunidade chuzeira.
+# Especial agradecemento pola revisión realizada por Filipe Díez <filipe.diez @ gmail. com>
 #
 msgid ""
-msgstr "Project-Id-Version: 0.2\n"
+msgstr "Project-Id-Version: 0.3\n"
 "Report-Msgid-Bugs-To: info@g11n.net\n"
 "POT-Creation-Date: 2010-06-30 18:28+0200\n"
 "PO-Revision-Date: 2010-07-27 18:32+0200\n"
@@ -134,11 +137,11 @@ msgstr "avatar"
 
 #: mobile/profile.php:114
 msgid "nueva clave"
-msgstr "nova clave"
+msgstr "nova seña"
 
 #: mobile/profile.php:117 profile.php:170
 msgid "repite la clave"
-msgstr "repite a clave"
+msgstr "repite a seña"
 
 #: mobile/profile.php:120 profile.php:189
 msgid "actualizar"
@@ -146,7 +149,7 @@ msgstr "actualizar"
 
 #: mobile/profile.php:139 profile.php:233
 msgid "Falta la clave de control"
-msgstr "Falta a clave de control"
+msgstr "Falta o código de control"
 
 #: mobile/profile.php:145 profile.php:239 backend/checkfield.php:22
 msgid "nombre demasiado corto"
@@ -171,15 +174,15 @@ msgstr "xa existe outro usuario con ese enderezo de correo"
 
 #: mobile/profile.php:173 profile.php:334
 msgid "Clave demasiado corta, debe ser de 6 o más caracteres e incluir mayúsculas, minúsculas y números"
-msgstr "Clave demasiado curta, debe ser de 6 ou máis caracteres e incluír maiúsculas, minúsculas e números"
+msgstr "Seña demasiado curta, debe ser de 6 ou máis caracteres e incluír maiúsculas, minúsculas e números"
 
 #: mobile/profile.php:176 profile.php:337
 msgid "las claves no son iguales, no se ha modificado"
-msgstr "as claves non son iguais, non se modificou"
+msgstr "as señas non son iguais, polo que non se realizou a modificación"
 
 #: mobile/profile.php:180 profile.php:341
 msgid "La clave se ha cambiado"
-msgstr "Mudouse a clave"
+msgstr "A seña foi modificada con éxito"
 
 #: mobile/profile.php:192 profile.php:359 backend/avatar_upload.php:28
 msgid "error guardando la imagen"
@@ -208,7 +211,7 @@ msgstr "o código de seguranza non é correcto!"
 
 #: mobile/login.php:76 login.php:121
 msgid "usuario o email inexistente, sin validar, o clave incorrecta"
-msgstr "usuario ou correo electrónico inexistente, sen validar ou clave incorrecta"
+msgstr "usuario ou correo electrónico inexistente, sen validar ou seña incorrecta"
 
 #: mobile/login.php:88 login.php:135
 msgid "usuario o email"
@@ -216,7 +219,7 @@ msgstr "usuario ou correo electrónico"
 
 #: mobile/login.php:90 profile.php:167 login.php:137 register.php:68
 msgid "clave"
-msgstr "clave"
+msgstr "seña"
 
 #: mobile/login.php:92 login.php:139
 msgid "recuérdame"
@@ -224,7 +227,7 @@ msgstr "lémbrame"
 
 #: mobile/login.php:105 login.php:158 register.php:51
 msgid "¿has olvidado la contraseña?"
-msgstr "esqueciche a clave?"
+msgstr "esqueciches a seña?"
 
 #: mobile/login.php:125 login.php:180
 msgid "el email no es válido"
@@ -236,7 +239,7 @@ msgstr "o correo electrónico non está relacionado con ningunha conta"
 
 #: mobile/login.php:134 login.php:189 olh/promote9.php:227
 msgid "cuenta deshabilitada"
-msgstr "conta deshabilitada"
+msgstr "conta desactivada"
 
 #: mobile/login.php:145 login.php:200
 msgid "indica el email de la cuenta"
@@ -244,7 +247,7 @@ msgstr "indica o correo electrónico da conta"
 
 #: mobile/login.php:147 login.php:202
 msgid "(recibirás un e-mail que te permitirá editar tus datos)"
-msgstr "receberás un correo electrónico para editar os teus datos"
+msgstr "(recibirás un correo electrónico para editar os teus datos)"
 
 #: mobile/login.php:151 login.php:206
 msgid "recibir e-mail"
@@ -311,7 +314,7 @@ msgstr "sitio web"
 #: mobile/user.php:102 geo/author.php:34 backend/get_user_info.php:36
 #: user.php:324
 msgid "desde"
-msgstr "dende"
+msgstr "desde"
 
 #: mobile/user.php:103 values.php:38 profile.php:183 geo/author.php:33
 #: backend/get_user_info.php:34 backend/sneaker-stats.php:168 user.php:338
@@ -350,7 +353,7 @@ msgstr "comentarios"
 #: mobile/user.php:121 backend/sneaker-stats.php:142 user.php:362 user.php:751
 #: sneakme_rss2.php:85
 msgid "notas"
-msgstr "notas"
+msgstr "chíos"
 
 #: mobile/user.php:122 story.php:434 libs/comment.php:179
 #: libs/commentmobile.php:55 libs/post.php:145 submit.php:249
@@ -394,15 +397,15 @@ msgstr "Historia antiga, datos de votos arquivados"
 
 #: story.php:303
 msgid "registro de eventos de la noticia"
-msgstr "rexisto de eventos da historia"
+msgstr "rexistro de eventos da historia"
 
 #: story.php:331
 msgid "no hay registros"
-msgstr "non hai rexistos"
+msgstr "non hai rexistros"
 
 #: story.php:355
 msgid "registro de cálculos de karma"
-msgstr "rexisto de cálculos de karma"
+msgstr "rexistro de cálculos de karma"
 
 #: story.php:383
 msgid "URI para trackbacks"
@@ -455,7 +458,7 @@ msgstr "Chuza"
 #: rss2.php:40
 #, php-format
 msgid "más votadas en %s"
-msgstr "mais votadas en %s"
+msgstr "máis votadas en %s"
 
 #: rss2.php:49 sneakme/index.php:81
 #, php-format
@@ -479,7 +482,7 @@ msgstr "historias de «%s»"
 
 #: rss2.php:108 libs/html1.php:329 libs/html1.php:380
 msgid "en cola"
-msgstr "en cola"
+msgstr "na fila"
 
 #: rss2.php:247 libs/html1.php:624 libs/link.php:561 submit.php:512
 #: editlink.php:114 cloud.php:42
@@ -492,7 +495,7 @@ msgstr "historia orixinal"
 
 #: rss2.php:301 comments_rss2.php:205 sneakme_rss2.php:149
 msgid "Sitio colaborativo de publicación y comunicación entre blogs"
-msgstr "Sitio colaborativo de publicación e comunicación entre blogues"
+msgstr "Web colaborativa de publicación e compartillamento de historias"
 
 #: search.php:162
 msgid "campos..."
@@ -544,7 +547,7 @@ msgstr "respostar"
 
 #: libs/comment.php:183 libs/post.php:150
 msgid "¿quién ha votado?"
-msgstr "quen chuzou?"
+msgstr "quen votou?"
 
 #: libs/comment.php:209 libs/post.php:165
 msgid "enlace permanente"
@@ -570,27 +573,27 @@ msgstr "despois"
 
 #: libs/comment.php:238
 msgid "informativo, opinión razonada, buen humor..."
-msgstr "informativo, opinión razonada, bo humor..."
+msgstr "informativo, opinión razoada, bo humor..."
 
 #: libs/comment.php:238 libs/post.php:334
 msgid "voto positivo"
-msgstr "chuzar positivo"
+msgstr "votar positivo"
 
 #: libs/comment.php:239
 msgid "abuso, insulto, acoso, spam, magufo..."
-msgstr "abuso, insulto, acoso, spam, magufo..."
+msgstr "abuso, insulto, acoso, spam, inconsistente..."
 
 #: libs/comment.php:239 libs/post.php:335
 msgid "voto negativo"
-msgstr "chuzar negativo"
+msgstr "votar negativo"
 
 #: libs/comment.php:243 libs/post.php:339
 msgid "votado positivo"
-msgstr "chuzado positivo"
+msgstr "votado positivo"
 
 #: libs/comment.php:245 libs/post.php:341
 msgid "votado negativo"
-msgstr "chuzado negativo"
+msgstr "votado negativo"
 
 #: libs/comment.php:300 backend/comment_edit.php:50
 msgid "editar comentario"
@@ -646,7 +649,7 @@ msgstr "para comentar"
 
 #: libs/comment.php:432
 msgid "Autentifícate si deseas escribir"
-msgstr "Chúzate se queres comentar"
+msgstr "Inicia sesión se queres comentar"
 
 #: libs/comment.php:432
 msgid "O crea tu cuenta"
@@ -670,11 +673,11 @@ msgstr "xa comentou con usuarios clons"
 
 #: libs/comment.php:500
 msgid "no se puede comentar desde la misma IP del autor del envío"
-msgstr "non se pode comentar dende o mesmo enderezo IP do autor do envío"
+msgstr "non se pode comentar desde o mesmo enderezo IP do autor do envío"
 
 #: libs/comment.php:506
 msgid "demasiados comentarios desde la misma IP con usuarios diferentes"
-msgstr "demasiados comentarios dende o mesmo enderezo IP con usuarios distintos"
+msgstr "demasiados comentarios desde o mesmo enderezo IP con usuarios distintos"
 
 #: libs/comment.php:512
 msgid "texto muy breve o caracteres no válidos"
@@ -686,7 +689,7 @@ msgstr "comentario duplicado"
 
 #: libs/comment.php:526 backend/comment_edit.php:102
 msgid "comentario no insertado, enlace a sitio deshabilitado (y usuario reciente)"
-msgstr "comentario non inserido, ligazón a sitio deshabilitados (e usuario recente)"
+msgstr "comentario non inserido, ligazón a sitio deshabilitada (e usuario recente)"
 
 #: libs/comment.php:557
 msgid "texto repetido o abuso de enlaces en comentarios"
@@ -694,7 +697,7 @@ msgstr "texto repetido ou abuso de ligazóns en comentarios"
 
 #: libs/ts.php:126
 msgid "introduce el texto de la imagen"
-msgstr "insire o texto da imaxen"
+msgstr "insire o texto da imaxe"
 
 #: libs/html1-mobile.php:27 libs/html1.php:27 sneakme/index.php:235
 msgid "recargar"
@@ -725,7 +728,7 @@ msgstr "login"
 
 #: libs/html1-mobile.php:244 libs/html1.php:948
 msgid "algún error nos ha petado"
-msgstr "algún erro fixo que petara"
+msgstr "algún erro provocou un fallo no servidor"
 
 #: libs/html1-mobile.php:251 libs/html1-mobile.php:260 libs/html1.php:955
 #: libs/html1.php:964 libs/utils.php:487 libs/utils.php:493
@@ -742,11 +745,11 @@ msgstr "editar"
 
 #: libs/post.php:238
 msgid "edición nota"
-msgstr "edición nota"
+msgstr "edición chío"
 
 #: libs/post.php:240
 msgid "nueva nota"
-msgstr "nova nota"
+msgstr "novo chío"
 
 #: libs/post.php:254 submit.php:526 editlink.php:126
 msgid "caracteres libres"
@@ -758,27 +761,27 @@ msgstr "gardar"
 
 #: libs/post.php:281
 msgid "insertar una nota"
-msgstr "inserir unha nota"
+msgstr "inserir un chío"
 
 #: libs/post.php:283
 msgid "espera unos minutos para entrar otra nota"
-msgstr "agarda uns minutos para entrar outra nota"
+msgstr "agarda uns minutos para inserir outro chío"
 
 #: libs/post.php:287
 msgid "obtener notas en rss2"
-msgstr "obter notas en rss2"
+msgstr "obter chíos en rss2"
 
 #: libs/post.php:288
 msgid "jabber/google talk para leer y escribir en nótame"
-msgstr "jabber/google talk para ler e escribir en nótame"
+msgstr "jabber/google talk para ler e escribir nos chíos"
 
 #: libs/mail.php:21
 msgid "Recuperación o verificación de contraseña de "
-msgstr "Recuperación ou verificación de clave de "
+msgstr "Recuperación ou verificación de seña de "
 
 #: libs/mail.php:23
 msgid "para poder acceder sin la clave, conéctate a la siguiente dirección en menos de dos horas:"
-msgstr "para poderes acceder sen o contrasinal, vai á seguinte URL en menos de dúas horas"
+msgstr "para poderes acceder sen a seña, vai á seguinte URL en menos de dúas horas:"
 
 #: libs/mail.php:24
 msgid "Pasado este tiempo puedes volver a solicitar acceso en: "
@@ -786,11 +789,11 @@ msgstr "Pasado este tempo podes volver solicitar acceso en:  "
 
 #: libs/mail.php:25
 msgid "Una vez en tu perfil, puedes cambiar la clave de acceso."
-msgstr "Unha vez no teu perfil podes cambiar a clave de acceso."
+msgstr "Unha vez no teu perfil podes cambiar a seña de acceso."
 
 #: libs/mail.php:26
 msgid "Este mensaje ha sido enviado a solicitud de la dirección: "
-msgstr "O envío desta mensaxe foi solicitado dende este enderezo:  "
+msgstr "O envío desta mensaxe foi solicitado desde este enderezo: "
 
 #: libs/mail.php:27
 msgid "el equipo de menéame"
@@ -806,11 +809,11 @@ msgstr "non_contestar"
 
 #: libs/mail.php:36
 msgid "Correo enviado, mira tu buzón, allí están las instrucciones. Mira también en la carpeta de spam."
-msgstr "Correo enviado, mira o teu buzón, alí están as instrucións. Mira tamén a carpeta de spam"
+msgstr "Correo enviado, mira a túa caixa de correo, alí están as instrucións. Mira tamén a carpeta de spam"
 
 #: libs/html1.php:64 libs/html1.php:66
 msgid "menear pendientes"
-msgstr "chuzar pendentes"
+msgstr "votar pendentes"
 
 #: libs/html1.php:117
 msgid "menéame search"
@@ -840,7 +843,7 @@ msgstr "enviar historia"
 #: sneak.php:477 backend/sneaker2.php:418 sneakme/index.php:36
 #: sneakme/index.php:39
 msgid "nótame"
-msgstr "nótame"
+msgstr "chíos"
 
 #: libs/html1.php:293 libs/linkmobile.php:99 libs/link.php:582 topusers.php:63
 msgid "usuarios"
@@ -848,7 +851,7 @@ msgstr "usuarios"
 
 #: libs/html1.php:295 topcommented.php:33 topcommented.php:34
 msgid "más comentadas"
-msgstr "mais comentadas"
+msgstr "máis comentadas"
 
 #: libs/html1.php:296 libs/html1.php:753 libs/html1.php:789
 msgid "mejores comentarios"
@@ -880,7 +883,7 @@ msgstr "historias"
 
 #: libs/html1.php:321 libs/html1.php:352
 msgid "suscripciones por RSS"
-msgstr "suscricións por RSS"
+msgstr "subscricións por RSS"
 
 #: libs/html1.php:334 libs/html1.php:391
 msgid "comentarios de las noticias donde has comentado"
@@ -920,7 +923,7 @@ msgstr "categorías populares"
 
 #: libs/html1.php:723
 msgid "sitios más votados"
-msgstr "sitios mais votados"
+msgstr "sitios máis votados"
 
 #: libs/html1.php:727
 msgid "votos 48 horas"
@@ -942,7 +945,7 @@ msgstr "candidatas en «%s»"
 
 #: libs/html1.php:909 sneakme/index.php:58
 msgid "mejores notas"
-msgstr "mellores notas"
+msgstr "mellores chíos"
 
 #: libs/html1.php:935
 msgid "compartir en twitter"
@@ -974,7 +977,7 @@ msgstr "podes clicar no mapa ou buscar por «país», «cidade, país» ou «rú
 
 #: libs/geo.php:99
 msgid "también acepta coordenadas «lat, long», p.e. «1.234, -54.321»"
-msgstr "tamén acepta coordenadas «lat, long», p.e. «1.234, -54.321»"
+msgstr "tamén acepta coordinadas «lat, long», p.e. «1.234, -54.321»"
 
 #: libs/ezdb1-simple.php:100 libs/rgdb.php:70
 msgid "Error conectando a la BBDD, volvemos en unos segundos, seguramente estamos actualizando el sistema"
@@ -1016,7 +1019,7 @@ msgstr "acción"
 #: libs/link_sneak.php:18 libs/link.php:651 telnet.php:151 sneak.php:466
 #: sneak.php:497 backend/vote_com_img.php:17
 msgid "meneos"
-msgstr "chuzadas"
+msgstr "votadas"
 
 #: libs/link_sneak.php:19 telnet.php:153 sneak.php:499
 msgid "quién/qué"
@@ -1036,11 +1039,11 @@ msgstr "wiki"
 
 #: libs/ads-credits-functions.php:104
 msgid "avisar errores"
-msgstr "avisar erros"
+msgstr "notificar erros"
 
 #: libs/ads-credits-functions.php:105
 msgid "avisar abusos"
-msgstr "avisar abusos"
+msgstr "notificar abusos"
 
 #: libs/ads-credits-functions.php:114
 msgid "versión móvil"
@@ -1048,7 +1051,7 @@ msgstr "versión móbil"
 
 #: libs/ads-credits-functions.php:115
 msgid "menéame TV"
-msgstr "menéame TV"
+msgstr "chuza! TV"
 
 #: libs/ads-credits-functions.php:116
 msgid "síguenos en twitter"
@@ -1138,7 +1141,7 @@ msgstr "pechado"
 
 #: libs/linkmobile.php:135 libs/link.php:659
 msgid "menéalo"
-msgstr "chúzao"
+msgstr "vótao"
 
 #: libs/linkmobile.php:137 libs/link.php:661
 msgid "&#161;chachi!"
@@ -1185,7 +1188,7 @@ msgstr "o servidor é local"
 
 #: libs/link.php:187
 msgid "el autor no desea que se envíe el artículo, respeta sus deseos"
-msgstr "o autor non desexa que se envíe o artigo, respeita os seus desexos"
+msgstr "o autor non desexa que se envíe o texto, respecta os seus desexos"
 
 #: libs/link.php:468
 msgid "imagen"
@@ -1257,7 +1260,7 @@ msgstr "Asegúrate"
 
 #: libs/link.php:724
 msgid "antes de menear"
-msgstr "antes de chuzar"
+msgstr "antes de votar"
 
 #: libs/link.php:947 backend/sneaker-stats.php:115
 msgid "abuso"
@@ -1304,7 +1307,7 @@ msgstr "% de votos con afinidade elevada"
 #: libs/link.php:1069
 #, php-format
 msgid "% de votos con karma menores que la media"
-msgstr "% de votos con karma menores que a media"
+msgstr "% de votos con karma menor que a media"
 
 #: libs/link.php:1112
 msgid "Noticia «antigua»"
@@ -1312,7 +1315,7 @@ msgstr "Historia «antiga»"
 
 #: libs/link.php:1114
 msgid "Bonus por noticia reciente"
-msgstr "Bonus por historia reciente"
+msgstr "Bonus por historia recente"
 
 #: libs/link.php:1123
 msgid "Bonus por fuente esporádica"
@@ -1332,7 +1335,7 @@ msgstr "antiga"
 
 #: libs/utils.php:27
 msgid "cansina"
-msgstr "cansina"
+msgstr "aborrecida"
 
 #: libs/utils.php:27
 msgid "sensacionalista"
@@ -1348,7 +1351,7 @@ msgstr "duplicada"
 
 #: libs/utils.php:27
 msgid "microblogging"
-msgstr "microbloguexo"
+msgstr "microblogging"
 
 #: libs/utils.php:27
 msgid "errónea"
@@ -1360,11 +1363,11 @@ msgstr "copia/plaxio"
 
 #: libs/utils.php:155 values.php:20
 msgid "días"
-msgstr "dias"
+msgstr "días"
 
 #: libs/utils.php:156 values.php:19
 msgid "día"
-msgstr "dia"
+msgstr "día"
 
 #: libs/utils.php:158 values.php:18 backend/sneaker-stats.php:131
 msgid "horas"
@@ -1396,7 +1399,7 @@ msgstr "asociar a Twitter"
 
 #: libs/utils.php:1046
 msgid "crea una cuenta o autentifícate desde Twitter"
-msgstr "crea unha conta ou autentícate dende Twitter"
+msgstr "crea unha conta ou autentícate desde Twitter"
 
 #: libs/utils.php:1047
 msgid "login con Twitter"
@@ -1412,7 +1415,7 @@ msgstr "asociar a Facebook"
 
 #: libs/utils.php:1064
 msgid "crea una cuenta o autentifícate desde Facebook"
-msgstr "crea unha conta ou autentícate dende Facebook"
+msgstr "crea unha conta ou autentícate desde Facebook"
 
 #: libs/utils.php:1065
 msgid "login con Facebook"
@@ -1432,7 +1435,7 @@ msgstr "acceso prohibido"
 
 #: ooops.php:25
 msgid "la página no existe"
-msgstr "a páxina no existe"
+msgstr "a páxina non existe"
 
 #: ooops.php:30
 msgid "error de servidor"
@@ -1456,7 +1459,7 @@ msgstr "O karma base vai de"
 
 #: values.php:41
 msgid "Aumentando a una velocidad de 1 por año, a contar desde la fecha de la primera noticia publicada en portada de ese usuario"
-msgstr "Aumentando a unha velocidade de 1 por ano, a contar dende a data da primeira historia publicada en portada dese usuario"
+msgstr "Aumentando a unha velocidade de 1 por ano, a contar desde a data da primeira historia publicada en portada dese usuario"
 
 #: values.php:43
 msgid "Un usuario normal obtiene el estado 'special' cuando su karma"
@@ -1476,11 +1479,11 @@ msgstr "Karma mínimo para enviar comentarios"
 
 #: values.php:60
 msgid "Karma mínimo para votar comentarios"
-msgstr "Karma mínimo para chuzar comentarios"
+msgstr "Karma mínimo para votar comentarios"
 
 #: values.php:66
 msgid "Karma mínimo para enviar nótames"
-msgstr "Karma mínimo para enviar nótames"
+msgstr "Karma mínimo para enviar chíos"
 
 #: values.php:72
 msgid "Karma mínimo para hablar en la fisgona"
@@ -1520,47 +1523,47 @@ msgstr "Karma a partir do cal se ocultan os comentarios"
 
 #: values.php:97
 msgid "Límite de comentarios por meneo"
-msgstr "Límite de comentarios por chuzada"
+msgstr "Límite de comentarios por historia"
 
 #: values.php:99
 msgid "Tiempo que permanecen abiertos los comentarios en meneos en portada"
-msgstr "Tempo que permanecen abertos os comentarios en chuzadas en portada"
+msgstr "Tempo que permanecen abertos os comentarios en historias en portada"
 
 #: values.php:101
 msgid "Tiempo que permanecen abiertos los comentarios en meneos pendientes"
-msgstr "Tempo que permanecen abertos os comentarios en chuzadas pendentes"
+msgstr "Tempo que permanecen abertos os comentarios en historias pendentes"
 
 #: values.php:103
 msgid "Tiempo que permanecen abiertos los comentarios en meneos descartados"
-msgstr "Tempo que permanecen abertos os comentarios en chuzadas descartadas"
+msgstr "Tempo que permanecen abertos os comentarios en historias descartadas"
 
 #: values.php:105
 msgid "Tiempo que permanecen abiertos los comentarios en meneos autodescartados"
-msgstr "Tempo que permanecen abertos os comentarios en chuzadas autodescartadas"
+msgstr "Tempo que permanecen abertos os comentarios en historias autodescartadas"
 
 #: values.php:107
 msgid "Tiempo que permanecen abiertos los comentarios en meneos descartados por abuso"
-msgstr "Tempo que permanecen abertos os comentarios en chuzadas descartadas por abuso"
+msgstr "Tempo que permanecen abertos os comentarios en historias descartadas por abuso"
 
 #: values.php:109
 msgid "Tiempo que debe pasar desde el registro para que un nuevo usuario pueda comentar"
-msgstr "Tiempo que debe pasar dende o rexistro para que un novo usuario poida comentar"
+msgstr "Tempo que debe pasar desde o rexistro para que un novo usuario poida comentar"
 
 #: values.php:119
 msgid "votos abiertos"
-msgstr "chuzadas abertas"
+msgstr "historias abertas"
 
 #: values.php:120
 msgid "Tiempo que permanecen abiertos los votos"
-msgstr "Tempo que permanecen abertas as chuzadas"
+msgstr "Tempo que permanecen abertas as historias"
 
 #: values.php:122
 msgid "Tiempo abiertos los negativos si se ha extendido el tiempo de voto negativo"
-msgstr "Tempo abertos os negativos si se extendeu o tempo de chuzado negativo"
+msgstr "Tempo abertos os negativos se se estendeu o tempo de voto negativo"
 
 #: values.php:124
 msgid "Tiempo abiertos los negativos si no se ha extendido el tiempo de voto negativo: "
-msgstr "Tempo abertos os negativos si non se extendeu o tempo de chuzado negativo "
+msgstr "Tempo abertos os negativos se non se estendeu o tempo de voto negativo: "
 
 #: values.php:134 values.php:139 submit.php:252
 msgid "envíos"
@@ -1572,11 +1575,11 @@ msgstr "Límite de envíos global para usuarios con karma"
 
 #: values.php:135 values.php:137 submit.php:181
 msgid "se han enviado demasiadas historias en los últimos 3 minutos"
-msgstr "enviaronse demasiadas historias nos últimos 3 minutos"
+msgstr "enviáronse demasiadas historias nos últimos 3 minutos"
 
 #: values.php:135 values.php:137
 msgid "meneos cada 3 minutos"
-msgstr "chuzadas cada 3 minutos"
+msgstr "votos cada 3 minutos"
 
 #: values.php:139
 msgid "Límite de envíos por usuario en las últimas 24 horas"
@@ -1584,19 +1587,19 @@ msgstr "Límite de envíos por usuario nas últimas 24 horas"
 
 #: values.php:139
 msgid "debes esperar, tienes demasiadas noticias en cola de las últimas 24 horas"
-msgstr "debes agardar, tes demasiadas historias en cola das últimas 24 horas"
+msgstr "debes agardar, tes demasiadas historias na fila das últimas 24 horas"
 
 #: values.php:141
 msgid "Tiempo que tarda un borrador en eliminarse automáticamente"
-msgstr "Tempo que tarda un borrador en eliminarse automaticamente"
+msgstr "Tempo que tarda un rascuño en eliminarse automaticamente"
 
 #: values.php:143
 msgid "Máximo de borradores por usuario"
-msgstr "Máximo de borradores por usuario"
+msgstr "Máximo de rascuños por usuario"
 
 #: values.php:143 submit.php:192
 msgid "has hecho demasiados intentos, debes esperar o continuar con ellos desde la"
-msgstr "fixeche demasiados intentos, debes agardar ou continuar con eles dende a"
+msgstr "fixeches demasiados intentos, debes agardar ou continuar con eles desde a"
 
 #: values.php:143 submit.php:192
 msgid "cola de descartadas"
@@ -1608,35 +1611,35 @@ msgstr "Porcentaxe de karma de historia que sofre un «depublish» e volta a pen
 
 #: values.php:154
 msgid "registros"
-msgstr "rexistos"
+msgstr "rexistros"
 
 #: values.php:155
 msgid "Los nombres de usuario deben ser de 3 o más caracteres y comenzar por una letra"
-msgstr "Os nomes de usuario deben ser de 3 ou mais caracteres e comezar por unha letra"
+msgstr "Os nomes de usuario deben ser de 3 ou máis caracteres e comezar por unha letra"
 
 #: values.php:157
 msgid "Las contraseñas deben ser de 6 o más caracteres e incluir mayúsculas, minúsculas y números"
-msgstr "As claves deben ser de 6 ou mais caracteres e incluír maiúsculas, minúsculas e números"
+msgstr "As señas deben ser de 6 ou máis caracteres e incluír maiúsculas, minúsculas e números"
 
 #: values.php:159
 msgid "Registros desde la misma IP"
-msgstr "Rexistos dende o mesmo enderezo IP"
+msgstr "Rexistros desde o mesmo enderezo IP"
 
 #: values.php:159 register.php:204
 msgid "para registrar otro usuario desde la misma dirección debes esperar 24 horas"
-msgstr "para rexistrar outro usuario dende o mesmo enderezo IP debes agardar 24 horas."
+msgstr "para rexistrar outro usuario desde o mesmo enderezo IP debes agardar 24 horas."
 
 #: values.php:161 values.php:163
 msgid "Registros desde la misma subred"
-msgstr "Rexistos dende a mesma subrede"
+msgstr "Rexistros desde a mesma subrede"
 
 #: values.php:161 register.php:215
 msgid "para registrar otro usuario desde la misma red debes esperar 6 horas"
-msgstr "Para rexistrar outro usuario dende a mesma rede debes agardar 6 horas."
+msgstr "para rexistrar outro usuario desde a mesma rede debes agardar 6 horas."
 
 #: values.php:163 register.php:226
 msgid "para registrar otro usuario desde la misma red debes esperar unos minutos"
-msgstr "Para rexistrar outro usuario dende a mesma rede debes agardar uns minutos"
+msgstr "para rexistrar outro usuario desde a mesma rede debes agardar uns minutos"
 
 #: values.php:163
 msgid "una hora"
@@ -1644,31 +1647,31 @@ msgstr "unha hora"
 
 #: values.php:171
 msgid "nótames"
-msgstr "nótames"
+msgstr "chíos"
 
 #: values.php:172
 msgid "Karma a partir del cual se destacan las notas"
-msgstr "Karma a partir do cal se destacan as notas"
+msgstr "Karma a partir do cal se destacan os chíos"
 
 #: values.php:174
 msgid "Karma a partir del cual se ocultan las notas"
-msgstr "Karma a partir do cal se ocultan as notas"
+msgstr "Karma a partir do cal se ocultan os chíos"
 
 #: values.php:176
 msgid "Tiempo de espera entre notas"
-msgstr "Tempo de espera entre notas"
+msgstr "Tempo de espera entre chíos"
 
 #: values.php:178
 msgid "Tiempo de edición de notas"
-msgstr "Tempo de edición de notas"
+msgstr "Tempo de edición de chíos"
 
 #: values.php:180
 msgid "Tiempo de edición de notas siendo admin"
-msgstr "Tempo de edición de notas sendo admin"
+msgstr "Tempo de edición de chíos sendo admin"
 
 #: values.php:182
 msgid "El karma que gana o pierde un usuario por los votos a sus notas es"
-msgstr "O karma que gaña ou perde un usuario polos votos ás suas notas é"
+msgstr "O karma que gaña ou perde un usuario polos votos ós seus chíos é"
 
 #: values.php:182
 msgid "veces menor al karma que hubiese conseguido si esos mismos votos fuesen a sus comentarios"
@@ -1680,11 +1683,11 @@ msgstr "fórmulas"
 
 #: values.php:191
 msgid "El «depublish» ocurre cuando la suma del karma de los votantes de negativos > suma del karma de los votantes de positivos o que la suma de los votantes negativos > (karma de la historia / 2)"
-msgstr "O «depublish» ocorre cuando a suma do karma dos votantes de negativos > suma do karma dos votantes de positivos ou que a suma dos votantes negativos > (karma da historia / 2)"
+msgstr "O «depublish» ocorre cando a suma do karma dos votantes de negativos > suma do karma dos votantes de positivos ou que a suma dos votantes negativos > (karma da historia / 2)"
 
 #: values.php:193
 msgid "Para el «depublish» también debe cumplirse que la suma del karma de los votantes de negativos > (karma del envío / 6) o que el núm. de votos negativos > (núm. de votos positivos / 6)"
-msgstr "Para el «depublish» tamén debe cumplirse que a suma do karma dos votantes de negativos > (karma do envío / 6) ou que o núm. de votos negativos > (núm. de votos positivos / 6)"
+msgstr "Para o «depublish» tamén debe cumprirse que a suma do karma dos votantes de negativos > (karma do envío / 6) ou que o núm. de votos negativos > (núm. de votos positivos / 6)"
 
 #: values.php:195
 msgid "Para que sean contados en las sumas de karma del cálculo de un «depublish», los usuarios que voten positivo deben tener karma > "
@@ -1696,7 +1699,7 @@ msgstr " e os que voten negativo karma > "
 
 #: values.php:197
 msgid "Se considera «nuevo usuario» a los usuarios que no hayan enviado ningún meneo o se hayan registrado hace menos de "
-msgstr "Considérase «novo usuario» aos usuarios que non tiveran enviado nengunha chuzada ou se cadastraran fai menos de "
+msgstr "Considérase «novo usuario» aos usuarios que non tiveran enviado ningunha historia ou se cadastraran fai menos de "
 
 #: values.php:205 values.php:207
 msgid "Un «nuevo usuario» con karma &lt; "
@@ -1704,19 +1707,19 @@ msgstr "Un «novo usuario» con karma &lt; "
 
 #: values.php:205
 msgid " y sin envíos deberá votar "
-msgstr " e sen envíos deberá chuzar "
+msgstr " e sen envíos deberá votar "
 
 #: values.php:205
 msgid " meneos antes de poder enviar"
-msgstr " chuzadas antes de poder enviar"
+msgstr " votos a historias antes de poder enviar"
 
 #: values.php:207
 msgid " y con envíos deberá votar (cifra dinámica) "
-msgstr " e con envíos deberá chuzar (cifra dinámica) "
+msgstr " e con envíos deberá votar (cifra dinámica) "
 
 #: values.php:207
 msgid " * (1 + nº de envíos del usuario en las últimas 24 h. que no estén en estado «discard») meneos para poder enviar"
-msgstr " * (1 + nº de envíos do usuario nas últimas 24 h. que non estén en estado «discard») chuzadas para poder enviar"
+msgstr " * (1 + nº de envíos do usuario nas últimas 24 h. que non estean en estado «discard») votos a historias para poder enviar"
 
 #: values.php:212
 msgid "Un «nuevo usuario» solo podrá enviar "
@@ -1732,7 +1735,7 @@ msgstr "debes agardar, xa se enviaron varias co mesmo usuario ou enderezo IP"
 
 #: values.php:214
 msgid "Un «nuevo usuario» con envíos recientes"
-msgstr "Un «novo usuario» con envíos recientes"
+msgstr "Un «novo usuario» con envíos recentes"
 
 #: values.php:214
 msgid "y karma"
@@ -1740,7 +1743,7 @@ msgstr "e karma"
 
 #: values.php:214
 msgid " no podrá enviar si esos envíos han tenido más de 10 negativos y los negativos"
-msgstr " non poderá enviar se esos envíos tiveron mais de 10 negativos e os negativos"
+msgstr " non poderá enviar se eses envíos tiveron máis de 10 negativos e os negativos"
 
 #: topcomments.php:14
 msgid "mejores comentarios en 24 horas"
@@ -1748,11 +1751,11 @@ msgstr "mellores comentarios en 24 horas"
 
 #: topcomments.php:29
 msgid "comentarios más valorados 24 horas"
-msgstr "comentarios mais valorados 24 horas"
+msgstr "comentarios máis valorados 24 horas"
 
 #: submit.php:82
 msgid "dirección de la noticia"
-msgstr "dirección da historia"
+msgstr "enderezo da historia"
 
 #: submit.php:83
 msgid "verificando"
@@ -1780,7 +1783,7 @@ msgstr "contido externo"
 
 #: submit.php:103
 msgid "Menéame no es un sitio para generar noticias, ni un sistema de <em>microblogging</em>"
-msgstr "Chuza non é un sitio para xerar noticias, nin un sistema de <em>microbloguexo</em>"
+msgstr "Chuza non é un sitio para xerar noticias, nin un sistema de <em>microblogging</em>"
 
 #: submit.php:104
 msgid "contenido interesante"
@@ -1788,7 +1791,7 @@ msgstr "contido interesante"
 
 #: submit.php:104
 msgid "¿interesará a una cantidad razonable de lectores?"
-msgstr "interesará a unha cantidad razonábel de leitores?"
+msgstr "interesará a unha cantidade razoábel de lectores?"
 
 #: submit.php:105
 msgid "enlaza la fuente original"
@@ -1796,7 +1799,7 @@ msgstr "liga a fonte orixinal"
 
 #: submit.php:105
 msgid "no enlaces a sitios intermedios que no añaden nada al original"
-msgstr "non ligazóns a sitios intermedios que non engaden nada ao orixinal"
+msgstr "non enlaces a sitios intermedios que non engaden nada ao orixinal"
 
 #: submit.php:106
 msgid "busca antes"
@@ -1812,15 +1815,15 @@ msgstr "describe ben as historias"
 
 #: submit.php:107
 msgid "explica el enlace de forma fidedigna, no distorsiones"
-msgstr "explica a ligazón de forma fidedigna, non distorsiones"
+msgstr "explica a ligazón de forma fidedigna, non distorzas"
 
 #: submit.php:108
 msgid "respeta el voto de los demás"
-msgstr "respeita o voto dos demais"
+msgstr "respecta o voto dos demais"
 
 #: submit.php:108
 msgid "si los votos te pueden afectar personalmente, es mejor que no envíes la noticia"
-msgstr "se os votos poden afectarte personalmente, é mellor que non envíes a historia"
+msgstr "se os votos poden afectarte persoalmente, é mellor que non envíes a historia"
 
 #: submit.php:109
 msgid "has leído las"
@@ -1832,7 +1835,7 @@ msgstr "condicións de uso"
 
 #: submit.php:128 submit.php:675 editlink.php:220
 msgid "clave incorrecta"
-msgstr "clave incorrecta"
+msgstr "seña incorrecta"
 
 #: submit.php:133
 msgid "no tienes el mínimo de karma para enviar una nueva historia"
@@ -1848,11 +1851,11 @@ msgstr "desculpa as molestias"
 
 #: submit.php:157
 msgid "debes esperar, tienes demasiados envíos en cola de las últimas 24 horas"
-msgstr "debes agardar, tes demasiadas historias en cola das últimas 24 horas"
+msgstr "debes agardar, tes demasiadas historias na fila das últimas 24 horas"
 
 #: submit.php:167
 msgid "URL o nombre de servidor erróneo"
-msgstr "URI ou nombe de servidor erróneo"
+msgstr "URI ou nome de servidor erróneo"
 
 #: submit.php:168
 msgid "el nombre del servidor es incorrecto o éste tiene problemas para resolver el nombre"
@@ -1864,7 +1867,7 @@ msgstr "exceso de envíos"
 
 #: submit.php:191
 msgid "demasiados borradores"
-msgstr "demasiados borradores"
+msgstr "demasiados rascuños"
 
 #: submit.php:205
 msgid "dirección IP no permitida para enviar"
@@ -1888,23 +1891,23 @@ msgstr "precisas polo menos"
 
 #: submit.php:251
 msgid "no tienes el mínimo de votos necesarios para enviar una nueva historia"
-msgstr "non tes chuzadas abondo para enviar unha nova historia"
+msgstr "non tes votos abondo para enviar unha nova historia"
 
 #: submit.php:252
 msgid "necesitas votar como mínimo a"
-msgstr "precisas chuzar polo menos a"
+msgstr "precisas votar polo menos a"
 
 #: submit.php:254
 msgid "no votes de forma apresurada, penaliza el karma"
-msgstr "non chuzes de forma apresurada, penaliza o karma"
+msgstr "non votes de forma apresurada, penaliza o karma"
 
 #: submit.php:255
 msgid "haz clic aquí para ir a votar"
-msgstr "fai clic aquí para chuzar"
+msgstr "fai clic aquí para votar"
 
 #: submit.php:286
 msgid "debes esperar, has tenido demasiados votos negativos en tus últimos envíos"
-msgstr "debes agardar, tiveche demasiados votos negativos nos teus últimos envíos"
+msgstr "debes agardar, tiveches demasiados votos negativos nos teus últimos envíos"
 
 #: submit.php:302
 msgid "URL erróneo o no permitido"
@@ -1916,11 +1919,11 @@ msgstr "erro lendo o URI"
 
 #: submit.php:326
 msgid "URL inválido, incompleto o no permitido. Está fuera de línea, o tiene mecanismos antibots."
-msgstr "URI inválido, incompleto ou no permitido. Está fóra de liña, ou ten mecanismos antibots."
+msgstr "URI inválido, incompleto ou non permitido. Está fóra de liña, ou ten mecanismos antibots."
 
 #: submit.php:330
 msgid "no es válido, está fuera de línea, o tiene mecanismos antibots. <strong>Continúa</strong>, pero asegúrate que sea correcto"
-msgstr "non é válido, está fóra de liña, ou ten mecanismos antibots. <strong>Continúa</strong>, mais asegúrate que sexa correcto"
+msgstr "non é válido, está fóra de liña, ou ten mecanismos antibots. <strong>Continúa</strong>, mais asegúrate de que sexa correcto"
 
 #: submit.php:350
 msgid "URL inválido"
@@ -1944,7 +1947,7 @@ msgstr "varía as fontes, podería ser considerado spam"
 
 #: submit.php:391
 msgid "ya has enviado demasiadas imágenes o vídeos"
-msgstr "xa enviache demasiadas imaxes ou vídeos"
+msgstr "xa enviaches demasiadas imaxes ou vídeos"
 
 #: submit.php:404
 msgid "demasiados enlaces al mismo sitio en las últimas horas"
@@ -1972,7 +1975,7 @@ msgstr "superaches os límites de envíos deste sitio"
 
 #: submit.php:435
 msgid "continúa, pero ten en cuenta podría recibir votos negativos"
-msgstr "continúa, mais ten en conta que podería recibir votos negativos"
+msgstr "continúa, mais ten en conta que poderías recibir votos negativos"
 
 #: submit.php:437
 msgid "el FAQ"
@@ -1996,7 +1999,7 @@ msgstr "xa se enviaron demasiadas imaxes ou vídeos, agarda uns minutos por favo
 
 #: submit.php:472
 msgid "mejor enviar el enlace a la fuente original, sino será penalizado"
-msgstr "mellor enviar a ligazón á fonte original, senón será penalizado"
+msgstr "mellor enviar a ligazón á fonte orixinal, se non será penalizado"
 
 #: submit.php:481
 msgid "envío de una nueva noticia: paso 2 de 3"
@@ -2052,7 +2055,7 @@ msgstr "enviando trackbacks"
 
 #: submit.php:595
 msgid "ATENCIÓN: esto es sólo una muestra!"
-msgstr "ATENCIÓN: esto é só unha mostra!"
+msgstr "ATENCIÓN: isto é só unha mostra!"
 
 #: submit.php:595
 msgid "Ahora puedes 1) "
@@ -2064,7 +2067,7 @@ msgstr "  ou 2)   "
 
 #: submit.php:595 submit.php:609
 msgid "enviar a la cola y finalizar"
-msgstr "enviar á cola e finalizar"
+msgstr "enviar á fila e finalizar"
 
 #: submit.php:595
 msgid "Cualquier otro clic convertirá tu noticia en comida para <del>gatos</del> elefantes (o no)."
@@ -2072,7 +2075,7 @@ msgstr "Calquera outro clic fará que esta historia se perda para sempre."
 
 #: submit.php:680
 msgid "la historia ya está en cola"
-msgstr "A historia xa está na cola"
+msgstr "A historia xa está na fila"
 
 #: submit.php:684 editlink.php:229
 msgid "título o texto incompletos"
@@ -2092,7 +2095,7 @@ msgstr "Non puxeches tags"
 
 #: submit.php:702 editlink.php:242
 msgid "por favor, no pongas URLs en el título, no ofrece información"
-msgstr "Por favor, non poñas URLs no título, non ofrece información"
+msgstr "Por favor, non poñas URLs no título, non ofrecen información"
 
 #: submit.php:707 editlink.php:247
 msgid "categoría no seleccionada"
@@ -2112,12 +2115,12 @@ msgstr "desculpas"
 
 #: telnet.php:127
 msgid "votos publicadas: "
-msgstr "chuzadas publicadas: "
+msgstr "votos publicadas: "
 
 #: telnet.php:128 sneak.php:180 sneak.php:182 js/link_sneak02.js.php:152
 #: js/link_sneak02.js.php:154
 msgid "voto"
-msgstr "chuzada"
+msgstr "voto"
 
 #: telnet.php:130 sneak.php:190 sneak.php:468 admin/bans.php:123
 #: backend/get_ban_info.php:22 backend/get_c_v.php:38
@@ -2175,7 +2178,7 @@ msgstr "xeo editado"
 
 #: sneak.php:465
 msgid "votos de publicadas"
-msgstr "chuzadas de publicadas"
+msgstr "votos de publicadas"
 
 #: sneak.php:521 sneakme/index.php:242 sneakme/index.php:244
 msgid "todos"
@@ -2196,11 +2199,11 @@ msgstr "necesario se te conectarás vía Jabber/Google Talk"
 
 #: profile.php:126
 msgid "teléfono móvil"
-msgstr "telemóvel"
+msgstr "móbil"
 
 #: profile.php:127
 msgid "sólo necesario si enviarás notas al nótame vía SMS"
-msgstr "só preciso se enviarás notas ao nótame vía SMS"
+msgstr "só preciso se enviarás chíos vía SMS"
 
 #: profile.php:128
 msgid "pon el número completo, con código de país: +34123456789"
@@ -2220,7 +2223,7 @@ msgstr "canle AdSense (opcional), do tipo 1234567890"
 
 #: profile.php:148 user.php:257
 msgid "imagen cuadrada de no más de 400 KB, sin transparencias"
-msgstr "imaxe cadrada de non mais de 400 KB, sen transparencias"
+msgstr "imaxe cadrada de non máis de 400 KB, sen transparencias"
 
 #: profile.php:151
 msgid "Eliminar avatar"
@@ -2236,27 +2239,27 @@ msgstr "amosar todos os comentarios"
 
 #: profile.php:165
 msgid "introduce la nueva clave para cambiarla -no se cambiará si la dejas en blanco-:"
-msgstr "Introduce a nova clave para cambialo (non se cambiará se o deixas en branco):"
+msgstr "Introduce a nova seña para cambiala (non se cambiará se deixas este campo en branco):"
 
 #: profile.php:194 profile.php:200
 msgid "deshabilitar cuenta"
-msgstr "deshabilitar conta"
+msgstr "desactivar conta"
 
 #: profile.php:195
 msgid "¡atención! la cuenta será deshabilitada."
-msgstr "atención! a conta será deshabilitada."
+msgstr "atención! a conta será desactivada."
 
 #: profile.php:196
 msgid "se eliminarán automáticamente los datos personales."
-msgstr "eliminaránse automáticamente os datos personais"
+msgstr "eliminaranse automaticamente os datos persoais."
 
 #: profile.php:197
 msgid "las notas serán eliminadas, los envíos y comentarios NO se borrarán."
-msgstr "as notas serán eliminadas, os envíos e comentarios NON se borrarán."
+msgstr "os chíos serán eliminados, os envíos e comentarios NON se borrarán."
 
 #: profile.php:198
 msgid "sí, quiero deshabilitarla"
-msgstr "sí, quero deshabilitala"
+msgstr "si, quero desactivala"
 
 #: profile.php:272
 msgid "ya hay otro usuario con la misma dirección de MI, no se ha grabado"
@@ -2280,7 +2283,7 @@ msgstr "xa hai outro usuario coa mesma conta, non se gravou"
 
 #: profile.php:322
 msgid "canal AdSense incorrecto, no se ha grabado"
-msgstr "canle AdSense erróneo, non se gravou"
+msgstr "canle AdSense errónea, non se gravou"
 
 #: geo/author.php:32 backend/get_user_info.php:33
 msgid "web"
@@ -2293,15 +2296,15 @@ msgstr "distancia"
 #: geo/post.php:22 backend/get_post_tooltip.php:39 backend/get_post_url.php:39
 #: backend/get_post_url.php:53
 msgid "usuario o nota no encontrada"
-msgstr "usuario ou nota non atopada"
+msgstr "usuario ou chío non atopado"
 
 #: geo/get_form.php:16 geo/delete.php:16 geo/save.php:16
 msgid "falta el id"
-msgstr "falta o ID"
+msgstr "falta a ID"
 
 #: geo/get_form.php:26 geo/delete.php:29 geo/save.php:29
 msgid "Artículo inexistente"
-msgstr "Artigo inexistente"
+msgstr "Historia inexistente"
 
 #: geo/get_form.php:29 geo/delete.php:32 geo/save.php:32 editlink.php:25
 msgid "noticia no modificable"
@@ -2438,7 +2441,7 @@ msgstr "Que cousa é chuza?"
 
 #: login.php:68
 msgid "Es un sitio que te permite enviar una historia que será revisada por todos y será promovida, o no, a la página principal. Cuando un usuario envía una historia ésta queda en la <a href=\"shakeit.php\">cola de pendientes</a> hasta que reúne los votos suficientes para ser promovida a la página principal"
-msgstr "É un sitio que che permite enviar unha historia que será revisada colectivamente e promovida ou non á portada. Cando un usuario envía unha historia ésta queda na <a href=\"shakeit.php\">cola de pendentes</a> até que reúne as chuzadas precisas para subir á portada"
+msgstr "É un sitio que che permite enviar unha historia que será revisada colectivamente e promovida ou non á portada. Cando un usuario envía unha historia esta fica na <a href=\"shakeit.php\">fila de pendentes</a> até que reúne os votos precisos para subir á portada"
 
 #: login.php:70
 msgid "¿Todavía no eres usuario de menéame?"
@@ -2446,7 +2449,7 @@ msgstr "Aínda non es usuario de chuza?"
 
 #: login.php:71
 msgid "Como usuario registrado podrás, entre otras cosas"
-msgstr "Como usuario registado poderás, entre outras cousas"
+msgstr "Como usuario rexistrado poderás, entre outras cousas"
 
 #: login.php:74
 msgid "Enviar historias"
@@ -2454,7 +2457,7 @@ msgstr "Enviar historias"
 
 #: login.php:75
 msgid "Una vez registrado puedes enviar las historias que consideres interesantes para la comunidad. Si tienes algún tipo de duda sobre que tipo de historias puedes enviar revisa nuestras <a href=\"faq-es.php\">preguntas frecuentes sobre menéame</a>"
-msgstr "Unha vez registrado podes enviar as historias que consideres interesantes para a comunidade. Se tes algún tipo de dúbida sobre que tipo de historias podes enviar revisa as nosas <a href=\"faq-es.php\">perguntas frecuentes sobre chuza</a>"
+msgstr "Unha vez rexistrado podes enviar as historias que consideres interesantes para a comunidade. Se tes algún tipo de dúbida sobre que tipo de historias podes enviar revisa as nosas <a href=\"faq-es.php\">preguntas frecuentes sobre chuza</a>"
 
 #: login.php:78
 msgid "Escribir comentarios"
@@ -2470,23 +2473,23 @@ msgstr "Perfil do usuario"
 
 #: login.php:83
 msgid "Toda tu información como usuario está disponible desde la página de tu perfil. También puedes subir una imagen que representará a tu usuario en menéame. Incluso es posible compartir los ingresos publicitarios de Menéame, solo tienes que introducir el código de tu cuenta Google Adsense desde tu perfil"
-msgstr "Toda a túa información como usuario está dispoñíbel dende a páxina do teu perfil. Tamén podes subir unha imaxe que representará ao teu usuario en menéame. Incluso é posíbel compartir os ingresos publicitarios de Chuza, soio tes que introducir o código da túa conta Google Adsense dende o teu perfil"
+msgstr "Toda a túa información como usuario está dispoñíbel desde a páxina do teu perfil. Tamén podes subir unha imaxe que representará ao teu usuario en chuza. Incluso é posíbel compartir os ingresos publicitarios de Chuza, só tes que introducir o código da túa conta Google Adsense desde o teu perfil"
 
 #: login.php:86
 msgid "Chatear en tiempo real desde la fisgona"
-msgstr "Chatear en tempo real dende o fedelho"
+msgstr "Chatear en tempo real desde o fedello"
 
 #: login.php:87
 msgid "Gracias a la <a href=\"sneak.php\">fisgona</a> puedes ver en tiempo real toda la actividad de menéame. Además como usuario registrado podrás chatear con mucha más gente de la comunidad menéame"
-msgstr "Grazas ao <a href=\"sneak.php\">fedelho</a> podes ver en tempo real toda a actividade de Chuza. Ademais como usuario cadastrado poderás chatear con moita mais xente da comunidade Chuza"
+msgstr "Grazas ao <a href=\"sneak.php\">fedello</a> podes ver en tempo real toda a actividade de Chuza. Ademais como usuario rexistrado poderás chatear con moita máis xente da comunidade Chuza"
 
 #: login.php:168
 msgid "recuperación de contraseñas"
-msgstr "recuperación de claves"
+msgstr "recuperación de señas"
 
 #: register.php:29 register.php:55
 msgid "registro"
-msgstr "rexisto"
+msgstr "rexistro"
 
 #: register.php:53 register.php:97
 msgid "no has aceptado las condiciones de uso"
@@ -2498,19 +2501,19 @@ msgstr "nome de usuario"
 
 #: register.php:63
 msgid "es importante que sea correcta, recibirás un correo para validar la cuenta"
-msgstr "é importante que sexa correcto, recibirás un correio para validar a conta"
+msgstr "é importante que sexa correcto, recibirás un correo para validar a conta"
 
 #: register.php:69
 msgid "al menos ocho caracteres, incluyendo mayúsculas, minúsculas y números"
-msgstr "alomenos oito caracteres, incluindo maiúsculas, minúsculas e números"
+msgstr "polo menos oito caracteres, incluíndo maiúsculas, minúsculas e números"
 
 #: register.php:71
 msgid "verificación de clave"
-msgstr "verificación de clave"
+msgstr "verificación de seña"
 
 #: register.php:75
 msgid "has leído y aceptas las "
-msgstr "leches e aceitas as "
+msgstr "liches e aceitas as "
 
 #: register.php:79
 msgid "crear usuario"
@@ -2522,7 +2525,7 @@ msgstr "validación"
 
 #: register.php:135
 msgid "registro de usuario"
-msgstr "cadastro de usuario"
+msgstr "rexistro de usuario"
 
 #: register.php:139 register.php:148
 msgid "error insertando usuario en la base de datos"
@@ -2539,51 +2542,51 @@ msgstr "Nome de usuario erróneo, debe ser de 3 ou máis caracteres alfanuméric
 
 #: register.php:168
 msgid "nombre de usuario erróneo, caracteres no admitidos o no comienzan con una letra"
-msgstr "Nome de usuario erróneo, caracteres non admitidos ou non comezan cunha letra"
+msgstr "Nome de usuario erróneo, caracteres non admitidos ou non comeza por unha letra"
 
 #: register.php:180 backend/checkfield.php:42
 msgid "dirección de correo duplicada, o fue usada recientemente"
-msgstr "enderezo de correo duplicado, ou foi usada recentemente"
+msgstr "enderezo de correo duplicado, ou foi usado recentemente"
 
 #: register.php:184
 msgid "caracteres inválidos en la clave"
-msgstr "caracteres inválidos na clave"
+msgstr "caracteres inválidos na seña"
 
 #: register.php:188
 msgid "clave demasiado corta, debe ser de 6 o más caracteres e incluir mayúsculas, minúsculas y números"
-msgstr "Clave demasiado curta, debe ser de 6 ou máis caracteres e incluir maiúsculas, minúsculas e números"
+msgstr "Seña demasiado curta, debe ser de 6 ou máis caracteres e incluír maiúsculas, minúsculas e números"
 
 #: register.php:192
 msgid "las claves no coinciden"
-msgstr "as claves non cadran"
+msgstr "as señas non cadran"
 
 #: topstories.php:63
 msgid "más votadas"
-msgstr "mais votadas"
+msgstr "máis votadas"
 
 #: backend/problem.php:28
 msgid "Voto incorrecto"
-msgstr "Chuzada incorrecta"
+msgstr "Voto incorrecto"
 
 #: backend/problem.php:34 backend/menealo_post.php:84 backend/menealo.php:39
 #: backend/menealo_comment.php:65
 msgid "votos cerrados"
-msgstr "chuzadas fechadas"
+msgstr "votos fechadas"
 
 #: backend/problem.php:38
 msgid "Usuario incorrecto, recargue la página para poder votar"
-msgstr "Usuario incorrecto, recargue a páxina para poder chuzar"
+msgstr "Usuario incorrecto, recargue a páxina para poder votar"
 
 #: backend/problem.php:42 backend/get_favorite_post.php:27
 #: backend/menealo_post.php:31 backend/get_favorite.php:27
 #: backend/menealo.php:29 backend/menealo_comment.php:33
 #: backend/get_favorite_comment.php:27 backend/get_friend.php:26
 msgid "clave de control incorrecta"
-msgstr "Clave de control incorrecta"
+msgstr "Código de control incorrecto"
 
 #: backend/problem.php:46
 msgid "ya no se puede votar negativo"
-msgstr "xa non se pode chuzar negativo"
+msgstr "xa non se pode votar negativo"
 
 #: backend/problem.php:65
 msgid "Voto cowboy negativo"
@@ -2597,12 +2600,12 @@ msgstr "tranquilo cowboy!, o teu karma baixou: "
 #: backend/problem.php:72 backend/menealo.php:66
 #: backend/menealo_comment.php:70
 msgid "no se puede votar con clones"
-msgstr "non se puede chuzar con clones"
+msgstr "non se pode votar con clones"
 
 #: backend/problem.php:77 backend/menealo_post.php:52 backend/menealo.php:100
 #: backend/menealo_comment.php:100
 msgid "ya se votó antes con el mismo usuario o IP"
-msgstr "xa se chuzou antes co mesmo usuario ou IP"
+msgstr "xa se votou antes co mesmo usuario ou IP"
 
 #: backend/meneos.php:49
 msgid "votos negativos"
@@ -2610,11 +2613,11 @@ msgstr "votos negativos"
 
 #: backend/meneos.php:60
 msgid "quiénes han votado"
-msgstr "quen chuzou"
+msgstr "quen votou"
 
 #: backend/meneos.php:60
 msgid "ver quiénes han votado"
-msgstr "ver quen chuzou"
+msgstr "ver quen votou"
 
 #: backend/meneos.php:82
 msgid "anónimo"
@@ -2626,7 +2629,7 @@ msgstr "meta incorrecta"
 
 #: backend/avatar_upload.php:18
 msgid "usuario no autentificado"
-msgstr "usuario non autentificado"
+msgstr "usuario non autenticado"
 
 #: backend/avatar_upload.php:34
 msgid "datos recibidos incorrectamente"
@@ -2634,7 +2637,7 @@ msgstr "datos recibidos incorrectamente"
 
 #: backend/get_favorite_post.php:15
 msgid "falta el ID de la nota"
-msgstr "falta o ID da nota"
+msgstr "falta a ID do chío"
 
 #: backend/get_favorite_post.php:19 backend/menealo_post.php:23
 #: backend/get_favorite.php:19 backend/menealo.php:25
@@ -2645,32 +2648,32 @@ msgstr "falta o código do usuario"
 
 #: backend/post_sms_store.php:56
 msgid "texto muy corto, nota no insertada"
-msgstr "texto moi curto, nota non inserida"
+msgstr "texto moi curto, chío non inserido"
 
 #: backend/post_sms_store.php:72
 msgid "teléfono no encontrado, nota no insertada"
-msgstr "teléfono non atopado, nota non inserida"
+msgstr "teléfono non atopado, chío non inserido"
 
 #: backend/post_sms_store.php:77
 msgid "el karma es muy bajo, nota no insertada"
-msgstr "o karma é moi baixo, nota non inserida"
+msgstr "o karma é moi baixo, chío non inserido"
 
 #: backend/post_sms_store.php:90
 msgid "nota enviada previamente, nota no insertada"
-msgstr "nota enviada previamente, nota non inserida"
+msgstr "chío enviado previamente, chío non inserido"
 
 #: backend/post_sms_store.php:95
 msgid "debe esperar 1 minuto entre apuntes vía SMS"
-msgstr "debe agardar 1 minuto entre apuntes vía SMS"
+msgstr "debe agardar 1 minuto entre chíos vía SMS"
 
 #: backend/post_sms_store.php:102
 msgid "nota insertada"
-msgstr "nota inserida"
+msgstr "chío inserido"
 
 #: backend/menealo_post.php:19 backend/menealo_comment.php:21
 #: backend/get_favorite_comment.php:15
 msgid "falta el ID del comentario"
-msgstr "falta o ID do comentario"
+msgstr "falta a ID do comentario"
 
 #: backend/menealo_post.php:36 backend/menealo_comment.php:37
 msgid "falta valor del voto"
@@ -2678,11 +2681,11 @@ msgstr "falta valor do voto"
 
 #: backend/menealo_post.php:40 backend/menealo_comment.php:41
 msgid "karma bajo para votar comentarios"
-msgstr "karma baixo para chuzar comentarios"
+msgstr "karma baixo para votar comentarios"
 
 #: backend/menealo_post.php:46
 msgid "valor del voto incorrecto"
-msgstr "valor da chuzada incorrecto"
+msgstr "valor do voto incorrecto"
 
 #: backend/menealo_post.php:72 backend/menealo.php:86 backend/menealo.php:88
 #: backend/menealo_comment.php:94
@@ -2691,11 +2694,11 @@ msgstr "tranquilo cowboy!"
 
 #: backend/menealo_post.php:80 backend/menealo_comment.php:61
 msgid "no puedes votar a tus comentarios"
-msgstr "non podes chuzar os teus comentarios"
+msgstr "non podes votar os teus comentarios"
 
 #: backend/menealo_post.php:88
 msgid "ya ha votado antes"
-msgstr "Xa chuzaches antes"
+msgstr "Xa votaches antes"
 
 #: backend/ip_clones.php:16
 msgid "usuario no autorizado"
@@ -2711,19 +2714,19 @@ msgstr "non hai clons para este usuario"
 
 #: backend/get_favorite.php:15
 msgid "falta el ID del enlace"
-msgstr "falta o ID da ligazón"
+msgstr "falta a ID da ligazón"
 
 #: backend/get_p_v.php:38
 msgid "nota"
-msgstr "nota"
+msgstr "chío"
 
 #: backend/menealo.php:21
 msgid "falta el ID del artículo"
-msgstr "falta o ID do artigo"
+msgstr "falta a ID da historia"
 
 #: backend/menealo.php:35
 msgid "artículo inexistente"
-msgstr "artigo inexistente"
+msgstr "historia inexistente"
 
 #: backend/menealo.php:45
 msgid "Los votos anónimos están temporalmente deshabilitados"
@@ -2731,11 +2734,11 @@ msgstr "Os votos anónimos están temporalmente deshabilitados"
 
 #: backend/menealo.php:50
 msgid "Demasiados votos anónimos para esta noticia, regístrese como usuario o inténtelo más tarde"
-msgstr "Demasiados votos anónimos para esta historia, rexístese como usuario ou inténteo mais tarde"
+msgstr "Demasiados votos anónimos para esta historia, rexístrate como usuario ou téntao máis tarde"
 
 #: backend/menealo.php:85
 msgid "voto cowboy"
-msgstr "chuzada cowboy"
+msgstr "voto cowboy"
 
 #: backend/menealo.php:86
 msgid "tu karma ha bajado: "
@@ -2743,15 +2746,15 @@ msgstr "o teu karma baixou: "
 
 #: backend/menealo.php:102
 msgid "ya se votó antes desde la misma IP"
-msgstr "xa se chuzou antes dende a mesma IP"
+msgstr "xa se votou antes desde a mesma IP"
 
 #: backend/menealo_comment.php:47
 msgid "Valor del voto incorrecto"
-msgstr "valor da chuzada incorrecto"
+msgstr "valor do voto incorrecto"
 
 #: backend/menealo_comment.php:51
 msgid "no votes negativo a comentarios de tus envíos"
-msgstr "non votes negativo a comentarios dos teus envios"
+msgstr "non votes negativo a comentarios dos teus envíos"
 
 #: backend/menealo_comment.php:57
 msgid "comentario inexistente"
@@ -2771,7 +2774,7 @@ msgstr "erro actualizando, probabelmente tempo de edición excedido"
 
 #: backend/get_user_info.php:44
 msgid "última nota"
-msgstr "última nota"
+msgstr "último chío"
 
 #: backend/sneaker-stats.php:17
 msgid "comandos"
@@ -2804,15 +2807,15 @@ msgstr "Estatísticas"
 
 #: backend/sneaker-stats.php:136
 msgid "votos comentarios"
-msgstr "chuzadas comentarios"
+msgstr "votos comentarios"
 
 #: backend/sneaker-stats.php:137
 msgid "votos notas"
-msgstr "chuzadas notas"
+msgstr "votos chíos"
 
 #: backend/sneaker-stats.php:143
 msgid "usuarios nuevos"
-msgstr "usuarios nuevos"
+msgstr "usuarios novos"
 
 #: backend/sneaker-stats.php:167
 #, php-format
@@ -2821,7 +2824,7 @@ msgstr "Estatísticas de %s"
 
 #: backend/sneaker-stats.php:198
 msgid "el cabal dice"
-msgstr "o cabal dí"
+msgstr "o cabal di"
 
 #: backend/sneaker-stats.php:205
 msgid "Daría un ojo por saber cuánto es de leyenda y cuanto de verdad "
@@ -2857,7 +2860,7 @@ msgstr "<strong>Erro</strong> na comunicación co Estraviz, téntao novamente"
 
 #: backend/sneaker-stats.php:278
 msgid "<strong>Error</strong>, el segundo argumento debe ser una palabra: <em>!rae palabra</em>"
-msgstr "<strong>Erro</strong>, o segundo argumento debe ser unha palabra: <em>!rae palabra</em>"
+msgstr "<strong>Erro</strong>, o segundo argumento debe ser unha palabra: <em>!estraviz palabra</em>"
 
 #: backend/get_karma_numbers.php:17
 msgid "última modificación"
@@ -2865,11 +2868,11 @@ msgstr "última modificación"
 
 #: backend/get_karma_numbers.php:25
 msgid "no hay registros para este usuario"
-msgstr "no hay rexistos para este usuario"
+msgstr "non hai rexistros para este usuario"
 
 #: backend/checkfield.php:18
 msgid "caracteres inválidos o no comienzan con una letra"
-msgstr "caracteres inválidos ou non comezan cunha letra"
+msgstr "caracteres inválidos ou non comeza por unha letra"
 
 #: backend/checkfield.php:26 backend/checkfield.php:50
 #: backend/checkfield.php:63 backend/checkfield.php:77
@@ -2884,7 +2887,7 @@ msgstr "enderezo electrónico non válido"
 
 #: backend/sneaker2.php:130
 msgid "no tienes suficiente karma para comentar en la fisgona"
-msgstr "non tes karma abondo para comentar no fedelho"
+msgstr "non tes karma abondo para comentar no fedello"
 
 #: backend/sneaker2.php:137
 msgid "tranquilo charlatán"
@@ -2904,11 +2907,11 @@ msgstr "chat"
 
 #: backend/link_sneaker.php:29
 msgid "noticia antigua o no existente"
-msgstr "historia antigua ou non existente"
+msgstr "historia antiga ou inexistente"
 
 #: backend/post_edit.php:37
 msgid "debe esperar entre notas"
-msgstr "debe agardar entre notas"
+msgstr "debe agardar entre chíos"
 
 #: backend/post_edit.php:50 api/newpost.php:58
 msgid "texto muy corto"
@@ -2916,7 +2919,7 @@ msgstr "texto moi curto"
 
 #: backend/post_edit.php:69
 msgid "no tiene permisos para grabar"
-msgstr "non ten permisos para grabar"
+msgstr "non ten permisos para gravar"
 
 #: backend/post_edit.php:77
 msgid "el karma es muy bajo"
@@ -2924,15 +2927,15 @@ msgstr "o karma é moi baixo"
 
 #: backend/post_edit.php:90 api/newpost.php:79
 msgid "debe esperar 1 minuto entre notas"
-msgstr "debes agardar 1 minuto entre notas"
+msgstr "debes agardar 1 minuto entre chíos"
 
 #: backend/post_edit.php:105
 msgid "demasiados enlaces al mismo dominio en las notas"
-msgstr "demasiadas ligazóns ao mesmo dominio nas notas"
+msgstr "demasiadas ligazóns ao mesmo dominio nos chíos"
 
 #: backend/post_edit.php:115
 msgid "comentario grabado previamente"
-msgstr "comentario grabado previamente"
+msgstr "comentario gravado previamente"
 
 #: backend/get_user_api_key.php:14
 msgid "¿usuario?"
@@ -2952,7 +2955,7 @@ msgstr "enderezo web da historia"
 
 #: editlink.php:123
 msgid "describe con fidelidad el contenido del enlace."
-msgstr "descrebe con fidelidade o contido da ligazón."
+msgstr "describe con fidelidade o contido da ligazón."
 
 #: editlink.php:132
 msgid "Eliminar imagen"
@@ -2980,7 +2983,7 @@ msgstr "Tempo excedido"
 
 #: promote.php:14
 msgid "promote"
-msgstr "promote"
+msgstr "promover"
 
 #: comments_rss2.php:34
 msgid "búsqueda en comentarios"
@@ -3044,11 +3047,11 @@ msgstr "email"
 
 #: user.php:331
 msgid "clave API"
-msgstr "clave API"
+msgstr "chave API"
 
 #: user.php:331
 msgid "leer clave API"
-msgstr "ler clave API"
+msgstr "ler chave API"
 
 #: user.php:331
 msgid "no la divulgues"
@@ -3084,7 +3087,7 @@ msgstr "historias publicadas"
 
 #: user.php:363
 msgid "número de votos"
-msgstr "número de chuzadas"
+msgstr "número de votos"
 
 #: user.php:368
 msgid "afinidad con este usuario"
@@ -3092,11 +3095,11 @@ msgstr "afinidade con este usuario"
 
 #: user.php:387
 msgid "ubícate en el mapa (si te apetece)"
-msgstr "ubícate no mapa (si che presta)"
+msgstr "ubícate no mapa (se che presta)"
 
 #: user.php:393
 msgid "votos/hora últimos 30 días"
-msgstr "chuzadas/hora últimos 30 días"
+msgstr "votos/hora últimos 30 días"
 
 #: user.php:422
 msgid "últimas direcciones IP"
@@ -3109,7 +3112,7 @@ msgstr "envíos propios"
 #: user.php:441 user.php:461 user.php:483 user.php:514 user.php:538
 #: user.php:553 user.php:567 user.php:587
 msgid "votados"
-msgstr "chuzados"
+msgstr "votados"
 
 #: user.php:441 user.php:461 user.php:483 user.php:514 user.php:538
 #: user.php:553 user.php:567 user.php:587 link_bookmark.php:16
@@ -3118,7 +3121,7 @@ msgstr "favoritos"
 
 #: user.php:441 user.php:461 user.php:483 user.php:514
 msgid "votados por amigos"
-msgstr "chuzados por amigos"
+msgstr "votados por amigos"
 
 #: user.php:447 user.php:489 user.php:543
 msgid "exportar bookmarks en formato Mozilla"
@@ -3138,11 +3141,11 @@ msgstr "obter favoritos en rss2"
 
 #: user.php:490
 msgid "noticias votadas en rss2"
-msgstr "historias chuzadas en rss2"
+msgstr "historias votadas en rss2"
 
 #: user.php:505
 msgid "Nota"
-msgstr "Nota"
+msgstr "Chío"
 
 #: user.php:505
 msgid "sólo se visualizan los votos de los últimos meses"
@@ -3163,7 +3166,7 @@ msgstr "obter comentarios en rss2"
 
 #: user.php:699
 msgid "elegido por"
-msgstr "elexido por"
+msgstr "elixido por"
 
 #: user.php:701
 msgid "ignorados"
@@ -3200,20 +3203,20 @@ msgstr "usuario non atopado"
 #: sneakme/index.php:118
 #, php-format
 msgid "nota de %s"
-msgstr "nota de %s"
+msgstr "chío de %s"
 
 #: sneakme/index.php:127 sneakme_rss2.php:50
 #, php-format
 msgid "notas de %s"
-msgstr "notas de %s"
+msgstr "chíos de %s"
 
 #: sneakme/index.php:160
 msgid "notas de las últimas 24 horas"
-msgstr "notas das últimas 24 horas"
+msgstr "chíos das últimas 24 horas"
 
 #: sneakme/index.php:194
 msgid "Error: nota no existente"
-msgstr "Erro: nota non existente"
+msgstr "Erro: chío inexistente"
 
 #: sneakme/index.php:250 sneakme/index.php:252
 msgid "mapa"
@@ -3229,11 +3232,11 @@ msgstr "popular"
 
 #: sneakme/index.php:260
 msgid "más votadas en 24 horas"
-msgstr "mais votadas en 24 horas"
+msgstr "máis votadas en 24 horas"
 
 #: friends.php:32
 msgid "votadas por amigos"
-msgstr "chuzados por amigos"
+msgstr "votados por amigos"
 
 #: oauth/twitter.php:59
 msgid "error obteniendo tokens"
@@ -3257,7 +3260,7 @@ msgstr "usuario deshabilitado"
 
 #: topusers.php:17
 msgid "votos últimos 2 meses"
-msgstr "chuzadas últimos 2 meses"
+msgstr "votos últimos 2 meses"
 
 #: topusers.php:66
 msgid "estadísticas de usuarios"
@@ -3265,7 +3268,7 @@ msgstr "estatísticas de usuarios"
 
 #: link_bookmark.php:10
 msgid "votadas"
-msgstr "chuzadas"
+msgstr "votadas"
 
 #: link_bookmark.php:22
 msgid "comentadas"
@@ -3274,7 +3277,7 @@ msgstr "comentadas"
 #: js/sneak11.js.php:125 js/link_sneak02.js.php:83 js/sneak14.js.php:167
 #: js/sneak13.js.php:159
 msgid "Fisgón: ¿desea continuar conectado?"
-msgstr "Fedelho: desexas seguir conectado?"
+msgstr "Fedello: desexas seguir conectado?"
 
 #: js/sneak11.js.php:142 js/sneak14.js.php:184 js/sneak13.js.php:176
 msgid "está en pausa"
@@ -3286,7 +3289,7 @@ msgstr "ten deshabilitados todos os comentarios"
 
 #: js/sneak11.js.php:150 js/sneak14.js.php:192 js/sneak13.js.php:184
 msgid "mensaje demasiado corto"
-msgstr "mensaxe demasiado curto"
+msgstr "mensaxe demasiado curta"
 
 #: js/sneak11.js.php:154 js/sneak14.js.php:196 js/sneak13.js.php:188
 msgid "sólo se puede enviar un mensaje cada"
@@ -3294,7 +3297,7 @@ msgstr "só se pode enviar unha mensaxe cada"
 
 #: olh/discard3.php:43 olh/discard3.php:55 olh/discard3.php:64
 msgid "Retirada de portada"
-msgstr "Retirada de portada"
+msgstr "Retirada da portada"
 
 #: olh/discard3.php:97
 msgid "Noticia descartada"
@@ -3314,7 +3317,7 @@ msgstr "Penalización"
 
 #: olh/karma6.php:141
 msgid "Último voto"
-msgstr "Última chuzada"
+msgstr "Último voto"
 
 #: olh/karma6.php:184
 msgid "Penalizado por enlaces que violan las reglas"
@@ -3330,15 +3333,15 @@ msgstr "Desconto por votar a ligazóns que violan as regras"
 
 #: olh/karma6.php:235
 msgid "Coeficiente de votos muy bajos, posible bot, penalizado"
-msgstr "Coeficiente de chuzadas moi baixos, posíbel bot, penalizado"
+msgstr "Coeficiente de votos moi baixo, posíbel bot, penalizado"
 
 #: olh/karma6.php:238
 msgid "Coeficiente de votos muy bajos, ¿«karmawhore»?, penalizado"
-msgstr "Coeficiente de chuzadas moi baixo, ¿«karmawhore»?, penalizado"
+msgstr "Coeficiente de votos moi baixo, «karmawhore»?, penalizado"
 
 #: olh/karma6.php:252
 msgid "Votos: a publicadas"
-msgstr "Chuzadas: a publicadas"
+msgstr "Votos: a publicadas"
 
 #: olh/karma6.php:252
 msgid "no publicadas"
@@ -3347,11 +3350,11 @@ msgstr "non publicadas"
 #: olh/karma6.php:253
 #, php-format
 msgid "Karma por votos"
-msgstr "Karma por chuzadas"
+msgstr "Karma por votos"
 
 #: olh/karma6.php:272
 msgid "Votos negativos a descartadas"
-msgstr "Chuzadas negativas a descartadas"
+msgstr "Votos negativos a descartadas"
 
 #: olh/karma6.php:272
 msgid "no descartadas"
@@ -3359,23 +3362,23 @@ msgstr "non descartadas"
 
 #: olh/karma6.php:282
 msgid "Exceso de votos negativos a enlaces"
-msgstr "Exceso de chuzadas negativas a ligazóns"
+msgstr "Exceso de votos negativos a ligazóns"
 
 #: olh/karma6.php:308
 msgid "Votos a comentarios contabilizados"
-msgstr "Chuzadas a comentarios contabilizados"
+msgstr "Votos a comentarios contabilizados"
 
 #: olh/karma6.php:325
 msgid "Exceso de votos negativos injustos a comentarios"
-msgstr "Exceso de chuzadas negativas inxustas a comentarios"
+msgstr "Exceso de votos negativos inxustos a comentarios"
 
 #: olh/karma6.php:352
 msgid "Votos a notas contabilizados"
-msgstr "Chuzadas a notas contabilizados"
+msgstr "Votos a chíos contabilizados"
 
 #: olh/karma6.php:364
 msgid "Exceso de votos negativos injustos a notas"
-msgstr "Exceso de chuzadas negativas inxustas a notas"
+msgstr "Exceso de votos negativos inxustos a chíos"
 
 #: olh/karma6.php:379
 msgid "Karma extra máximo por penalizaciones o abusos"
@@ -3388,15 +3391,15 @@ msgstr "Karma final"
 
 #: olh/post_summaries.php:12
 msgid "Más votada"
-msgstr "Mais votada"
+msgstr "Máis votada"
 
 #: olh/post_summaries.php:14
 msgid "Más comentada"
-msgstr "Mais comentada"
+msgstr "Máis comentada"
 
 #: olh/promote9.php:218
 msgid "dominio baneado"
-msgstr "dominio baneado"
+msgstr "dominio banido"
 
 #: olh/promote9.php:339
 msgid "descenso"
@@ -3416,7 +3419,7 @@ msgstr "publicación"
 
 #: api/show_banner.php:33
 msgid "votos/hora"
-msgstr "chuzadas/hora"
+msgstr "votos/hora"
 
 #: api/show_banner.php:77
 msgid "Última publicada"
@@ -3440,23 +3443,23 @@ msgstr "usuario non especificado"
 
 #: api/newpost.php:29
 msgid "no se pudo leer al usuario"
-msgstr "non se puido ler ao usuario"
+msgstr "non se puido ler o usuario"
 
 #: api/newpost.php:39
 msgid "el karma es muy bajo, necesitas más de 6"
-msgstr "o karma é moi baixo, precisas mais de 6"
+msgstr "o karma é moi baixo, precisas máis de 6"
 
 #: api/newpost.php:44
 msgid "clave del API incorrecta"
-msgstr "clave do API incorrecta"
+msgstr "chave do API incorrecta"
 
 #: api/newpost.php:73
 msgid "nota previamente grabada"
-msgstr "nota previamente grabada"
+msgstr "chío previamente gravado"
 
 #: api/newpost.php:93
 msgid "nota grabada"
-msgstr "nota grabada"
+msgstr "chío gravado"
 
 #: api/check_url.php:41 api/check_url_complete.php:41
 msgid "enviar esta historia"
@@ -3477,11 +3480,11 @@ msgstr "autores"
 #: sneakme_rss2.php:40 sneakme_rss2.php:50 sneakme_rss2.php:59
 #: sneakme_rss2.php:68 sneakme_rss2.php:77 sneakme_rss2.php:85
 msgid "Nótame"
-msgstr "Nótame"
+msgstr "Chíos"
 
 #: sneakme_rss2.php:40
 msgid "búsqueda en notas"
-msgstr "procura en notas"
+msgstr "procura nos chíos"
 
 #: sneakme_rss2.php:68
 #, php-format
@@ -3494,12 +3497,12 @@ msgstr "FAQ"
 
 #: topcommented.php:49
 msgid "noticias más comentadas"
-msgstr "historias mais comentadas"
+msgstr "historias máis comentadas"
 
 #: topcommented.php:66
 msgid "no hay noticias seleccionadas"
-msgstr "non hai historias selecionadas"
+msgstr "non hai historias seleccionadas"
 
 #: opensearch_plugin.php:15
 msgid "noticias elegidas por los usuarios"
-msgstr "historias elexidas polos usuarios"
+msgstr "historias elixidas polos usuarios"

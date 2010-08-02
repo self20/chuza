@@ -148,25 +148,23 @@ function do_credits() {
 	global $dblang, $globals;
 
 	echo '<div id="footthingy">';
-	echo '<p>menéame</p>';
+	echo '<p>Chuza</p>';
 	echo '<ul id="legalese">';
 
 	// IMPORTANT: links change in every installation, CHANGE IT!!
 	// contact info
-	if ($globals['is_meneame']) {
-		echo '<li><a href="'.$globals['legal'].'">'._('condiciones legales').'</a> ';
-		echo '<a href="'.$globals['legal'].'#tos">'._('y de uso').'</a></li>';
-		echo '<li><a href="'.$globals['base_url'].'faq-'.$dblang.'.php#we">'._('quiénes somos').'</a></li>';
+	if (!$globals['is_meneame']) {	
+		echo '<li>Copyleft <b>Asociación Cultural Chuza</b></li>';
+		echo '<li><a href="mailto:chuza.gl@gmail.com">chuza.gl@gmail.com</a></li>';
+		echo '<li><a href="http://chuzar.gl/equipa/index.php?page=legal">'._('condiciones legales').'</a> ';
+		echo '<a href="http://chuzar.gl/equipa/index.php?page=legal#tos">'._('y de uso').'</a></li>';
+		echo '<li><a href="http://chuzar.gl/equipa/index.php?page=quen-somos">'._('quiénes somos').'</a></li>';
 		echo '<li>'._('licencias').':&nbsp;';
 		echo '<a href="'.$globals['base_url'].'COPYING">'._('código').'</a>,&nbsp;';
 		echo '<a href="http://creativecommons.org/licenses/by-sa/2.5/">'._('gráficos').'</a>,&nbsp;';
 		echo '<a href="http://creativecommons.org/licenses/by/2.5/es/">'._('contenido').'</a></li>';
 		echo '<li><a href="http://websvn.meneame.net/listing.php?repname=meneame&amp;path=/branches/version3/">'._('descargar código').'</a></li>';
-	} else {
-		echo '<li>link to code and licenses here (please respect the menéame Affero license and publish your own code!)</li>';
-		echo '<li><a href="">contact here</a></li>';
-		echo '<li>code: <a href="#">Affero license here</a>, <a href="#">download code here</a></li>';
-		echo '<li>you and contact link here</li>';
+		echo '<li><a href="http://chuzar.gl/equipa/index.php?page=chuza-r--etiqueta">Chuza-etiqueta</a></li>';
 	}
 	echo '</ul>'."\n";
 	echo '<ul id="stdcompliance">';
