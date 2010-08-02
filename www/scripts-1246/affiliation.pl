@@ -12,7 +12,7 @@ my %shared_links;
 my %voted_links;
 my %count_links;
 
-my $dbh = DBI->connect ('DBI:mysql:meneame', 'meneame', '');
+my $dbh = DBI->connect ('DBI:mysql:chuza', 'chuza', 'chuza66');
 
 my $from = time() - 3600*24*60; # Last 2 months
 
