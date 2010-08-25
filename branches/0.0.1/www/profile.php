@@ -90,7 +90,9 @@ do_footer();
 
 
 function show_profile() {
-	global $user, $admin_mode, $user_levels, $globals, $site_key, $current_user;
+	global $user, $admin_mode, $user_levels, $globals, $site_key, $current_user, $db;
+
+    $standards = $db->get_results("SELECT id_standard, name, filename FROM standards");
 
 	echo '<div class="genericform" style="margin: 0 50px">';
 	echo '<form  enctype="multipart/form-data" action="'.get_auth_link().'profile.php" method="post" id="thisform" AUTOCOMPLETE="off">';
@@ -119,6 +121,16 @@ function show_profile() {
 	echo '<input type="text" autocomplete="off" name="email" id="email" value="'.$user->email.'" onkeyup="enablebutton(this.form.checkbutton2, null, this)"/>';
 	echo '&nbsp;&nbsp;<input type="button" class="button" id="checkbutton2" disabled="disabled" value="'._('verificar').'" onclick="checkfield(\'email\', this.form, this.form.email)"/>';
 	echo '&nbsp;<span id="emailcheckitvalue"></span>';
+	echo '</p>';
+
+    echo '<p style="padding-bottom:10px;"><label>'._('norma ortográfica').':</label><br/>';
+    echo '<select name="standard" >';
+    foreach ($standards as &$val) {
+        $selected = "";
+        if ($user->standard == $val->id_standard) $selected = 'selected="selected"';
+        echo '<option value="'.$val->id_standard.'" '.$selected.' >&nbsp;'.$val->name.'&nbsp;</option>'; 
+    }
+    echo '</select><br/>';
 	echo '</p>';
 
 	echo '<p><label>'._('página web').':</label><br/>';
@@ -381,6 +393,11 @@ function save_profile() {
 	}
 	// Reset avatar for the logged user
 	if ($current_user->user_id == $user->id) $current_user->user_avatar = $user->avatar;
+
+    // norma ortografica
+    if ($_POST['standard']) {
+        $user->user_standard = (int)$_POST['standard'];
+    }
 
 	if (!$errors) {
 		if (empty($user->ip)) {

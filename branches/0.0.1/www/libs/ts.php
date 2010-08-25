@@ -54,9 +54,11 @@ class CaptchaSecurityImages {
 		/* set the colours */
 		$background_color = imagecolorallocate($image, 255, 255, 255);
 		//$text_color = imagecolorallocate($image, 20, 40, 100);
-		$text_color = imagecolorallocate($image, mt_rand(140,148),mt_rand(72,80),mt_rand(0,5));
+		//$text_color = imagecolorallocate($image, mt_rand(140,148),mt_rand(72,80),mt_rand(0,5));
+		$text_color = imagecolorallocate($image, mt_rand(72,80),mt_rand(140,148),mt_rand(0,5));
 		//$noise_color = imagecolorallocate($image, 100, 120, 180);
-		$noise_color = imagecolorallocate($image, mt_rand(250,255), mt_rand(95,105), mt_rand(0,5));
+		//$noise_color = imagecolorallocate($image, mt_rand(250,255), mt_rand(95,105), mt_rand(0,5));
+		$noise_color = imagecolorallocate($image, mt_rand(95,105), mt_rand(250,255), mt_rand(0,5));
 		/* generate random dots in background */
 		for( $i=0; $i<($width*$height)/3; $i++ ) {
 			$x1 = mt_rand(0,$width); 
