@@ -27,7 +27,7 @@ class UserAuth {
 				if (($globals['now'] - $cookietime) > 864000) $cookietime = 'expired'; // after 10 days expiration is forced
 
 				$user_id = intval($this->mnm_user[0]);
-				$user=$db->get_row("SELECT SQL_CACHE user_id, user_login, user_pass as md5_pass, user_level, UNIX_TIMESTAMP(user_validated_date) as user_date, user_karma, user_email, user_avatar, user_comment_pref FROM users WHERE user_id = $user_id");
+				$user=$db->get_row("SELECT SQL_CACHE user_id, user_login, user_pass as md5_pass, user_level, UNIX_TIMESTAMP(user_validated_date) as user_date, user_karma, user_email, user_avatar, user_comment_pref, user_standard as standard FROM users WHERE user_id = $user_id");
 
 				$key = md5($user->user_email.$site_key.$user->user_login.$user->user_id.$cookietime);
 

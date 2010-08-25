@@ -78,7 +78,29 @@ function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
 }
 
 function do_header($title, $id='home') {
-	global $current_user, $dblang, $globals, $greetings;
+	global $current_user, $dblang, $globals, $greetings, $db;
+
+
+    // escolhe norma
+    $stdRow = false;
+    if ($_POST['standard']) {
+        $stdRow = $db->get_row("SELECT name, short_name FROM standards WHERE id_standard = '".(int)$_POST['standard']."' ");
+    } elseif($current_user->user_id) {
+        $stdRow = $db->get_row("SELECT name, short_name FROM standards WHERE id_standard = '".(int)$current_user->standard."' ");
+    }
+
+    if ($stdRow) {
+        putenv ('LANGUAGE='.$stdRow->short_name);
+        setlocale(LC_MESSAGES, $stdRow->short_name);
+        bindtextdomain ('meneame', mnminclude.'/languages');
+        textdomain('meneame');
+    } else { // default standard
+        putenv ('LANGUAGE=gl_ES.utf8');
+        setlocale(LC_MESSAGES, 'gl_ES.utf8');
+        bindtextdomain ('meneame', mnminclude.'/languages');
+        textdomain('meneame');
+    }
+    // fim de escolher norma
 
 	check_auth_page();
 	header('Content-Type: text/html; charset=utf-8');

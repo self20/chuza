@@ -40,6 +40,8 @@ if(isset($_POST["process"])) {
 			break;
 	}
 } else {
+
+
 	do_register0();
 }
 
@@ -48,6 +50,10 @@ do_footer();
 exit;
 
 function do_register0() {
+    global $db;
+
+    $standards = $db->get_results("SELECT id_standard, name, filename FROM standards");
+    
 	echo '<div class="recoverpass" align="center"><h4><a href="login.php?op=recover">'._('¿has olvidado la contraseña?').'</a></h4></div>';
 
 	echo '<form action="'.get_auth_link().'register.php" method="post" id="thisform" onSubmit="return check_checkfield(\'acceptlegal\', \''._('no has aceptado las condiciones de uso').'\')">' . "\n";
@@ -71,6 +77,14 @@ function do_register0() {
 	echo '<p><label for="verify">' . _("verificación de clave") . ': </label><br />' . "\n";
 
 	echo '<input type="password" id="verify" name="password2" size="25" tabindex="4" onkeyup="checkEqualFields(this.form.password2, this.form.password)"/></p>' . "\n";
+
+    // Norma ortografica
+    echo '<p style="padding-bottom:15px;" ><label for="standard">' . _("norma ortográfica:"). '</label><br />'."\n";
+    echo '<select name="standard" >';
+    foreach ($standards as &$val) {
+        echo '<option value="'.$val->id_standard.'" >&nbsp;'.$val->name.'&nbsp;</option>';
+    }
+    echo '</select></p>';
 
 	echo '<p><label><span class="note">'._('has leído y aceptas las ');
 	do_legal(_('condiciones de uso'), 'target="_blank"', false);
@@ -110,6 +124,7 @@ function do_register1() {
 	echo '<input type="hidden" name="username" value="'.clean_input_string($_POST["username"]).'" />'; // extra sanity, in fact not needed
 	echo '<input type="hidden" name="password" value="'.clean_input_string($_POST["password"]).'" />'; // extra sanity, in fact not needed
 	echo '<input type="hidden" name="password2" value="'.clean_input_string($_POST["password2"]).'" />'; // extra sanity, in fact not needed
+	echo '<input type="hidden" name="standard" value="'.clean_input_string($_POST["standard"]).'" />'; // extra sanity, in fact not needed
 	get_form_auth_ip();
 	echo '</fieldset></form>'."\n";
 }
@@ -129,8 +144,10 @@ function do_register2() {
 	$email=clean_input_string(trim($_POST['email'])); // sanity check
 	$dbemail=$db->escape($email); // sanity check
 	$user_ip = $globals['form_user_ip'];
+    $standard = (int)$_POST['standard'];
+    
 	if (!user_exists($username)) {
-		if ($db->query("INSERT INTO users (user_login, user_login_register, user_email, user_email_register, user_pass, user_date, user_ip) VALUES ('$dbusername', '$dbusername', '$dbemail', '$dbemail', '$password', now(), '$user_ip')")) {
+		if ($db->query("INSERT INTO users (user_login, user_login_register, user_email, user_email_register, user_pass, user_date, user_ip, user_standard) VALUES ('$dbusername', '$dbusername', '$dbemail', '$dbemail', '$password', now(), '$user_ip', '$standard')")) {
 			echo '<fieldset>'."\n";
 			echo '<legend><span class="sign">'._("registro de usuario").'</span></legend>'."\n";
 			$user=new User();
@@ -193,13 +210,27 @@ function check_user_fields() {
 		$error=true;
 	}
 
+    $standards = $db->get_results("SELECT id_standard, name, filename FROM standards");
+    $hasStandard = false;
+    foreach ($standards as &$val) {
+        if ($val->id_standard == $_POST['standard']) {
+            $hasStandard = true;
+        }
+    }
+
+    if (!$hasStandard) {
+    print_r($_POST);
+        register_error("A norma enviada non coincide");
+		$error=true;
+    }
+
 	// Check registers from the same IP network
 	$user_ip = $globals['form_user_ip'];
 	$ip_classes = explode(".", $user_ip);
 
 	// From the same IP
 	$registered = (int) $db->get_var("select count(*) from logs where log_date > date_sub(now(), interval 24 hour) and log_type in ('user_new', 'user_delete') and log_ip = '$user_ip'");
-	if($registered > 0) {
+	if(false && $registered > 0) {
 		syslog(LOG_NOTICE, "Meneame, register not accepted by IP address ($_POST[username]) $user_ip");
 		register_error(_("para registrar otro usuario desde la misma dirección debes esperar 24 horas"));
 		$error=true;
@@ -210,7 +241,7 @@ function check_user_fields() {
 	// nnn.nnn.nnn
 	$ip_class = $ip_classes[0] . '.' . $ip_classes[1] . '.' . $ip_classes[2] . '.%';
 	$registered = (int) $db->get_var("select count(*) from logs where log_date > date_sub(now(), interval 6 hour) and log_type in ('user_new', 'user_delete') and log_ip like '$ip_class'");
-	if($registered > 0) {
+	if(false && $registered > 0) {
 		syslog(LOG_NOTICE, "Meneame, register not accepted by IP class ($_POST[username]) $ip_class");
 		register_error(_("para registrar otro usuario desde la misma red debes esperar 6 horas"). " ($ip_class)");
 		$error=true;
