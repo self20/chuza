@@ -76,6 +76,19 @@ if ($page < 2) {
 }
 do_categories_cloud('published');
 do_vertical_tags('published');
+
+
+$std = 1;
+if ($current_user->standard) {
+    $std = (int)$current_user->standard;
+}
+$row = $db->get_row("SELECT name FROM standards WHERE id_standard = ".$std );
+$name = $row->name;
+
+echo '<div class="sidebox" ><div class="header" ><h4>'._("Norma").'</h4></div>';
+echo '<div class="cell" style="font-size:12pt; color:#0033AA" >'.$name.'</div>';
+echo '</div>';
+
 echo '</div>' . "\n";
 /*** END SIDEBAR ***/
 

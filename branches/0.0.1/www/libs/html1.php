@@ -21,6 +21,23 @@ $globals['post_js'] = Array();
 
 $globals['start_time'] = microtime(true);
 
+
+// amosa a norma
+function do_standard() {
+    global $current_user, $db;
+
+    $std = 1;
+    if ($current_user->standard) {
+        $std = (int)$current_user->standard;
+    }
+    $row = $db->get_row("SELECT name FROM standards WHERE id_standard = ".$std );
+    $name = $row->name;
+
+    echo '<div class="sidebox" ><div class="header" ><h4>'._("Norma").'</h4></div>';
+    echo '<div class="cell" style="font-size:12pt; color:#0033AA" >'.$name.'</div>';
+    echo '</div>';
+}
+
 function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
 	global $globals;
 
