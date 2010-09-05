@@ -247,7 +247,7 @@ processo estiver finalizado, a web será acessível no endereço habitual. www.c
 
 	if($current_user->authenticated) {
 		$randhello = array_rand($greetings, 1);
- 		echo '<li><a href="'.get_user_uri($current_user->user_login).'" title="'._('menéame te saluda en ').$greetings[$randhello].'">'.$randhello.'&nbsp;'.$current_user->user_login.'&nbsp;<img src="'.get_avatar_url($current_user->user_id, $current_user->user_avatar, 20).'" width="20" height="20" alt="'.$current_user->user_login.'"/></a></li>' . "\n";
+ 		echo '<li><a href="'.get_user_uri($current_user->user_login).'" title="'._('Ver perfil de usuario').'">'.'&nbsp;'.$current_user->user_login.'&nbsp;<img src="'.get_avatar_url($current_user->user_id, $current_user->user_avatar, 20).'" width="20" height="20" alt="'.$current_user->user_login.'"/></a></li>' . "\n";
   		echo '<li><a href="'.$globals['base_url'].'login.php?op=logout&amp;return='.urlencode($_SERVER['REQUEST_URI']).'">'. _('cerrar sesión').' <img src="'.$globals['base_static'].'img/common/logout-bt-02.png" alt="" title="logout" width="22" height="16" /></a></li>' . "\n";
 	} else {
   		echo '<li><a href="'.$globals['base_url'].'register.php">' . _('registrarse') . ' <img src="'.$globals['base_static'].'img/common/register-bt-02.png" alt="" title="register" width="16" height="18" /></a></li>' . "\n";
