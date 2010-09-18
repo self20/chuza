@@ -22,16 +22,15 @@ $globals['post_js'] = Array();
 $globals['start_time'] = microtime(true);
 
 
-// amosa a norma
+// amosa a norma na barra lateral: DEPRECATED
 function do_standard() {
-    global $current_user, $db;
+    global $current_user, $db, $globals;
 
     $std = 1;
     if ($current_user->standard) {
         $std = (int)$current_user->standard;
     }
-    $row = $db->get_row("SELECT name FROM standards WHERE id_standard = ".$std );
-    $name = $row->name;
+    $name = $globals['standards'][$std]['name'];
 
     echo '<div class="sidebox" ><div class="header" ><h4>'._("Norma").'</h4></div>';
     echo '<div class="cell" style="font-size:12pt; color:#0033AA" >'.$name.'</div>';
@@ -99,24 +98,39 @@ function do_header($title, $id='home') {
 
 
     // escolhe norma
+
     $stdRow = false;
-    if ($_POST['standard']) {
-        $stdRow = $db->get_row("SELECT name, short_name FROM standards WHERE id_standard = '".(int)$_POST['standard']."' ");
-    } elseif($current_user->user_id) {
-        $stdRow = $db->get_row("SELECT name, short_name FROM standards WHERE id_standard = '".(int)$current_user->standard."' ");
+    // if change by request
+    if ($_REQUEST['standard']) {
+        $stdRow = $globals['standards'][$_REQUEST['standard']];
+        if ($current_user->authenticated) { // authenticated users store that in their profile
+            $user = new User($current_user->user_id);
+            $user->user_standard = (int)$_REQUEST['standard'];
+            $user->store();
+        } else { // if not authenticated, store on cookie
+            setcookie("chuza_current_standard", (int)$_REQUEST['standard'], time()+(3600 * 24 *  365 * 3)); // 3 anos de cookie
+        }
+
+	} elseif($current_user->authenticated) { // user authenticated but NOT request change
+        $stdRow = $globals['standards'][(int)$current_user->standard];
+    } else { // set default standard for non authenticated users
+        if (!$_COOKIE['chuza_current_standard']) $_COOKIE['chuza_current_standard'] = 1;
+        $stdRow = $globals['standards'][$_COOKIE['chuza_current_standard']];
     }
+    
 
     if ($stdRow) {
-        putenv ('LANGUAGE='.$stdRow->short_name);
-        setlocale(LC_MESSAGES, $stdRow->short_name);
-        bindtextdomain ('meneame', mnminclude.'/languages');
-        textdomain('meneame');
+        putenv ('LANGUAGE='.$stdRow['short_name']);
+        setlocale(LC_MESSAGES, $stdRow['short_name']);
+        $current_user->standard = $stdRow['id'];
     } else { // default standard
         putenv ('LANGUAGE=gl_ES.utf8');
         setlocale(LC_MESSAGES, 'gl_ES.utf8');
-        bindtextdomain ('meneame', mnminclude.'/languages');
-        textdomain('meneame');
+        $current_user->standard = 1;
     }
+
+    bindtextdomain ('meneame', mnminclude.'/languages');
+    textdomain('meneame');
     // fim de escolher norma
 
 	check_auth_page();
@@ -244,6 +258,14 @@ processo estiver finalizado, a web será acessível no endereço habitual. www.c
 	if ($current_user->admin) {
 		echo '<li><a href="'.$globals['base_url'].'admin/bans.php">admin <img src="'.$globals['base_static'].'img/common/tools-bt-02.png" alt="tools button" title="herramientas" width="16" height="16" /> </a></li>' . "\n";
 	}
+
+    // choose standard change link
+    $next_standard = ( ($current_user->standard % count($globals['standards'])) + 1);
+
+    $this_page = basename($_SERVER['REQUEST_URL']);
+    if (strpos($this_page, "?") !== false) $this_page = reset(explode("?", $this_page));
+
+    echo '<li><a href="'.$this_page.'?standard='.$next_standard.'" >'.$globals['standards'][$current_user->standard]['name'].'</a></li>'."\n";
 
 	if($current_user->authenticated) {
 		$randhello = array_rand($greetings, 1);
