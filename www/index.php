@@ -77,7 +77,7 @@ if ($page < 2) {
 do_categories_cloud('published');
 do_vertical_tags('published');
 
-do_standard();
+//do_standard();
 
 echo '</div>' . "\n";
 /*** END SIDEBAR ***/
