@@ -80,7 +80,7 @@ function do_register0() {
     echo '<p style="padding-bottom:15px;" ><label for="standard">' . _("norma ortográfica:"). '</label><br />'."\n";
     echo '<select name="standard" >';
     foreach ($globals['standards'] as &$val) {
-        echo '<option value="'.$val->id.'" >&nbsp;'.$val->name.'&nbsp;</option>';
+        echo '<option value="'.$val['id'].'" >&nbsp;'.$val['name'].'&nbsp;</option>';
     }
     echo '</select></p>';
 
@@ -210,7 +210,7 @@ function check_user_fields() {
 
     $hasStandard = false;
     foreach ($globals['standards'] as &$val) {
-        if ($val->id == $_POST['standard']) {
+        if ($val['id'] == $_POST['standard']) {
             $hasStandard = true;
         }
     }
