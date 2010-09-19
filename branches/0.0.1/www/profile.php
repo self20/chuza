@@ -125,8 +125,8 @@ function show_profile() {
     echo '<select name="standard" >';
     foreach ($globals['standards'] as &$val) {
         $selected = "";
-        if ($user->standard == $val->id) $selected = 'selected="selected"';
-        echo '<option value="'.$val->id.'" '.$selected.' >&nbsp;'.$val->name.'&nbsp;</option>'; 
+        if ($user->standard == $val['id']) $selected = 'selected="selected"';
+        echo '<option value="'.$val['id'].'" '.$selected.' >&nbsp;'.$val['name'].'&nbsp;</option>'; 
     }
     echo '</select><br/>';
 	echo '</p>';
