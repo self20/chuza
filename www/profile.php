@@ -92,8 +92,6 @@ do_footer();
 function show_profile() {
 	global $user, $admin_mode, $user_levels, $globals, $site_key, $current_user, $db;
 
-    $standards = $db->get_results("SELECT id_standard, name, filename FROM standards");
-
 	echo '<div class="genericform" style="margin: 0 50px">';
 	echo '<form  enctype="multipart/form-data" action="'.get_auth_link().'profile.php" method="post" id="thisform" AUTOCOMPLETE="off">';
 	echo '<fieldset><legend>';
@@ -125,10 +123,10 @@ function show_profile() {
 
     echo '<p style="padding-bottom:10px;"><label>'._('norma ortográfica').':</label><br/>';
     echo '<select name="standard" >';
-    foreach ($standards as &$val) {
+    foreach ($globals['standards'] as &$val) {
         $selected = "";
-        if ($user->standard == $val->id_standard) $selected = 'selected="selected"';
-        echo '<option value="'.$val->id_standard.'" '.$selected.' >&nbsp;'.$val->name.'&nbsp;</option>'; 
+        if ($user->standard == $val->id) $selected = 'selected="selected"';
+        echo '<option value="'.$val->id.'" '.$selected.' >&nbsp;'.$val->name.'&nbsp;</option>'; 
     }
     echo '</select><br/>';
 	echo '</p>';
