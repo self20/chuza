@@ -99,6 +99,8 @@ class User {
 	static function get_affinity($id, $from = false) {
 		global $current_user;
 
+        return 100; // remove affinity control
+
 		$log = new Annotation("affinity-$id");
 		if (!$log->read()) return false;
 		$dict = unserialize($log->text);
