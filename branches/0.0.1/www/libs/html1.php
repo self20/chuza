@@ -192,40 +192,6 @@ function do_header($title, $id='home') {
 
 	echo '</head>' . "\n";
 	echo "<body id=\"$id\" ". $globals['body_args']. ">\n";
-	echo '
-	<center>
-	<table width="1200" border="0" cellspacing="0" cellpadding="10">
-  <tr>
-    <td bgcolor="#FFFF99"><p>Esta é unha web de probas da nova versión da rede social chuza! Cando o proxecto estiver finalizado, a web será accesíbel no enderezo habitual, www.chuza.gl</p>
-      <p>Todos os datos armacenados serán borrados no lanzamento da web 
-        definitiva e as accións realizadas polas(os) usuarias(os) perderanse.<br />
-        Agradecemos a túa colaboración se desexas participar neste período de 
-        probas, pero lembra que deberás volver a rexistrarte canda da 
-      inauguración definitiva da nova chuza!</p>
-      <p>Se desexas entrar en contacto co equipo de persoas que está a 
-        traballar na nova versión de chuza!, podes facelo a través do e-mail 
-      chuza.gl@gmail.com</p>
-      <p>Grazas pola visita e pola túa comprensión e colaboración!<br />
-        -----<br />
-      Esta é uma web de teste da nova versão da rede social chuza! Quando o
-processo estiver finalizado, a web será acessível no endereço habitual. www.chuza.gl</p>
-      <p>Todos os dados arquivados serão apagados no lançamento da web 
-        definitiva, do mesmo jeito que as ações realizadas pelas(os) 
-        usuárias(os) até à altura. Agradecemos a sua colaboração, caso desejar 
-        participar neste período de teste, mas lembre que deverá voltar a 
-      registrar-se quando da inauguração definitiva da nova chuza!</p>
-      <p>Se deseja contatar com a equipe de pessoas que está a trabalhar na 
-        nova versão de chuza!, pode fazê-lo a travês do e-mail 
-      chuza.gl@gmail.com</p>
-      <p>Obrigado pela visita e pela sua compreensão e colaboração! </p></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-</table>
-	</center>
-	
-	';
 	echo '<div id="wrap">' . "\n";
 
 	echo '<div id="header">' . "\n";
