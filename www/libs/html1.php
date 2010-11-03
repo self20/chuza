@@ -219,8 +219,10 @@ function do_header($title, $id='home') {
 	echo '</li>' . "\n";
 	// form
 
-	echo '<li><a href="http://chuzar.gl/equipa/index.php?page=axuda">'._('ayuda').' <img src="'.$globals['base_static'].'img/common/help-bt-02.png" alt="help button" title="'._('ayuda').'" width="13" height="16" /></a></li>';
-	echo '<li><a href="http://chuzar.gl/equipa/index.php?page=o-novo-chuza">O novo chuza</a></li>';
+	echo '<li><a href="'.$globals["base_url"].'equipa/index.php?page=axuda">'._('ayuda').' <img src="'.$globals['base_static'].'img/common/help-bt-02.png" alt="help button" title="'._('ayuda').'" width="13" height="16" /></a></li>';
+	echo '<li><a href="'.$globals["base_url"].'equipa/index.php?page=o-novo-chuza">O novo chuza</a></li>';
+	echo '<li><a href="'.$globals["base_url"].'blog">El Blog</a></li>';
+	echo '<li><a href="'.$globals["base_url"].'wiki">La Wiki</a></li>';
 	if ($current_user->admin) {
 		echo '<li><a href="'.$globals['base_url'].'admin/bans.php">admin <img src="'.$globals['base_static'].'img/common/tools-bt-02.png" alt="tools button" title="herramientas" width="16" height="16" /> </a></li>' . "\n";
 	}

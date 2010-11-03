@@ -167,6 +167,9 @@ function do_credits() {
 		echo '<li><a href="http://chuzar.gl/equipa/index.php?page=chuza-r--etiqueta">Chuza-etiqueta</a></li>';
 	}
 	echo '</ul>'."\n";
+
+    echo '<div id="dhlink" style="padding-top:10px;text-align:center;" ><a style="color:#669933 !important;" href="https://dinahosting.com/gz/cloud-hosting" >'._("Esta web está aloxada na nube de <b>DINAHOSTING</b>")."</a></div>";
+
 	echo '<ul id="stdcompliance">';
 	echo '<li><a href="http://validator.w3.org/check?uri=referer"><img style="border:0;width:80px;height:15px" src="'.$globals['base_static'].'img/common/valid-xhtml10.gif" alt="Valid XHTML 1.0 Transitional" /></a></li>';
 	//echo '<li><a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3"><img style="border:0;width:80px;height:15px" src="'.$globals['base_static'].'img/common/valid-css.gif" alt="Valid CSS" /></a></li>';
