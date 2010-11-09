@@ -221,10 +221,10 @@ function do_header($title, $id='home') {
 
 	echo '<li><a href="'.$globals["base_url"].'equipa/index.php?page=axuda">'._('ayuda').' <img src="'.$globals['base_static'].'img/common/help-bt-02.png" alt="help button" title="'._('ayuda').'" width="13" height="16" /></a></li>';
 	echo '<li><a href="'.$globals["base_url"].'equipa/index.php?page=o-novo-chuza">O novo chuza</a></li>';
-    if ($globals["show_blog"] {
+    if ($globals["show_blog"]) {
         echo '<li><a href="'.$globals["base_url"].'blog">Blog</a></li>';
     }
-    if ($globals["show_wiki"] {
+    if ($globals["show_wiki"]) {
         echo '<li><a href="'.$globals["base_url"].'wiki">Wiki</a></li>';
     }
 	if ($current_user->admin) {
