@@ -394,7 +394,7 @@ function save_profile() {
 
     // norma ortografica
     if ($_POST['standard']) {
-        $user->user_standard = (int)$_POST['standard'];
+        $user->standard = (int)$_POST['standard'];
     }
 
 	if (!$errors) {

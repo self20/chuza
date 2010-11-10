@@ -105,7 +105,7 @@ function do_header($title, $id='home') {
         $stdRow = $globals['standards'][$_REQUEST['standard']];
         if ($current_user->authenticated) { // authenticated users store that in their profile
             $user = new User($current_user->user_id);
-            $user->user_standard = (int)$_REQUEST['standard'];
+            $user->standard = (int)$_REQUEST['standard'];
             $user->store();
         } else { // if not authenticated, store on cookie
             setcookie("chuza_current_standard", (int)$_REQUEST['standard'], time()+(3600 * 24 *  365 * 3)); // 3 anos de cookie
