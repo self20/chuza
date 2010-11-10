@@ -202,7 +202,7 @@ class User {
 		$user_adcode = $db->escape($this->adcode);
 		$user_adchannel = $db->escape($this->adchannel);
 		$user_phone = $db->escape($this->phone);
-        $user_standard = (int)$this->user_standard || (int)$this->standard;
+        $user_standard = (int)$this->standard;
 		if($this->id===0) {
 			$db->query("INSERT INTO users (user_login, user_login_register, user_level, user_karma, user_date, user_ip, user_pass, user_lang, user_email, user_email_register, user_names, user_public_info, user_url, user_adcode, user_adchannel, user_phone, user_standard) VALUES ('$user_login', '$user_login_register', '$user_level', $user_karma, FROM_UNIXTIME($user_date), '$user_ip', '$user_pass', $user_lang, '$user_email', '$user_email_register', '$user_names', '$user_public_info', '$user_url', '$user_adcode', '$user_adchannel', '$user_phone', $user_standard)");
 			$this->id = $db->insert_id;
