@@ -258,7 +258,7 @@ function do_header($title, $id='home') {
 	echo '<li><a href="'.$globals['base_url'].'submit.php">'._('enviar noticia').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'notame/">'._('nótame').'</a></li>'."\n";
+	echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
 	echo '</ul></div>'."\n";
 	do_banner_top();
 	echo '<div id="container">'."\n";
@@ -1019,6 +1019,12 @@ function print_share_icons($full_link, $short_link = false, $title = '') {
 
 	if (! $title) $title = get_server_name();
 
+	// Share it in Cabozo
+	echo '&nbsp;&nbsp;<a href="http://cabozo.com/share.php?url='.$short_link.'" target="_blank"><img src="'.$globals['base_static'].'img/favicons/difundircp.png" alt="cabozo" title="'._('compartir en cabozo').'" width="16" height="16"/></a>';
+
+	// Share it in latri.ca
+	//echo '&nbsp;&nbsp;<a href="http://twitter.com/home?status='.$short_link.'" target="_blank"><img src="'.$globals['base_static'].'img/favicons/latrica.png" alt="latri.ca" title="'._('compartir en latri.ca').'" width="16" height="16"/></a>';
+    
 	// Share it in Twitter
 	echo '&nbsp;&nbsp;<a href="http://twitter.com/home?status='.$short_link.'" target="_blank"><img src="'.$globals['base_static'].'img/favicons/twitter.gif" alt="twitter" title="'._('compartir en twitter').'" width="16" height="16"/></a>';
    	// Share it in Facebook
