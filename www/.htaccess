@@ -1,9 +1,12 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteRule ^story/(.+)$ story.php/$1 [L,NS]
+RewriteRule ^c/(.+)$ comment.php/$1 [L,NS]
 RewriteRule ^user/(.+)$ user.php/$1 [L,NS]
 RewriteRule ^search/$ index.php?$1 [L,NS,NE,PT]
 RewriteRule ^search(/.*)$ index.php$1 [L,NS,NE,PT]
-RewriteRule ^notame/$ sneakme/index.php?$1 [L,NS]
+RewriteRule ^notame$ sneakme/index.php?$1 [L,NS]
 RewriteRule ^notame(/.*)$ sneakme/index.php$1 [L,NS]
+RewriteRule ^chios$ sneakme/index.php?$1 [L,NS]
+RewriteRule ^chios(/.*)$ sneakme/index.php$1 [L,NS]
 </IfModule>
