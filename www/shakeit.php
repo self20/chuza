@@ -62,11 +62,18 @@ switch ($globals['meta']) {
 		$globals['noindex'] = true;
 		$globals['ads'] = false;
 		$from_time = '"'.date("Y-m-d H:00:00", $globals['now'] - 86400*4).'"';
-		$from_where = "FROM links WHERE link_status in ('discard', 'abuse', 'autodiscard')";
+
+        // only admins can see spam 
+        if ($current_user->admin) $s = "'discard', 'abuse', 'autodiscard'";
+        else $s = "'discard','autodiscard'";
+
+		$from_where = "FROM links WHERE link_status in ($s)";
 		$order_by = " ORDER BY link_date DESC ";
 		$tab = 5;
 		$globals['tag_status'] = 'discard';
 		$rows = Link::count('discard') + Link::count('autodiscard') + Link::count('abuse');
+
+
 		break;
 	case '_all':
 	default:
