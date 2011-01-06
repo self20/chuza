@@ -25,7 +25,7 @@ include(mnminclude.'html1.php');
 
 meta_get_current();
 
-if (isset($_REQUEST['chuzamail'])) {
+if (isset($_REQUEST['chuzamail']) && $globals["chuzamail"]) {
     $chuzamail = true;
 }
 
@@ -37,19 +37,27 @@ $globals['ads'] = true;
 $cat=$_REQUEST['category'];
 
 do_header(_('Chuza(r)'));
-do_tabs('main','published');
+if ($chuzamail) {
+    do_tabs('main','chuzamail');
+} else {
+    do_tabs('main','published');
+}
+
 if ($globals['meta_current'] > 0) { 
 
     $from_where = "FROM links WHERE link_status='published' and link_category in (".$globals['meta_categories'].") ";
 	print_index_tabs(); // No other view
 
 } elseif (($current_user->user_id > 0) && $chuzamail) {
-    
-    $link_list = implode(",", Comment::getChuzaMail($current_user->user_id, true));
-    if (strlen($link_list) > 0) {
-        $from_where = "FROM links WHERE link_id IN ($link_list) ";
-    } else {
-        $from_where = "FROM links WHERE 0 "; // do not show any links (this should never occur but..."
+
+    $cm = Comment::getChuzaMail($current_user->user_id, true);
+    if ($cm) {
+        $link_list = implode(",", $cm);
+        if (strlen($link_list) > 0) {
+            $from_where = "FROM links WHERE link_id IN ($link_list) ";
+        } else {
+            $from_where = "FROM links WHERE 0 "; // do not show any links (this should never occur but..."
+        }
     }
 
 } elseif ($current_user->user_id > 0) { // Check authenticated users
