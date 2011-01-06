@@ -55,6 +55,11 @@ class Comment {
 			$db->query("INSERT INTO comments (comment_user_id, comment_link_id, comment_type, comment_karma, comment_ip, comment_date, comment_randkey, comment_content) VALUES ($comment_author, $comment_link, '$comment_type', $comment_karma, '$this->ip', FROM_UNIXTIME($comment_date), $comment_randkey, '$comment_content')");
 			$this->id = $db->insert_id;
 
+            // tabela para resposta de comentarios
+            if ($globals["chuzamail"]) {
+                $db->query("INSERT DELAYED INTO chuzamail (chm_comment_id, chm_user_id, chm_link_id) VALUES ( $this->id, $comment_author, $comment_link )"); 
+            }
+
 			// Insert comment_new event into logs
 			if ($full) log_insert('comment_new', $this->id, $current_user->user_id);
 		} else {
@@ -624,5 +629,41 @@ class Comment {
 		$this->content = clean_lines(normalize_smileys($this->content));
 		return $this->content;
 	}
+
+    static function getChuzaMail($user_id, $retResults=false, $refresh=false) {
+        global $globals, $db; 
+
+        if ($globals['chuzamail'] && !$refresh) {
+            if ($retResults) {
+                return array_keys($globals['chuzamail']);
+            } else {
+                return count($globals['chuzamail'])>0?true:false;
+            }
+        }
+
+        $s = "SELECT chm_id,chm_user_id,chm_link_id FROM `chuzamail` WHERE chm_link_id IN (SELECT chm_link_id FROM chuzamail WHERE chm_user_id = $user_id AND chm_viewed = 0) ORDER BY chm_date";
+        $r = $db->get_results($s);
+        if (empty($r)) {
+            $globals['chuzamail'] = false;
+            return false;
+        }
+
+        $mails = Array();
+        foreach($r as $kay=>&$val) {
+            $mails[$val->chm_link_id] = $val->chm_user_id;  
+        }
+        foreach($mails as $kay=>$val) {
+            if ($val == $user_id) unset($mails[$kay]);
+        } 
+        
+        $globals['chuzamail'] = $mails;
+        
+        if ($retResults) {
+            return array_keys($mails);
+        } else {
+            return count($mails)>0?true:false;
+        }
+
+    }
 }
 ?>
