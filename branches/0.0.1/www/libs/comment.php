@@ -633,18 +633,17 @@ class Comment {
     static function getChuzaMail($user_id, $retResults=false, $refresh=false) {
         global $globals, $db; 
 
-        if ($globals['chuzamail'] && !$refresh) {
+        if ($globals['chuzamail'] && !empty($globals['chuzamail_content']) && !$refresh) {
             if ($retResults) {
-                return array_keys($globals['chuzamail']);
+                return array_keys($globals['chuzamail_content']);
             } else {
-                return count($globals['chuzamail'])>0?true:false;
+                return count($globals['chuzamail_content'])>0?true:false;
             }
         }
 
         $s = "SELECT chm_id,chm_user_id,chm_link_id FROM `chuzamail` WHERE chm_link_id IN (SELECT chm_link_id FROM chuzamail WHERE chm_user_id = $user_id AND chm_viewed = 0) ORDER BY chm_date";
         $r = $db->get_results($s);
         if (empty($r)) {
-            $globals['chuzamail'] = false;
             return false;
         }
 
@@ -656,7 +655,7 @@ class Comment {
             if ($val == $user_id) unset($mails[$kay]);
         } 
         
-        $globals['chuzamail'] = $mails;
+        $globals['chuzamail_content'] = $mails;
         
         if ($retResults) {
             return array_keys($mails);

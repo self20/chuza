@@ -84,9 +84,13 @@ function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
 		// END STANDARD TABS
 
         // ChuzaMail
-        if ($globals["chuzamail"] || true) {
+        if ($globals["chuzamail"]) {
             if (Comment::getChuzaMail($current_user->user_id, false)) {
-                echo '<li><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+                if ($tab_selected == 'chuzamail') {
+                    echo '<li '.$active.'><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+                } else {
+                    echo '<li><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+                }
             }
         }
 
