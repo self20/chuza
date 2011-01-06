@@ -38,7 +38,7 @@ function do_standard() {
 }
 
 function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
-	global $globals;
+	global $globals, $db;
 
 	$reload_text = _('recargar');
 	$active = ' class="tabmain-this"';
@@ -82,6 +82,13 @@ function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
 			echo '<li><a href="'.$globals['base_url'].'shakeit.php">'._('menear pendientes').'</a></li>' . "\n";
 		}
 		// END STANDARD TABS
+
+        // ChuzaMail
+        if ($globals["chuzamail"] || true) {
+            if (Comment::getChuzaMail($current_user->user_id, false)) {
+                echo '<li><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+            }
+        }
 
 		//Extra tab
 		if ($extra_tab) {
@@ -237,15 +244,20 @@ function do_header($title, $id='home') {
     $this_page = basename($_SERVER['REQUEST_URL']);
     if (strpos($this_page, "?") !== false) $this_page = reset(explode("?", $this_page));
 
-    echo '<li><a href="'.$this_page.'?standard='.$next_standard.'" >'.$globals['standards'][$current_user->standard]['name'].'</a></li>'."\n";
+    //echo '<li><a href="'.$this_page.'?standard='.$next_standard.'" >'.$globals['standards'][$current_user->standard]['name'].'</a></li>'."\n";
+    echo '<li><a href="'.$this_page.'?standard='.$next_standard.'" >'.$globals['standards'][$next_standard]['name'].'</a></li>'."\n";
 
 	if($current_user->authenticated) {
-		$randhello = array_rand($greetings, 1);
+		//$randhello = array_rand($greetings, 1); // deprecated in Chuza
  		echo '<li><a href="'.get_user_uri($current_user->user_login).'" title="'._('Ver perfil de usuario').'">'.'&nbsp;'.$current_user->user_login.'&nbsp;<img src="'.get_avatar_url($current_user->user_id, $current_user->user_avatar, 20).'" width="20" height="20" alt="'.$current_user->user_login.'"/></a></li>' . "\n";
   		echo '<li><a href="'.$globals['base_url'].'login.php?op=logout&amp;return='.urlencode($_SERVER['REQUEST_URI']).'">'. _('cerrar sesión').' <img src="'.$globals['base_static'].'img/common/logout-bt-02.png" alt="" title="logout" width="22" height="16" /></a></li>' . "\n";
+
+
+
 	} else {
   		echo '<li><a href="'.$globals['base_url'].'register.php">' . _('registrarse') . ' <img src="'.$globals['base_static'].'img/common/register-bt-02.png" alt="" title="register" width="16" height="18" /></a></li>' . "\n";
   		echo '<li><a href="'.$globals['base_url'].'login.php?return='.urlencode($_SERVER['REQUEST_URI']).'">'. _('login').' <img src="'.$globals['base_static'].'img/common/login-bt-02.png" alt="" title="login" width="22" height="16" /></a></li>' . "\n";
+
 	}
 
 	//echo '<li><a href="'.$globals['base_url'].'faq-'.$dblang.'.php">' . _('acerca de menéame').'</a></li>' . "\n";

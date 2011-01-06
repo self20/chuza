@@ -23,10 +23,11 @@
 include('config.php');
 include(mnminclude.'html1.php');
 
-
-
 meta_get_current();
 
+if (isset($_REQUEST['chuzamail'])) {
+    $chuzamail = true;
+}
 
 $page_size = 15;
 $page = get_current_page();
@@ -37,10 +38,22 @@ $cat=$_REQUEST['category'];
 
 do_header(_('Chuza(r)'));
 do_tabs('main','published');
-if ($globals['meta_current'] > 0) {
-	$from_where = "FROM links WHERE link_status='published' and link_category in (".$globals['meta_categories'].") ";
+if ($globals['meta_current'] > 0) { 
+
+    $from_where = "FROM links WHERE link_status='published' and link_category in (".$globals['meta_categories'].") ";
 	print_index_tabs(); // No other view
+
+} elseif (($current_user->user_id > 0) && $chuzamail) {
+    
+    $link_list = implode(",", Comment::getChuzaMail($current_user->user_id, true));
+    if (strlen($link_list) > 0) {
+        $from_where = "FROM links WHERE link_id IN ($link_list) ";
+    } else {
+        $from_where = "FROM links WHERE 0 "; // do not show any links (this should never occur but..."
+    }
+
 } elseif ($current_user->user_id > 0) { // Check authenticated users
+
 	switch ($globals['meta']) {
 		case '_personal':
 			$from_time = '"'.date("Y-m-d H:00:00", $globals['now'] - $globals['time_enabled_comments']).'"';
@@ -76,6 +89,18 @@ if ($page < 2) {
 }
 do_categories_cloud('published');
 do_vertical_tags('published');
+
+if ($globals['do_reduggy']) {
+    do_siblings_sites();
+}
+
+function do_siblings_sites() {
+    $output .= '<div class="sidebox" style="padding-bottom:0px;" ><div class="header sibling" style="cursor:pointer" ><h4>'._('REDUGGY.NET').'</h4></div><div class="mainsites" style="display:none;"><ul>'."\n";
+    $output .= '</div>';
+    $output .= '</div>';
+
+    echo $output;
+}
 
 //do_standard();
 
