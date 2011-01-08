@@ -461,3 +461,21 @@ tooltip.ajax_request = function(script, id, maxcache) {
 	});
 	reportAjaxStats('tooltip', 'ajax');
 }
+
+
+// load reduggy.net feed from client
+$(document).ready( function() {
+    var box = $("#reduggyBoxContent");
+
+    $.getJSON('http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent("select * from rss where url='http://reduggy.net/rss2.php' limit 10")+'&format=json&callback=?', function(data) {
+        var r = data.query.results.item;
+        var s = "";
+
+        for (var k in r) {
+            s+='<li><a href="http://reduggy.net/'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
+        }
+        box.html(s);
+    });
+
+});
+
