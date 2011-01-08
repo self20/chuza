@@ -103,7 +103,8 @@ if ($globals['do_reduggy']) {
 }
 
 function do_siblings_sites() {
-    $output .= '<div class="sidebox" style="padding-bottom:0px;" ><div class="header sibling" style="cursor:pointer" ><h4>'._('REDUGGY.NET').'</h4></div><div class="mainsites" style="display:none;"><ul>'."\n";
+    $output .= '<div id="reduggyBox" class="sidebox" style="padding-bottom:0px;" ><div class="header sibling" style="cursor:pointer" ><h4>'._('REDUGGY.NET').'</h4></div><div class="mainsites" ><ul id="reduggyBoxContent" >'."\n";
+    $output .= '</ul>';
     $output .= '</div>';
     $output .= '</div>';
 
