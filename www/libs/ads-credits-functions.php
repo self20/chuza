@@ -109,14 +109,16 @@ function do_footer_help() {
 function do_footer_plus_meneame() {
 	global $globals;
 	if (! $globals['is_meneame']) return;
-	echo '<h5>+menéame</h5>'."\n";
+	echo '<h5>+chuza</h5>'."\n";
 	echo '<ul id="moremenelist">'."\n";
-	echo '<li><a href="http://m.meneame.net/">'._('versión móvil').'</a></li>'."\n";
-	echo '<li><a href="http://tv.meneame.net/">'._('menéame TV').'</a></li>'."\n";
-	echo '<li><a href="http://twitter.com/meneame_net">'._('síguenos en twitter').'</a></li>'."\n";
-	echo '<li><a href="http://meneame.jaiku.com/">'._('síguenos en jaiku').'</a></li>'."\n";
-	echo '<li><a href="/notame/">'._('nótame').'</a></li>'."\n";
-	echo '<li><a href="http://blog.meneame.net/">'._('blog').'</a></li>'."\n";
+	//echo '<li><a href="http://m.chuza.gl/">'._('versión móvil').'</a></li>'."\n";
+	//echo '<li><a href="http://tv.chuza.net/">'._('menéame TV').'</a></li>'."\n";
+	echo '<li><a href="http://twitter.com/chuza">'._('síguenos en twitter').'</a></li>'."\n";
+	//echo '<li><a href="http://meneame.jaiku.com/">'._('síguenos en jaiku').'</a></li>'."\n";
+	echo '<li><a href="/chios/">'._('nótame').'</a></li>'."\n";
+	echo '<li><a href="http://chuza.gl/blog">'._('blog').'</a></li>'."\n";
+	echo '<li><a href="http://chuza.gl/wiki">'._('wiki').'</a></li>'."\n";
+	echo '<li><a href="http://reduggy.net">'._('reduggy.net').'</a></li>'."\n";
 	echo '</ul>'."\n";
 }
 
