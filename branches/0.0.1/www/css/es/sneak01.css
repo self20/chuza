@@ -1,4 +1,4 @@
-/* Menéame colors and images */
+﻿/* Menéame colors and images */
 
 /***
 All images referenced by the CSS and distributed in the tar file are 
@@ -17,13 +17,13 @@ background: url(../../img/mnm/elmnm-sneak-reverse02.png) 97% 95% no-repeat;
 }
 
 .sneaker-title strong {
-color: #FF9400;
+color: #66A76F;
 }
 
 .sneaker-legend {
-color: #FF6400;
-background: #FFEDC6;
-border-bottom-color: #FFEDC6;
+color: #66A76F;
+background: #C5E7A4;
+border-bottom-color: #C5E7A4;
 }
 
 .sneaker-item {
@@ -51,7 +51,7 @@ color: #F00;
 }
 
 .sneaker-published {
-color: #FF6400;
+color: #8ACC6D;
 }
 
 .sneaker-discarded {

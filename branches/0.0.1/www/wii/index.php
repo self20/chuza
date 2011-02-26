@@ -21,7 +21,23 @@ echo '<head>' . "\n";
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' . "\n";
 echo '<link rel="stylesheet" href="css/wiistyle.css" type="text/css" />';
 echo "<title>Menéame - Wii edition</title>\n";
-echo '<meta name="generator" content="meneame" />' . "\n";
+echo '<meta name="generator" content="chuza!" />' . "\n";
+//Script de google analytics
+echo '<script type="text/javascript">';
+echo  'evar _gaq = _gaq || [];';
+echo  '_gaq.push(['_setAccount', 'UA-19412090-1']);'';
+echo  '_gaq.push(['_setDomainName', 'none']);';
+echo'  _gaq.push(['_setAllowLinker', true]);';
+echo'  _gaq.push(['_trackPageview']);';
+
+echo'  (function() {';
+echo'    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;';
+echo'    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';';
+echo'    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);';
+echo'  })();';
+
+echo '</script>	';
+
 echo '</head>' . "\n";
 
 echo '<body id="home"><a name="top"></a>'."\n";

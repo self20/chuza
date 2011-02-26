@@ -1,3 +1,9 @@
+<center>
+<div style="padding:15px;" >
+<a href="http://chuza.gl/equipa/index.php?page=afiliate">
+<img src= "/img/ads/afiliarChuza.jpg" />
 
-<img src="/img/ads/banner-magosto.png" />
+</a>
+</div>
 
+</center>
