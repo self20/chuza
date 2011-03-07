@@ -13,9 +13,11 @@ header('Content-Type: application/json; charset=UTF-8');
 array_push($globals['cache-control'], 'no-cache');
 http_cache();
 
+
 if(check_ban_proxy()) {
 	error(_('IP no permitida'));
 }
+
 
 $link = new Link;
 $id=intval($_REQUEST['id']);
@@ -23,7 +25,9 @@ $user_id=intval($_REQUEST['user']);
 
 
 
-$value = round($_REQUEST['value']);
+// modification: valor para chuza excesivo 
+$value = floor($_REQUEST['value'] * ($current_user->user_karma/40));
+
 if ($value < -count($globals['negative_votes_values']) || $value > -1)
 	error(_('Voto incorrecto') . " $value");
 

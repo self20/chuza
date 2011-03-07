@@ -36,11 +36,17 @@ $globals['ads'] = true;
 
 $cat=$_REQUEST['category'];
 
+
 do_header(_('Chuza(r)'));
 if ($chuzamail) {
     do_tabs('main','chuzamail');
 } else {
     do_tabs('main','published');
+}
+
+// Are u a spammer?
+if ($_REQUEST['uspammer']) {
+  echo "<script>alert('"._("Tes que ter unha actividade recente en Chuza para poder enviar noticias")."');</script>";
 }
 
 if ($globals['meta_current'] > 0) { 
