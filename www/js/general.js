@@ -472,7 +472,7 @@ $(document).ready( function() {
         var s = "";
 
         for (var k in r) {
-            s+='<li><a href="http://reduggy.net/'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
+            s+='<li><a href="'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
         }
         box.html(s);
     });
