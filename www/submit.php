@@ -18,6 +18,16 @@ if(isset($_POST["phase"])) {
 	force_authentication();
 	switch ($_POST["phase"]) {
 		case 1:
+
+      // SPAMMER KILLER
+      // Se o usuario non votou catro veces no ultimo dia, non se lle permite enviar noticias
+      $user_votes = $db->get_row("SELECT COUNT(vote_id) as n_votes FROM votes WHERE vote_date > DATE_SUB(NOW(), INTERVAL 1 DAY) AND vote_user_id = ".$current_user->user_id);
+
+      if ($user_votes->n_votes < 4) {
+        header('Location: http://chuza.gl?uspammer=x');
+        exit;
+      }
+
 			do_header(_("enviar noticia") . " 2/3", "post");
 			echo '<div id="singlewrap">' . "\n";
 			do_submit1();
