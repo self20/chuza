@@ -180,7 +180,7 @@ class Post {
 		if ($globals['now'] - $this->date > 604800) { // 7 days
 			printf(_('el %s %s por %s'), get_date_time($this->date), '', $author);
 		} else {
-			printf(_('hace %s %s por %s'), txt_time_diff($this->date), '', $author);
+			printf(_('fai %s %s por %s'), txt_time_diff($this->date), '', $author);
 		}
 
 		//$this->print_user_avatar(20);
