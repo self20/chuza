@@ -234,7 +234,7 @@ class Comment {
 		if ($globals['now'] - $this->date > 604800) { // 7 days
 			printf(_('el %s %s por %s'), get_date_time($this->date), $edited, $author);
 		} else {
-			printf(_('hace %s %s por %s'), txt_time_diff($this->date), $edited, $author);
+			printf(_('fai %s %s por %s'), txt_time_diff($this->date), $edited, $author);
 		}
 		
 		echo '<img src="'.$avatar.'" width="20" height="20" alt="" title="'.$this->username.',&nbsp;karma:&nbsp;'.$this->user_karma.'" />';
