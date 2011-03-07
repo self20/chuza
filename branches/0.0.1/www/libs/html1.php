@@ -38,7 +38,7 @@ function do_standard() {
 }
 
 function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
-	global $globals, $db;
+	global $globals, $db, $current_user;
 
 	$reload_text = _('recargar');
 	$active = ' class="tabmain-this"';
@@ -87,9 +87,9 @@ function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
         if ($globals["chuzamail"]) {
             if (Comment::getChuzaMail($current_user->user_id, false)) {
                 if ($tab_selected == 'chuzamail') {
-                    echo '<li '.$active.'><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+                    echo '<li '.$active.'><a href="'.$globals['base_url'].'?chuzamail" >'._("Mencións").'</a></li>' . "\n";
                 } else {
-                    echo '<li><a href="'.$globals['base_url'].'?chuzamail" >'._("ChuzaMail").'</a></li>' . "\n";
+                    echo '<li><a href="'.$globals['base_url'].'?chuzamail" >'._("Mencións").'</a></li>' . "\n";
                 }
             }
         }
@@ -203,6 +203,11 @@ function do_header($title, $id='home') {
 
 	echo '</head>' . "\n";
 	echo "<body id=\"$id\" ". $globals['body_args']. ">\n";
+
+  if ($globals["news"]) {
+    echo '<div style="background-color:red;padding:8px;font-color:white;font-weigth:bold;" >'.$globals["news"].'</div>';
+  }
+
 	echo '<div id="wrap">' . "\n";
 
 	echo '<div id="header">' . "\n";

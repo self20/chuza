@@ -167,7 +167,11 @@ if ($link->status == 'published' && $link->user_karma > 7 && !empty($link->user_
 
 // update ChuzaMail
 if ($current_user->user_id > 0) {
-    $db->query("UPDATE chuzamail SET chm_viewed=1 WHERE chm_link_id = $link->id AND chm_user_id = $current_user->user_id ");
+
+    $maxCommentForLink = $db->get_row("SELECT max(comment_id) as max_comment_id FROM comments WHERE comment_link_id=".$link->id);
+    if ($maxCommentForLink && $maxCommentForLink->max_comment_id) {
+        $db->query("UPDATE chuzamail SET chm_viewed=".(int)$maxCommentForLink->max_comment_id." WHERE chm_link_id = $link->id AND chm_user_id = $current_user->user_id ");
+    }
 }
 
 if ($link->status != 'published') 
