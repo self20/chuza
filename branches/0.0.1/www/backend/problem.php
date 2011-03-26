@@ -78,7 +78,7 @@ if ($current_user->user_id > 0) {
     }
 }
 
-if (!$link->insert_vote($value)) {
+if (!$link->insert_vote($value, $former_value)) {
 	error(_('ya se votó antes con el mismo usuario o IP'));
 }
 
