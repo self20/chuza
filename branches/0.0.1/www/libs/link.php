@@ -793,6 +793,7 @@ class Link {
 		}
 
 
+    // former_value only for negatives
     if ($former_value != null) {
       $vote->value=$former_value;
       $karma_value = $karma_value /3;
