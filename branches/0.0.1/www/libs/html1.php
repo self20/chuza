@@ -408,7 +408,7 @@ function do_footer_menu() {
 	echo '<li><a href="'.$globals['base_url'].'map.php">'._('noticias').'</a></li>'."\n";
 	echo '</ul>'."\n";
 
-	do_footer_shop();
+	//do_footer_shop();
 
 	echo '</div>'."\n";
 
