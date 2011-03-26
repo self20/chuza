@@ -791,9 +791,14 @@ class Link {
 		} else {
 			$karma_value = 0;
 		}
-		$vote->value=$value;
+
+    if ($former_value != null) {
+      $vote->value=$former_value;
+    } else {
+      $vote->value=$value;
+    }
+
 		$db->transaction();
-    print_r($vote);
 		if($vote->insert()) {
 			// For published links we update counter fields
 			if ($this->status == 'published') {
