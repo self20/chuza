@@ -26,6 +26,7 @@ $user_id=intval($_REQUEST['user']);
 
 
 // modification: valor para chuza excesivo 
+$former_value = (int)$_REQUEST['value'];
 $value = floor($_REQUEST['value'] * ($current_user->user_karma/40));
 
 if ($value < -count($globals['negative_votes_values']) || $value > -1)
@@ -81,7 +82,7 @@ if (!$link->insert_vote($value)) {
 	error(_('ya se votó antes con el mismo usuario o IP'));
 }
 
-echo $link->json_votes_info(intval($value));
+echo $link->json_votes_info(intval($former_value));
 
 
 function error($mess) {
