@@ -792,8 +792,10 @@ class Link {
 			$karma_value = 0;
 		}
 
+
     if ($former_value != null) {
       $vote->value=$former_value;
+      $karma_value = $karma_value /3;
     } else {
       $vote->value=$value;
     }
