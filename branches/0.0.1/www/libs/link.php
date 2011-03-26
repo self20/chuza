@@ -765,7 +765,8 @@ class Link {
 		return $vote->count();
 	}
 
-	function insert_vote($value) {
+  // @param former_value int only for negatives
+	function insert_vote($value, $former_value = null) {
 		global $db, $current_user, $globals;
 
 		$vote = new Vote('links', $this->id, $current_user->user_id);
@@ -792,6 +793,7 @@ class Link {
 		}
 		$vote->value=$value;
 		$db->transaction();
+    print_r($vote);
 		if($vote->insert()) {
 			// For published links we update counter fields
 			if ($this->status == 'published') {
