@@ -466,8 +466,12 @@ tooltip.ajax_request = function(script, id, maxcache) {
 // load reduggy.net feed from client
 $(document).ready( function() {
     var box = $("#reduggyBoxContent");
+    if (!box) return;
 
     $.getJSON('http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent("select * from rss where url='http://reduggy.net/rss2.php' limit 10")+'&format=json&callback=?', function(data) {
+
+        if (!data.query.results) return;
+
         var r = data.query.results.item;
         var s = "";
 

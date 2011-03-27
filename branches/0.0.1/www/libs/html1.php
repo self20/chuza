@@ -323,6 +323,40 @@ function do_js_includes() {
 	echo 'if(top.location != self.location)top.location = self.location;'."\n";
 	echo 'var base_key="'.get_security_key().'";'."\n";
 	echo '</script>'."\n";
+
+  // April's fool translate joke
+  if ($globals["1stApril"]) {
+    echo '<script type="text/javascript">
+
+      function translateText(text) {
+        $($("h1 a")[text.data.translations[2].translatedText]).html(text.data.translations[0].translatedText);
+        $($("div.news-body p")[text.data.translations[2].translatedText]).html(text.data.translations[1].translatedText);
+      }
+
+      $(document).ready( function() {
+
+      var titleEl= $("h1 a");
+      var sourceEl = $("div.news-body p");
+
+      var k1 = 0;
+      titleEl.each( function() {
+        var newScript = document.createElement("script");
+        newScript.type = "text/javascript";
+
+        titleText = escape($(this).html());
+        sourceText = escape($(sourceEl[k1]).html());
+        var source = "https://www.googleapis.com/language/translate/v2?key=AIzaSyB104i2P2sEKZNrPRwIMcmPmHEfF4xYu5I&source=pt&target=fr&callback=translateText&q="+titleText+"&q=" + sourceText + "&q="+k1;
+        newScript.src = source;
+        
+        // When we add this script to the head, the request is sent off.
+        document.getElementsByTagName("head")[0].appendChild(newScript);
+        k1++;
+      });
+    
+  });
+  </script>';
+  }
+
 }
 
 function do_js_from_array($array) {
