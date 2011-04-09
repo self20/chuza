@@ -6,6 +6,19 @@
 *
 *****************************/
 ?>
+
+// Google analytics
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-19412090-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+
 function menealo(user, id)
 {
 	var url = base_url + "backend/menealo.php";
@@ -463,22 +476,26 @@ tooltip.ajax_request = function(script, id, maxcache) {
 }
 
 
-// load reduggy.net feed from client
+
 $(document).ready( function() {
+
+    // load reduggy.net feed from client
     var box = $("#reduggyBoxContent");
-    if (!box) return;
+    if (!box.length == 0) return;
 
     $.getJSON('http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent("select * from rss where url='http://reduggy.net/rss2.php' limit 10")+'&format=json&callback=?', function(data) {
 
-        if (!data.query.results) return;
+        if (data.query.results) {
 
-        var r = data.query.results.item;
-        var s = "";
+          var r = data.query.results.item;
+          var s = "";
 
-        for (var k in r) {
-            s+='<li><a href="'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
+          for (var k in r) {
+              s+='<li><a href="'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
+          }
+          box.html(s);
         }
-        box.html(s);
+
     });
 
 });
