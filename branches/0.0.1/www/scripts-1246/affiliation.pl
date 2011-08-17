@@ -66,13 +66,13 @@ sub store {
 		if ($shared_links{$key} > 0) {
 			$user_total{$userid} += $shared_links{$key};
 			$user_total_n{$userid}++;
-			$dbh->do("insert delayed into friends (friend_type, friend_from, friend_to, friend_value ) values ('affiliate', $userid, $userid_b, $shared_links{$key})");
+			$dbh->do("insert into friends (friend_type, friend_from, friend_to, friend_value ) values ('affiliate', $userid, $userid_b, $shared_links{$key})");
 		}
 	}
 	foreach $userid (keys %user_total) {
 		$average = $user_total{$userid}/$user_total_n{$userid};
 		print "Average $userid: $average\n";
-		$dbh->do("insert delayed into friends (friend_type, friend_from, friend_to, friend_value ) values ('affiliate', $userid, 0, $average)");
+		$dbh->do("insert into friends (friend_type, friend_from, friend_to, friend_value ) values ('affiliate', $userid, 0, $average)");
 	}
 }
 
