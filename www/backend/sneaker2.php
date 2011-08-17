@@ -157,7 +157,7 @@ function check_chat() {
 		}
 
 		$from = $now - 1500;
-		$db->query("delete from chats where chat_time < $from");
+		//$db->query("delete from chats where chat_time < $from");
 		if ((!empty($_REQUEST['admin']) || preg_match('/^#/', $comment)) && $current_user->admin) {
 			$room = 'admin';
 			$comment = preg_replace('/^# */', '', $comment);
@@ -451,7 +451,7 @@ function update_sneakers() {
 	$db->query("replace into sneakers (sneaker_id, sneaker_time, sneaker_user) values ('$key', unix_timestamp(now()), $current_user->user_id)");
 	if($_REQUEST['r'] % 100 == 0) {
 		$from = $globals['now']-120;
-		$db->query("delete from sneakers where sneaker_time < $from");
+		//$db->query("delete from sneakers where sneaker_time < $from");
 	}
 }
 ?>

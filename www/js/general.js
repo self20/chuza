@@ -479,7 +479,8 @@ tooltip.ajax_request = function(script, id, maxcache) {
 
 $(document).ready( function() {
 
-    // load reduggy.net feed from client
+    /*
+    // load reduggy.net feed from client - REDUGGY HAS GONE
     var box = $("#reduggyBoxContent");
     if (!box.length == 0) return;
 
@@ -497,6 +498,7 @@ $(document).ready( function() {
         }
 
     });
+    */
 
 });
 
