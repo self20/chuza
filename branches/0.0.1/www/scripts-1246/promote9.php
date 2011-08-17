@@ -183,7 +183,7 @@ if ($links) {
 		User::calculate_affinity($link->author, $past_karma*0.3);
 
 		// Calculate the real karma for the link
-		$link->calculate_karma();
+		//$link->calculate_karma();
 
 		if ($link->coef > 1) {
 			if ($decay > 1) 

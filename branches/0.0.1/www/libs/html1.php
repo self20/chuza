@@ -329,6 +329,7 @@ function do_js_includes() {
     echo '<script type="text/javascript">
 
       function translateText(text) {
+        if (typeof text.data == "undefined") return;
         $($("h1 a")[text.data.translations[2].translatedText]).html(text.data.translations[0].translatedText);
         $($("div.news-body p")[text.data.translations[2].translatedText]).html(text.data.translations[1].translatedText);
       }
