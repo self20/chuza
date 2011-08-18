@@ -104,9 +104,10 @@ $db->barrier();
 
 if($last_timestamp == 0) $last_timestamp = $now_f;
 if(intval($_REQUEST['r']) % 10 == 0) update_sneakers();
-$ccntu = $db->get_var("select count(*) from sneakers where sneaker_user > 0 and sneaker_id not like 'jabber/%'");
-$ccntj = $db->get_var("select count(*) from sneakers where sneaker_user > 0 and sneaker_id like 'jabber/%'");
-$ccnta = $db->get_var("select count(*) from sneakers where sneaker_user = 0");
+$t = $now - 600;
+$ccntu = $db->get_var("select count(*) from sneakers where sneaker_user > 0 and sneaker_id not like 'jabber/%' and sneaker_time > $t");
+$ccntj = $db->get_var("select count(*) from sneakers where sneaker_user > 0 and sneaker_id like 'jabber/%' and sneaker_time > $t");
+$ccnta = $db->get_var("select count(*) from sneakers where sneaker_user = 0 and sneaker_time > $t");
 $ccnt = $ccntu+$ccnta+$ccntj . " ($ccntu+$ccntj+$ccnta)";
 $data['ts'] = $last_timestamp;
 $data['ccnt'] = $ccnt;
