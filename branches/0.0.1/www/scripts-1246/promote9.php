@@ -203,7 +203,7 @@ if ($links) {
 		if (DEBUG ) $link->message .= "Meta: $link->meta_id coef: ".$meta_coef[$link->meta_id]." Init values: previous: $link->old_karma calculated: $link->karma new: $karma_new<br>\n";
 
 		// Verify last published from the same site
-		$hours = 8;
+		$hours = 4;
 		$min_pub_coef = 0.8;
 		$last_site_published = (int) $db->get_var("select SQL_NO_CACHE UNIX_TIMESTAMP(max(link_date)) from links where link_blog = $link->blog and link_status = 'published' and link_date > date_sub(now(), interval $hours hour)");
 		if ($last_site_published > 0) {
@@ -231,11 +231,16 @@ if ($links) {
 			// Check domain and user punishments
 			$karma_new *= 0.75;
 			$link->message .= $globals['ban_message'].'<br/>';
-		} elseif ($meta_coef[$dblink->parent] < 1 && ($link->content_type == 'image')) {
+    } 
+    /*
+     * CHUZA nom realiza balanceo de metacategorias
+     *
+    elseif ($meta_coef[$dblink->parent] < 1 && ($link->content_type == 'image')) {
 			// check if it's "media" and the metacategory coefficient is low
 			$karma_new *= 0.9;
 			$link->message .= 'Image/Video '.$meta_coef[$dblink->parent].'<br/>';
 		}
+     */
 
 		$link->karma = round($karma_new);
 
