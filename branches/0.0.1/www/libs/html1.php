@@ -620,6 +620,7 @@ function force_authentication() {
 }
 
 function mobile_redirect() {
+
 	global $globals;
 
 	if ($globals['mobile'] && ! preg_match('/(pad|tablet|wii|tv)\W/i', $_SERVER['HTTP_USER_AGENT']) &&
