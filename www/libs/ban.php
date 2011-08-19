@@ -8,6 +8,8 @@
 
 function check_ban_proxy() {
 	global $globals;
+  if ($globals['development']) return false; // only for development
+
 	if (($ban = check_ban($globals['user_ip'], 'proxy'))) return $ban;
 	else return check_ban($_SERVER['REMOTE_ADDR'], 'proxy');
 }

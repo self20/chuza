@@ -229,18 +229,73 @@ case 2:
 
 	if($tab_option == 1) do_comment_pages($link->comments, $current_page);
 
-	$comments = $db->get_col("SELECT SQL_CACHE comment_id FROM comments WHERE comment_link_id=$link->id ORDER BY $order_field $limit");
+	$comments = $db->get_col("SELECT comment_id FROM comments WHERE comment_link_id=$link->id ORDER BY $order_field $limit");
+
 	if ($comments) {
+
+    $sorted_comments = Array();
+    $unsorted_comments = Array();
+    $comments_by_id = Array();
+
+
+    foreach($comments as $comment_id) {
+      if (($comment = Comment::from_db($comment_id))) {
+        $unsorted_comments[$comment_id] = $comment;
+      }
+    }
+
+
+    function sort_comment(&$sorted_comments,&$unsorted_comments, &$comments_by_id) {
+        foreach($sorted_comments as $sorted_comment) {
+            if (!is_array($sorted_comment->children))
+                $sorted_comment->children = Array();
+
+            foreach($unsorted_comments as $unsorted_comment) {
+                if ($unsorted_comment->parent == $sorted_comment->id) {
+                    $sorted_comment->children[] = $unsorted_comment;
+                    $comments_by_id[$unsorted_comment->id] = $unsorted_comment;
+                }
+            }
+            sort_comment($sorted_comment->children,$unsorted_comments,$comments_by_id);
+        }
+    }
+
+    $s = new Comment;
+    $s->id = 0;
+    $sorted_comments = Array($s);
+    $comments_by_id[0] = $s;
+
+    sort_comment($sorted_comments,$unsorted_comments,&$comments_by_id);
+
 		echo '<ol class="comments-list">';
-		foreach($comments as $comment_id) {
-			if (($comment = Comment::from_db($comment_id))) {
-				echo '<li>';
-				$comment->print_summary($link, 2500, true);
-				echo '</li>';
-			}
-			echo "\n";
-		}
-		echo "</ol>\n";
+
+    function traverse_sorted($level, &$sorted_comments, &$comments_by_id) {
+        $level++;
+
+        $resorted_comments = Array();
+        foreach($sorted_comments as &$comment) {
+            $resorted_comments[$comment->id] = $comment->karma;
+        }
+
+        arsort($resorted_comments);
+
+        foreach($resorted_comments as $kay => $val) {
+
+            $comment = $comments_by_id[$kay];
+            $comment->padding_level= $level;
+            if ($comment->id != 0) $comment->print_summary($link, 2500, true);
+
+            if (!empty($comments_by_id[$kay]->children)) {
+                traverse_sorted($level,$comments_by_id[$kay]->children,&$comments_by_id);
+            }
+
+            if ($comment->id != 0) $comment->print_summary_end();
+        }
+    }
+
+    traverse_sorted(-2, $sorted_comments, &$comments_by_id);
+
+    echo '</ol>';
 	}
 
 	if($tab_option == 1) do_comment_pages($link->comments, $current_page);

@@ -776,14 +776,14 @@ class Link {
 			if($value < 0 && $current_user->user_id > 0) {
 				if ($current_user->user_id != $this->author && 
 						($affinity = User::get_affinity($this->author, $current_user->user_id)) <  0 ) {
-					$karma_value = round(min(-5, $current_user->user_karma *  $affinity/100));
+					$karma_value = round(min(-5, $current_user->user_karma *  ($affinity/100)));
 				} else {
 					$karma_value = round(-$current_user->user_karma);
 				}
 			} else {
 				if ($current_user->user_id  > 0 && $current_user->user_id != $this->author && 
 						($affinity = User::get_affinity($this->author, $current_user->user_id)) > 0 ) {
-					$karma_value = $value = round(max($current_user->user_karma * $affinity/100, 5));
+					$karma_value = $value = round(max($current_user->user_karma * ($affinity/100), 5));
 				} else {
 					$karma_value=round($value);
 				}

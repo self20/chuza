@@ -7,15 +7,62 @@
 *****************************/
 ?>
 
-function comment_reply(id) {
-	ref = '#' + id + ' ';
+//** new coments **//
+// new comments global var
+// 2 status: 0 = normal and #comment_number_to_reply
+var Comment = {
+  status:0,
+  padding:0,
+  level:0
+}
+
+$(document).ready( function() {
+  $("#comentarNoticia").click( function () {
+      Comment.padding = 0;
+      $("div .commentform").insertAfter(".comments-list");
+      Comment.status = 0;
+      $("[name=reply_id]").val("0");
+  });
+
+  $("a.fold").click( function(ev) {
+      ev.preventDefault();
+      e = $(this);
+      if (e.hasClass("folded")) {
+          e
+           .removeClass("folded")
+           .html("(-)")
+           .siblings("span").show()
+           .parent().siblings("div.cmt").show();
+      } else {
+          e
+           .addClass("folded")
+           .html("(+)")
+           .siblings("span").hide()
+           .parent().siblings("div.cmt").hide();
+      }
+  });
+
+});
+
+function comment_reply(id,c_id) {
+  // 1st part
+  padding = $("c-"+id).attr("name")
+  $("div .commentform").insertAfter($("#c-"+id)).css("padding-left",Comment.padding+"px");
+  $("#comentarNoticia").css("visibility","visible");
+  Comment.status = c_id;
+  $("[name=parent_id]").val(c_id);
+
+  //2nd part (original)
+	//ref = '#' + id + ' ';
 	textarea = $('#comment');
 	if (textarea.length == 0 ) return;
+  /*
 	var re = new RegExp(ref);
 	var oldtext = textarea.val();
 	if (oldtext.match(re)) return;
 	if (oldtext.length > 0 && oldtext.charAt(oldtext.length-1) != "\n") oldtext = oldtext + "\n";
 	textarea.val(oldtext + ref);
+  */
 	textarea.get(0).focus();
 }
 

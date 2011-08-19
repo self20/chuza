@@ -20,9 +20,9 @@ class Comment {
 	var $read = false;
 	var $ip = '';
 
-	const SQL = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, user_login as username, user_email as email, user_karma as user_karma, user_level as user_level, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, user_avatar as avatar, comment_content as content, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, favorite_link_id as favorite, vote_value as voted FROM comments LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'comment' and favorite_link_id = comment_id) LEFT JOIN votes ON (@user_id > 0 and vote_type='comments' and vote_link_id = comment_id and vote_user_id = @user_id), users ";
+	const SQL = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, user_login as username, user_email as email, user_karma as user_karma, user_level as user_level, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, user_avatar as avatar, comment_content as content, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, favorite_link_id as favorite, vote_value as voted, comment_parent as parent FROM comments LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'comment' and favorite_link_id = comment_id) LEFT JOIN votes ON (@user_id > 0 and vote_type='comments' and vote_link_id = comment_id and vote_user_id = @user_id), users ";
 
-	const SQL_BASIC = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified FROM comments ";
+	const SQL_BASIC = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, comment_parent as parent FROM comments ";
 
 
 	static function from_db($id) {
@@ -47,12 +47,13 @@ class Comment {
 		$comment_date = $this->date;
 		$comment_randkey = $this->randkey;
 		$comment_content = $db->escape($this->normalize_content());
+    $comment_parent = $this->parent;
 		if ($this->type == 'admin') $comment_type = 'admin';
 		else $comment_type = 'normal';
 		$db->transaction();
 		if($this->id===0) {
 			$this->ip = $db->escape($globals['user_ip']);
-			$db->query("INSERT INTO comments (comment_user_id, comment_link_id, comment_type, comment_karma, comment_ip, comment_date, comment_randkey, comment_content) VALUES ($comment_author, $comment_link, '$comment_type', $comment_karma, '$this->ip', FROM_UNIXTIME($comment_date), $comment_randkey, '$comment_content')");
+			$db->query("INSERT INTO comments (comment_user_id, comment_link_id, comment_type, comment_karma, comment_ip, comment_date, comment_randkey, comment_content, comment_parent) VALUES ($comment_author, $comment_link, '$comment_type', $comment_karma, '$this->ip', FROM_UNIXTIME($comment_date), $comment_randkey, '$comment_content', '$comment_parent')");
 			$this->id = $db->insert_id;
 
             // tabela para resposta de comentarios
@@ -131,7 +132,22 @@ class Comment {
 		if ($single_link) $html_id = $this->order;
 		else $html_id = $this->id;
 
-		echo '<div id="c-'.$html_id.'">';
+    $padding = 19;//(int)$this->level * 30;
+		echo '<div id="c-'.$html_id.'" class="cmt" style="padding-left:'.$padding.'px;" >';
+
+		if ($this->type != 'admin' && $this->user_level != 'disabled') {
+			// Print the votes info (left)
+
+			if ($current_user->user_id > 0 
+						&& $this->author != $current_user->user_id 
+						&& $single_link
+						&& $this->date > $globals['now'] - $globals['time_enabled_comments']
+						&& $this->level != 'autodisabled') {
+				$this->print_shake_icons();
+            } else {
+              echo '<div class="blockpade" style="float:left; width:22px; border-color: transparent;" >&nbsp;</div>';
+            }
+    }
 
 		$this->ignored = ($current_user->user_id > 0 && $this->type != 'admin' && User::friend_exists($current_user->user_id, $this->author) < 0);
 		$this->hidden = ($globals['comment_highlight_karma'] > 0 && $this->karma < -$globals['comment_highlight_karma'])
@@ -150,10 +166,12 @@ class Comment {
 			}
 		}
 		$this->link_permalink =  $link->get_relative_permalink();
-		echo '<div class="'.$comment_class.'">';
-		echo '<a href="'.$this->link_permalink.'/000'.$this->order.'"><strong>#'.$this->order.'</strong></a>';
+		echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;">';
+		//echo '<a href="'.$this->link_permalink.'/000'.$this->order.'"><strong>#'.$this->order.'</strong></a>';
+    echo '<a href="#" class="f-'.$this->id.' fold" style="font-family:verdana;font-size:x-small;" ></strong>(-)</strong></a>';
 
-		echo '&nbsp;&nbsp;&nbsp;<span  id="cid-'.$this->id.'">';
+		//echo '&nbsp;&nbsp;&nbsp;<span  id="cid-'.$this->id.'">';
+		echo '&nbsp;&nbsp;<span  id="cid-'.$this->id.'">';
 
 		if ($this->ignored || ($this->hidden && ($current_user->user_comment_pref & 1) == 0)) {
 			echo '&#187;&nbsp;<a href="javascript:get_votes(\'get_comment.php\',\'comment\',\'cid-'.$this->id.'\',0,'.$this->id.')" title="'._('ver comentario').'">'._('ver comentario').'</a>';
@@ -162,10 +180,10 @@ class Comment {
 			$this->print_text($length, $html_id);
 			echo '</span>';
 		}
-		echo '</div>';
+		//echo '</div>';
 
 		// The comments info bar
-		echo '<div class="'.$comment_meta_class.'">';
+		echo '<div class="'.$comment_meta_class.'" style="margin-bottom:0px;margin-top:8px;">';
 		// Check that the user can vote
 		echo '<div class="comment-votes-info">';
 		if ($this->type != 'admin' && $this->user_level != 'disabled') {
@@ -176,7 +194,7 @@ class Comment {
 						&& $single_link
 						&& $this->date > $globals['now'] - $globals['time_enabled_comments']
 						&& $this->level != 'autodisabled') {
-				$this->print_shake_icons();
+				//$this->print_shake_icons();
 			}
 
 			echo _('votos').': <span id="vc-'.$this->id.'">'.$this->votes.'</span>, '._('karma').': <span id="vk-'.$this->id.'">'.$this->karma.'</span>&nbsp;';
@@ -190,7 +208,7 @@ class Comment {
 
 		// Comment reply
 		if ($current_user->user_id > 0 && $globals['link'] && $globals['link']->date > $globals['now'] - $globals['time_enabled_comments']) {
-			echo '<a href="javascript:comment_reply('.$this->order.')" title="'._('responder').'"><img src="'.$globals['base_static'].'img/common/reply02.png" width="18" height="16"/></a>';
+			echo '<a href="javascript:comment_reply('.$this->order.','.$this->id.')" title="'._('responder').'"><img src="'.$globals['base_static'].'img/common/reply02.png" width="18" height="16"/></a>';
 		}
 		
 		// Comment permalink
@@ -200,6 +218,7 @@ class Comment {
 		// If the user is authenticated, show favorite box
 		if ($current_user->user_id > 0)  {
 			echo '<a id="fav-'.$this->id.'" href="javascript:get_votes(\'get_favorite_comment.php\',\''.$current_user->user_id.'\',\'fav-'.$this->id.'\',0,\''.$this->id.'\')">'.favorite_teaser($current_user->user_id, $this, 'comment').'</a>';
+
 		}
 		echo '</div>';
 
@@ -239,17 +258,23 @@ class Comment {
 		
 		echo '<img src="'.$avatar.'" width="20" height="20" alt="" title="'.$this->username.',&nbsp;karma:&nbsp;'.$this->user_karma.'" />';
 
+		echo '</div>';
 		echo '</div></div>';
-		echo "</div>\n";
 	}
+
+  function print_summary_end() {
+		echo "</div>\n";
+  }
 
 	function print_shake_icons() {
 		global $globals, $current_user;
 
+    echo '<div style="float:left;">';
 		if ( $current_user->user_karma > $globals['min_karma_for_comment_votes'] && ! $this->voted) {  
+
 	 		echo '<span id="c-votes-'.$this->id.'">';
-			echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up02.png" width="18" height="16" alt="'._('voto positivo').'"/></a>&nbsp;';
-	 		echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
+			echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
+	 		echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
 	 		echo '</span>';
 	 	} else {
 	 		if ($this->voted > 0) {
@@ -258,6 +283,7 @@ class Comment {
 				echo '<img src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/>';
 			}
 		}
+    echo '</div>';
 	}
 
 	function vote_exists() {
@@ -428,9 +454,11 @@ class Comment {
 			echo '<input type="hidden" name="randkey" value="'.rand(1000000,100000000).'" />'."\n";
 			echo '<input type="hidden" name="link_id" value="'.$link->id.'" />'."\n";
 			echo '<input type="hidden" name="user_id" value="'.$current_user->user_id.'" />'."\n";
+			echo '<input type="hidden" name="parent_id" value="0" />'."\n"; // for comment replies
 			echo '</fieldset>'."\n";
 			echo '</form>'."\n";
 			echo "</div>\n";
+      echo '<div style="visibility:hidden;text-align:center;" id="comentarNoticia" ><a href="#" >'._("Comentar Noticia").'</a></div>'."\n";
 		} else {
 			// Not enough karma or anonymous user
 			if($tab_option == 1) do_comment_pages($link->comments, $current_page);
@@ -489,6 +517,8 @@ class Comment {
 		$comment->author=intval($_POST['user_id']);
 		$comment->karma=round($current_user->user_karma);
 		$comment->content=clean_text_with_tags($_POST['comment_content'], 0, false, 10000);
+    $comment->parent=intval($_POST['parent_id']);
+
 		// Check if is an admin comment
 		if ($current_user->user_level == 'god' && $_POST['type'] == 'admin') {
 			$comment->type = 'admin';
