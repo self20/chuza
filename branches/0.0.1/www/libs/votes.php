@@ -59,7 +59,7 @@ class Vote {
 		return $db->query($sql);
 	}
 
-	function delete_comment_vote() {
+	function delete_comment_vote($value) {
 		global $db, $globals;
 		if (empty($this->ip)) $this->ip=$globals['user_ip_int'];
 		$this->value=round($this->value);
@@ -67,7 +67,8 @@ class Vote {
 		//$sql="INSERT HIGH_PRIORITY INTO votes (vote_type, vote_user_id, vote_link_id, vote_value, vote_ip_int) VALUES ('$this->type', $this->user, $this->link, $this->value, $this->ip)";
 		$sql="DELETE QUICK FROM votes WHERE vote_type = '$this->type' AND vote_user_id = $this->user AND vote_link_id = $this->link";
 		$db->query($sql);
-    $db->query("update comments set comment_votes=comment_votes-1, comment_karma=comment_karma+$this->value, comment_date=comment_date where comment_id=$this->link");
+    $db->query("update comments set comment_votes=comment_votes-1, comment_karma=comment_karma-$value, comment_date=comment_date where comment_id=$this->link");
 	}
+
 }
 

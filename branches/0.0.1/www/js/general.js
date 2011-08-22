@@ -46,9 +46,12 @@ function menealo_comment(user, id, value)
 			} else {
 				$('#vc-'+id).html(data.votes+"");
 				$('#vk-'+id).html(data.karma+"");
-				if (data.image.length > 0) {
-					$('#c-votes-'+id).html('<img src="'+data.image+'"/>');
+				if (data.image && data.image.length > 0) {
+					$('#c-votes-'+id+'>a>img').first().attr('src', data.image);
 				}
+        if (data.image2 && data.image2.length > 0) {
+          $('#c-votes-'+id+'>a>img').last().attr('src', data.image2);
+        }
 			}
 		}
 	);
