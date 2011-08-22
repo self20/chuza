@@ -20,9 +20,9 @@ class Comment {
 	var $read = false;
 	var $ip = '';
 
-	const SQL = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, user_login as username, user_email as email, user_karma as user_karma, user_level as user_level, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, user_avatar as avatar, comment_content as content, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, favorite_link_id as favorite, vote_value as voted, comment_parent as parent FROM comments LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'comment' and favorite_link_id = comment_id) LEFT JOIN votes ON (@user_id > 0 and vote_type='comments' and vote_link_id = comment_id and vote_user_id = @user_id), users ";
+	const SQL = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, user_login as username, user_email as email, user_karma as user_karma, user_level as user_level, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, user_avatar as avatar, comment_content as content, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, favorite_link_id as favorite, vote_value as voted, comment_parent as parent, comment_nested_level as nested_level FROM comments LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'comment' and favorite_link_id = comment_id) LEFT JOIN votes ON (@user_id > 0 and vote_type='comments' and vote_link_id = comment_id and vote_user_id = @user_id), users ";
 
-	const SQL_BASIC = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, comment_parent as parent FROM comments ";
+	const SQL_BASIC = " SQL_NO_CACHE comment_id as id, comment_type as type, comment_user_id as author, comment_randkey as randkey, comment_link_id as link, comment_order as c_order, comment_votes as votes, comment_karma as karma, comment_ip as ip, UNIX_TIMESTAMP(comment_date) as date, UNIX_TIMESTAMP(comment_modified) as modified, comment_parent as parent, comment_nested_level as nested_level FROM comments ";
 
 
 	static function from_db($id) {
@@ -48,12 +48,13 @@ class Comment {
 		$comment_randkey = $this->randkey;
 		$comment_content = $db->escape($this->normalize_content());
     $comment_parent = $this->parent;
+    $comment_nested_level = (int)$this->nested_level;
 		if ($this->type == 'admin') $comment_type = 'admin';
 		else $comment_type = 'normal';
 		$db->transaction();
 		if($this->id===0) {
 			$this->ip = $db->escape($globals['user_ip']);
-			$db->query("INSERT INTO comments (comment_user_id, comment_link_id, comment_type, comment_karma, comment_ip, comment_date, comment_randkey, comment_content, comment_parent) VALUES ($comment_author, $comment_link, '$comment_type', $comment_karma, '$this->ip', FROM_UNIXTIME($comment_date), $comment_randkey, '$comment_content', '$comment_parent')");
+			$db->query("INSERT INTO comments (comment_user_id, comment_link_id, comment_type, comment_karma, comment_ip, comment_date, comment_randkey, comment_content, comment_parent, comment_nested_level) VALUES ($comment_author, $comment_link, '$comment_type', $comment_karma, '$this->ip', FROM_UNIXTIME($comment_date), $comment_randkey, '$comment_content', '$comment_parent', '$comment_nested_level')");
 			$this->id = $db->insert_id;
 
             // tabela para resposta de comentarios
@@ -64,7 +65,7 @@ class Comment {
 			// Insert comment_new event into logs
 			if ($full) log_insert('comment_new', $this->id, $current_user->user_id);
 		} else {
-			$db->query("UPDATE comments set comment_user_id=$comment_author, comment_link_id=$comment_link, comment_type='$comment_type', comment_karma=$comment_karma, comment_ip = '$this->ip', comment_date=FROM_UNIXTIME($comment_date), comment_modified=now(), comment_randkey=$comment_randkey, comment_content='$comment_content' WHERE comment_id=$this->id");
+			$db->query("UPDATE comments set comment_user_id=$comment_author, comment_link_id=$comment_link, comment_type='$comment_type', comment_karma=$comment_karma, comment_ip = '$this->ip', comment_date=FROM_UNIXTIME($comment_date), comment_modified=now(), comment_randkey=$comment_randkey, comment_content='$comment_content', comment_nested_level='$comment_nested_level' WHERE comment_id=$this->id");
 			// Insert comment_new event into logs
 			if ($full) log_conditional_insert('comment_edit', $this->id, $current_user->user_id, 60);
 		}
@@ -298,7 +299,7 @@ class Comment {
         echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
 			} elseif ($this->voted<0 ) {
         echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
-				echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/></a>';
+				echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/></a>';
 			}
 		}
     echo '</span>';
@@ -324,12 +325,15 @@ class Comment {
 
 		$vote = new Vote('comments', $this->id, $current_user->user_id);
 
-		if ($vote->exists(true)) {
-      $vote->delete_comment_vote(); // always destroy current vote
+    $result = 'CREATE'; // vote doesn't exits?
+
+		if ($old_value = $vote->exists(true)) { // save old vote value
+      $result = 'REPLACE';
+      $vote->delete_comment_vote($old_value); // always destroy current vote
 
       // check if they have the same sign
-      if ($value * $vote->value < 0) {
-        return "OK"; // equal => only delete
+      if ($value * $old_value > 0) {
+        return Array('DELETE',$old_value); // equal => only delete
       }
 		}
 
@@ -353,7 +357,12 @@ class Comment {
 			$vote->value = false;
 		}
 		$db->commit();
-		return $vote->value;
+
+    if ($result == 'CREATE') {
+      return Array($result, $vote->value);
+    } else { // replace
+      return Array($result, $old_value);
+    }
 	}
 
 
@@ -548,6 +557,16 @@ class Comment {
 		$comment->karma=round($current_user->user_karma);
 		$comment->content=clean_text_with_tags($_POST['comment_content'], 0, false, 10000);
     $comment->parent=intval($_POST['parent_id']);
+
+    //get level
+    $parentComment = new Comment();
+    $parentComment->id = intval($comment->parent);
+    $parentComment->read_basic();
+    if ($parentComment->nested_level > 9) {
+				return _('Nivel máximo alcanzado. Avisa aos administradores, please...');
+    }
+    $comment->nested_level = $parentComment->nested_level + 1;
+
 
 		// Check if is an admin comment
 		if ($current_user->user_level == 'god' && $_POST['type'] == 'admin') {
