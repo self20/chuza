@@ -215,9 +215,14 @@ function modal_from_ajax(url, title) {
 // This function report the ajax request to stats events if enabled in your account
 // http://code.google.com/intl/es/apis/analytics/docs/eventTrackerOverview.html
 function reportAjaxStats(category, action) {
+  if (_gaq) {
+    _gaq.push(['_trackEvent', category, action]);
+  }
+  """
 	if (pageTracker._trackEvent) {
 		pageTracker._trackEvent(category, action);
 	}
+  """
 }
 
 function bindTogglePlusMinus(img_id, link_id, container_id) {
