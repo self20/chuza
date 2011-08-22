@@ -114,7 +114,6 @@ $dict['id'] = $id;
 $dict['votes'] = $comment->votes;
 $dict['value'] = $value;
 $dict['karma'] = $comment->karma;
-$dict
 
 echo json_encode($dict);
 
