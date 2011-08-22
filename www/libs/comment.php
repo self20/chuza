@@ -135,6 +135,7 @@ class Comment {
     $padding = 19;//(int)$this->level * 30;
 		echo '<div id="c-'.$html_id.'" class="cmt" style="padding-left:'.$padding.'px;" >';
 
+    /*
 		if ($this->type != 'admin' && $this->user_level != 'disabled') {
 			// Print the votes info (left)
 
@@ -143,11 +144,20 @@ class Comment {
 						&& $single_link
 						&& $this->date > $globals['now'] - $globals['time_enabled_comments']
 						&& $this->level != 'autodisabled') {
+      */
 				$this->print_shake_icons();
+        /*
             } else {
-              echo '<div class="blockpade" style="float:left; width:22px; border-color: transparent;" >&nbsp;</div>';
+
+                echo '<div style="float:left">';
+                echo '<span id="c-votes-'.$this->id.'">';
+                echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
+                echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
+                echo '</span>';
+                echo '</div>';
             }
     }
+         */
 
 		$this->ignored = ($current_user->user_id > 0 && $this->type != 'admin' && User::friend_exists($current_user->user_id, $this->author) < 0);
 		$this->hidden = ($globals['comment_highlight_karma'] > 0 && $this->karma < -$globals['comment_highlight_karma'])
@@ -189,6 +199,7 @@ class Comment {
 		if ($this->type != 'admin' && $this->user_level != 'disabled') {
 			// Print the votes info (left)
 
+      /*
 			if ($current_user->user_id > 0 
 						&& $this->author != $current_user->user_id 
 						&& $single_link
@@ -196,6 +207,7 @@ class Comment {
 						&& $this->level != 'autodisabled') {
 				//$this->print_shake_icons();
 			}
+       */
 
 			echo _('votos').': <span id="vc-'.$this->id.'">'.$this->votes.'</span>, '._('karma').': <span id="vk-'.$this->id.'">'.$this->karma.'</span>&nbsp;';
 			// Add the icon to show votes
@@ -270,19 +282,26 @@ class Comment {
 		global $globals, $current_user;
 
     echo '<div style="float:left;">';
-		if ( $current_user->user_karma > $globals['min_karma_for_comment_votes'] && ! $this->voted) {  
+    echo '<span id="c-votes-'.$this->id.'">';
 
-	 		echo '<span id="c-votes-'.$this->id.'">';
-			echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
-	 		echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
-	 		echo '</span>';
+    if ($this->author == $current_user->user_id) {
+			echo '<a href="javascript:return false;" class="sameauthor" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
+	 		echo '<a href="javascript:return false;" class="sameauthor" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
+    } elseif ( $current_user->user_karma > $globals['min_karma_for_comment_votes'] && ! $this->voted) {
+
+			echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
+	 		echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
 	 	} else {
 	 		if ($this->voted > 0) {
-				echo '<img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('votado positivo').'" title="'._('votado positivo').'"/>';
+				echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img src="'.$globals['base_static'].'img/common/vote-up02.png" width="18" height="16" alt="'._('votado positivo').'" title="'._('votado positivo').'"/></a><br />';
+				//echo '<img src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/>';
+        echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
 			} elseif ($this->voted<0 ) {
-				echo '<img src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/>';
+        echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,1".')" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
+				echo '<a href="javascript:menealo_comment('."$current_user->user_id,$this->id,-1".')" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img src="'.$globals['base_static'].'img/common/vote-down02.png" width="18" height="16" alt="'._('votado negativo').'" title="'._('votado negativo').'"/></a>';
 			}
 		}
+    echo '</span>';
     echo '</div>';
 	}
 
@@ -293,14 +312,25 @@ class Comment {
 		if ($this->voted) return $this->voted;
 	}
 
+  /**
+   * return "OK" only delete
+   *        > 0 - usual behavior: first delete then insert
+   *        0  error
+   */
 	function insert_vote($value = 0) {
 		global $current_user, $db;
 
 		if (!$value) $value = $current_user->user_karma;
 
 		$vote = new Vote('comments', $this->id, $current_user->user_id);
+
 		if ($vote->exists(true)) {
-			return false;
+      $vote->delete_comment_vote(); // always destroy current vote
+
+      // check if they have the same sign
+      if ($value * $vote->value < 0) {
+        return "OK"; // equal => only delete
+      }
 		}
 
 		// Affinity
