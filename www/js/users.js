@@ -47,7 +47,7 @@ $(document).ready( function() {
 function comment_reply(id,c_id) {
   // 1st part
   padding = $("c-"+id).attr("name")
-  $("div .commentform").insertAfter($("#c-"+id)).css("padding-left",Comment.padding+"px");
+  $("div .commentform").insertAfter($("#c-"+id+" > .comment-body")).css("padding-left",Comment.padding+"px");
   $("#comentarNoticia").css("visibility","visible");
   Comment.status = c_id;
   $("[name=parent_id]").val(c_id);

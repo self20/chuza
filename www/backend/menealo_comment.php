@@ -96,19 +96,57 @@ if ($votes_freq > $freq) {
 }
 
 $value = round($value * $current_user->user_karma);
+
 $r = $comment->insert_vote($value);
 if (!$r) {
 	error(_('ya se votó antes con el mismo usuario o IP'));
-} elseif ($r == "OK") { // only delte
-  if ($value > 0) $dict['image'] = $globals['base_static'].'img/common/vote-up02.png';
-  else $dict['image'] = $globals['base_static'].'img/common/vote-down02.png';
-} else {
-  if ($value > 0) $dict['image'] = $globals['base_static'].'img/common/vote-up-gy02.png';
-  else $dict['image'] = $globals['base_static'].'img/common/vote-down-gy02.png';
+} elseif (is_array($r)) { 
+
+  if ($r[0] == "DELETE") { // only delete
+
+    if ($value > 0) $i = $globals['base_static'].'img/common/vote-up-gy02.png';
+    else $i = $globals['base_static'].'img/common/vote-down-gy02.png';
+
+    if ($value > 0) {
+      $dict['image'] = $i;
+    } else {
+      $dict['image2'] = $i;
+    }
+    $comment->votes--;
+    $comment->karma -= $r[1];
+
+  } elseif ($r[0] == 'CREATE') { // new vote
+
+    if ($value > 0) {
+      $dict['image'] = $globals['base_static'].'img/common/vote-up02.png';
+      $dict['image2'] = $globals['base_static'].'img/common/vote-down-gy02.png';
+    } else {
+      $dict['image'] = $globals['base_static'].'img/common/vote-up-gy02.png';
+      $dict['image2'] = $globals['base_static'].'img/common/vote-down02.png';
+    }
+
+    $comment->votes++;
+    $comment->karma += $value;
+
+  } elseif ($r[0] == 'REPLACE') { // substitute it
+
+    if ($value > 0) {
+      $dict['image'] = $globals['base_static'].'img/common/vote-up02.png';
+      $dict['image2'] = $globals['base_static'].'img/common/vote-down-gy02.png';
+    } else {
+      $dict['image'] = $globals['base_static'].'img/common/vote-up-gy02.png';
+      $dict['image2'] = $globals['base_static'].'img/common/vote-down02.png';
+    }
+
+    $dict['r'] = $r[1];
+
+
+    $comment->karma -= $r[1];
+    $comment->karma += $value;
+  }
 }
 
-$comment->votes++;
-$comment->karma += $value;
+$dict['r0'] = $r[0];
 
 $dict['id'] = $id;
 $dict['votes'] = $comment->votes;
