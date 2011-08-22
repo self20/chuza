@@ -1931,6 +1931,11 @@ vertical-align: middle;
 padding: 0px 0px 2px 0px;
 }
 
+a.sameauthor {
+  cursor:default;
+}
+
+
 /* Definitions for mobile, iPad and TVs */
 @media print,tv,handheld,all and (max-device-width: 780px) {
 body {
@@ -1960,7 +1965,6 @@ clear: both;
 
 .banner-top {
 width: 470px;
-}
 }
 
 @media print {

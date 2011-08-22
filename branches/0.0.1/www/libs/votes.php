@@ -40,7 +40,7 @@ class Vote {
 			$where = " AND vote_ip_int=$this->ip";
 		}
 
-		return $db->get_var("SELECT SQL_NO_CACHE vote_value FROM votes WHERE vote_type='$this->type' AND vote_link_id=$this->link $where LIMIT 1");
+		return $db->get_var("SELECT SQL_NO_CACHE vote_value FROM votes WHERE vote_type='$this->type' AND vote_link_id=$this->link $where ORDER BY vote_date DESC LIMIT 1");
 	}
 
 	function count($value="> 0") {
@@ -57,6 +57,17 @@ class Vote {
 		// HIGH_PRIORITY to avoid duplicates votes from people clicking very fast on purpose
 		$sql="INSERT HIGH_PRIORITY INTO votes (vote_type, vote_user_id, vote_link_id, vote_value, vote_ip_int) VALUES ('$this->type', $this->user, $this->link, $this->value, $this->ip)";
 		return $db->query($sql);
+	}
+
+	function delete_comment_vote() {
+		global $db, $globals;
+		if (empty($this->ip)) $this->ip=$globals['user_ip_int'];
+		$this->value=round($this->value);
+		// HIGH_PRIORITY to avoid duplicates votes from people clicking very fast on purpose
+		//$sql="INSERT HIGH_PRIORITY INTO votes (vote_type, vote_user_id, vote_link_id, vote_value, vote_ip_int) VALUES ('$this->type', $this->user, $this->link, $this->value, $this->ip)";
+		$sql="DELETE QUICK FROM votes WHERE vote_type = '$this->type' AND vote_user_id = $this->user AND vote_link_id = $this->link";
+		$db->query($sql);
+    $db->query("update comments set comment_votes=comment_votes-1, comment_karma=comment_karma+$this->value, comment_date=comment_date where comment_id=$this->link");
 	}
 }
 
