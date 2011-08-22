@@ -96,19 +96,25 @@ if ($votes_freq > $freq) {
 }
 
 $value = round($value * $current_user->user_karma);
-if (!$comment->insert_vote($value)) {
+$r = $comment->insert_vote($value);
+if (!$r) {
 	error(_('ya se votó antes con el mismo usuario o IP'));
+} elseif ($r == "OK") { // only delte
+  if ($value > 0) $dict['image'] = $globals['base_static'].'img/common/vote-up02.png';
+  else $dict['image'] = $globals['base_static'].'img/common/vote-down02.png';
+} else {
+  if ($value > 0) $dict['image'] = $globals['base_static'].'img/common/vote-up-gy02.png';
+  else $dict['image'] = $globals['base_static'].'img/common/vote-down-gy02.png';
 }
 
 $comment->votes++;
 $comment->karma += $value;
-if ($value > 0) $dict['image'] = $globals['base_static'].'img/common/vote-up-gy02.png';
-else $dict['image'] = $globals['base_static'].'img/common/vote-down-gy02.png';
 
 $dict['id'] = $id;
 $dict['votes'] = $comment->votes;
 $dict['value'] = $value;
 $dict['karma'] = $comment->karma;
+$dict
 
 echo json_encode($dict);
 
