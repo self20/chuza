@@ -198,6 +198,43 @@ if (!empty($new_comment_error)) {
 	echo '</script>';
 }
 
+function loginDialog() {
+  echo "
+<div id='loginDialog' style='font-weight:bold; background-color:white; color:#245b03; display:none;'>
+  <div style='height:300px;'>
+    <div style='padding:12px;text-align:center;'>
+      Precisas facer LOGIN ou rexistrarte para poder faceres iso
+    </div>
+  <div style='width:298px;height:200px;padding-top:20px;float:left;border-width:0px 1px 0px 0px;border-style:solid;border-color:gray;'>
+    <div style='text-align:center; padding-top:60px;'>
+      <a href='#' style='color:#245b03'>"._('CREA UNHA NOVA CONTA')."</a>
+    </div>
+  </div>
+
+  <div style='float:left; padding:20px; '>
+  <div style='padding: 0px 10px 0px 10px; width:40px; background-color:#245b03;color:white;border-radius:3px;' >
+  ".('Login')."
+  </div>
+  <br />
+  <br />
+<form action='#' >
+  "._('Usuario ou email').":<br />
+  <input type=text size=12 ><br />
+  "._('Contrasinal').":<br/>
+  <input type=password size=12 ><br />
+  <input type='checkbox' > "._('Lémbrame')."<br />
+  <input type='button' value='Login' />
+</form>
+  </div>
+</div>
+  </div>
+    ";
+
+}
+
+loginDialog();
+
+
 do_tabs("main",_('noticia'), true);
 print_story_tabs($tab_option);
 
