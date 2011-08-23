@@ -42,7 +42,13 @@ $(document).ready( function() {
       }
   });
 
+  //login_dialog();
+
 });
+
+function login_dialog() {
+  $('#loginDialog').modal();
+}
 
 function comment_reply(id,c_id) {
   // 1st part
