@@ -203,7 +203,7 @@ function loginDialog() {
 <div id='loginDialog' style='font-weight:bold; background-color:white; color:#245b03; display:none;'>
   <div style='height:300px;'>
     <div style='padding:12px;text-align:center;'>
-      Precisas facer LOGIN ou rexistrarte para poder faceres iso
+      "._('Precisas facer LOGIN ou rexistrarte para poder faceres iso')."
     </div>
   <div style='width:298px;height:200px;padding-top:20px;float:left;border-width:0px 1px 0px 0px;border-style:solid;border-color:gray;'>
     <div style='text-align:center; padding-top:60px;'>
@@ -245,7 +245,7 @@ do_banner_right();
 if ($link->latlng) {
 	echo '<div id="map" style="width:300px;height:200px;margin-bottom:25px;">&nbsp;</div>'."\n";
 }
-if ($link->comments > 15) {
+if ($link->comments > 5) {
 	do_best_story_comments($link);
 }
 if (! $current_user->user_id) {
@@ -268,7 +268,26 @@ case 2:
 
 	$comments = $db->get_col("SELECT comment_id FROM comments WHERE comment_link_id=$link->id ORDER BY $order_field $limit");
 
-	if ($comments) {
+  if (!$comments) {
+
+    // Do nothing if no comments
+
+  } elseif ($link->sent_date < strtotime('2011-07-24')) { // Nested comments deploy date
+
+    foreach($comments as $comment_id) {
+      $comment = Comment::from_db($comment_id);
+      $comment->print_summary($link, 2500, true, true);
+    }
+
+  } else {
+
+    if ($current_user->comment_options['korder']) {
+      $options['key_sort'] = 'karma';
+      $options['key_order'] = 'arsort';
+    } else {
+      $options['key_sort'] = 'date';
+      $options['key_order'] = 'asort';
+    }
 
     $sorted_comments = Array();
     $unsorted_comments = Array();
@@ -306,15 +325,15 @@ case 2:
 
 		echo '<ol class="comments-list">';
 
-    function traverse_sorted($level, &$sorted_comments, &$comments_by_id) {
+    function traverse_sorted(&$options, $level, &$sorted_comments, &$comments_by_id) {
         $level++;
 
         $resorted_comments = Array();
         foreach($sorted_comments as &$comment) {
-            $resorted_comments[$comment->id] = $comment->karma;
+            $resorted_comments[$comment->id] = $comment->$options['key_sort']; // options were previously defined
         }
 
-        arsort($resorted_comments);
+        $options['key_order']($resorted_comments);
 
         foreach($resorted_comments as $kay => $val) {
 
@@ -323,14 +342,14 @@ case 2:
             if ($comment->id != 0) $comment->print_summary($link, 2500, true);
 
             if (!empty($comments_by_id[$kay]->children)) {
-                traverse_sorted($level,$comments_by_id[$kay]->children,&$comments_by_id);
+                traverse_sorted($options, $level,$comments_by_id[$kay]->children,&$comments_by_id);
             }
 
             if ($comment->id != 0) $comment->print_summary_end();
         }
     }
 
-    traverse_sorted(-2, $sorted_comments, &$comments_by_id);
+    traverse_sorted($options,-2, $sorted_comments, &$comments_by_id);
 
     echo '</ol>';
 	}

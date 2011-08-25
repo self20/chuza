@@ -274,14 +274,25 @@ function do_header($title, $id='home') {
 	echo '</ul>' . "\n";
 	echo '</div>' . "\n";
 
-	echo '<div id="naviwrap">'."\n";
-	echo '<ul>'."\n";
+	echo '<div id="newnavbar" style="background-color:#669933;padding-top:4px;height:24px;border-width:1px 0px 0px 0px; border-color:white; border-style:solid; " >'."\n";
+	echo '<ul class="first">'."\n";
 	echo '<li><a href="'.$globals['base_url'].'submit.php">'._('enviar noticia').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
+	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
-	echo '</ul></div>'."\n";
-	do_banner_top();
+  echo '</ul>';
+
+	echo '<ul class="last">'."\n";
+	$u = get_user_uri($current_user->user_login, 'categories');
+	echo '<li><a href="'.$u.'">'._('personalizar').'</a></li>'."\n";
+	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
+	//echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
+	//echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
+  echo '</ul>';
+
+	echo '&nbsp;</div>' . "\n";
+
+	//do_banner_top();
 	echo '<div id="container">'."\n";
 }
 
@@ -937,6 +948,53 @@ function do_best_story_comments($link) {
 		}
 	}
 }
+
+function do_most_commented() {
+	global $db, $globals, $dblang;
+
+	if ($globals['mobile']) return;
+
+	$key = 'most_commented_'.$globals['css_main'].'_'.$globals['meta_current'];
+	if(memcache_mprint($key)) return;
+
+	$foo_link = new Link();
+
+	if ($globals['meta_current'] && $globals['meta_categories']) {
+			$category_list = 'and link_category in ('.$globals['meta_categories'].')';
+			$title = sprintf(_('máis comentadas de «%s»'), $globals['meta_current_name']);
+	} else {
+		$category_list  = '';
+		$title = _('máis comentadas');
+	}
+	$output = '<div class="sidebox"><div class="header"><h4><a href="'.$globals['base_url'].'topstories.php">'.$title.'</a></h4></div>';
+
+	$min_date = date("Y-m-d H:i:00", $globals['now'] - 129600); // 36 hours 
+
+	$res = $db->get_results("select link_id, link_comments from links where $category_list and link_date > '$min_date' order by link_comments desc limit 10");
+	if ($res) {
+		$link = new Link();
+		foreach ($res as $l) {
+			$output .= '<div class="cell">';
+			$link->id = $l->link_id;
+			$link->read();
+			$url = $link->get_relative_permalink();
+			$thumb = $link->has_thumb();
+			$output .= '<div class="votes">'.($link->comments).'</div>';
+			if ($thumb) {
+				$link->thumb_x = round($link->thumb_x / 2);
+				$link->thumb_y = round($link->thumb_y / 2);
+				$output .= "<img src='$thumb' width='$link->thumb_x' height='$link->thumb_y' alt='' class='thumbnail'/>";
+			}
+			$output .= '<h5><a href="'.$url.'">'.$link->title.'</a></h5>';
+			$output .= '</div>'; // class="cell";
+
+		}
+		$output .= '</div>'."\n";
+		echo $output;
+		memcache_madd($key, $output, 180);
+	}
+}
+
 
 function do_best_stories() {
 	global $db, $globals, $dblang;

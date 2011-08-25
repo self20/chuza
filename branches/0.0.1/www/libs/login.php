@@ -29,6 +29,13 @@ class UserAuth {
 				$user_id = intval($this->mnm_user[0]);
 				$user=$db->get_row("SELECT SQL_CACHE user_id, user_login, user_pass as md5_pass, user_level, UNIX_TIMESTAMP(user_validated_date) as user_date, user_karma, user_email, user_avatar, user_comment_pref, user_standard as standard FROM users WHERE user_id = $user_id");
 
+        $r = $db->get_col("SELECT pref_value FROM prefs WHERE pref_user_id = $user_id AND pref_key='comment';");
+        $user->comment_options = Array();
+        foreach ($r as $o) {
+            $user->comment_options[$o] = true;
+        }
+
+
 				$key = md5($user->user_email.$site_key.$user->user_login.$user->user_id.$cookietime);
 
 				if ( !$user || !$user->user_id > 0 || $key !== $userInfo[1] || 
