@@ -590,6 +590,13 @@ class Link {
 				echo '<strong>'._('anónimos').'</strong>: <span id="a-ano-'.$this->id.'">'.$this->anonymous.'</span>&nbsp;&nbsp;';
 
 				echo '<span class="tool">';
+        echo '<strong>'.('orde').'</strong>: <select id="selectCommentOrder" >'
+            .'<option value="kdate" '.(!$current_user->comment_options['korder']?'selected="selected"':'').'>'._('data').'</option>'
+            .'<option value="korder" '.($current_user->comment_options['korder']?'selected="selected"':'').'>'._('karma').'</option>'
+          .'</select>&nbsp;&nbsp;';
+				echo '</span>';
+
+				echo '<span class="tool">';
 				// Share icons
 				$short_permalink = $this->get_short_permalink();
 				echo '<strong>';

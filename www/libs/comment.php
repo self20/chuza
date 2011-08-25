@@ -117,7 +117,7 @@ class Comment {
 	}
 
 
-	function print_summary($link = 0, $length = 0, $single_link=true) {
+	function print_summary($link = 0, $length = 0, $single_link=true, $no_padding = false) {
 		global $current_user, $globals;
 
 		if(!$this->read) return;
@@ -133,7 +133,12 @@ class Comment {
 		if ($single_link) $html_id = $this->order;
 		else $html_id = $this->id;
 
-    $padding = 19;//(int)$this->level * 30;
+    if ($no_padding) {
+      $padding = 0;//(int)$this->level * 30;
+    } else {
+      $padding = 19;//(int)$this->level * 30;
+    }
+
 		echo '<div id="c-'.$html_id.'" class="cmt" style="padding-left:'.$padding.'px;" >';
 
     /*
@@ -563,7 +568,7 @@ class Comment {
     $parentComment->id = intval($comment->parent);
     $parentComment->read_basic();
     if ($parentComment->nested_level > 9) {
-				return _('Nivel máximo alcanzado. Avisa aos administradores, please...');
+				return _('Chegache ao nivel límite de comentarios aniñados...');
     }
     $comment->nested_level = $parentComment->nested_level + 1;
 
