@@ -702,8 +702,55 @@ function do_categories() {
 			}
 		}
 	}
+
+  if ($_POST['comment_options_form']) {
+    if ($_POST['karma_order']) {
+      $db->query("delete from prefs where pref_user_id = $current_user->user_id and pref_key = 'comment'");
+      $db->query("insert into prefs (pref_user_id, pref_key, pref_value) values ($current_user->user_id, 'comment', 'korder');"); // korder : karma_order
+    } else {
+      $db->query("delete from prefs where pref_user_id = $current_user->user_id and pref_key = 'comment'");
+    }
+  }
+
+	print_options_checkboxes($user);
 	print_categories_checkboxes($user);
 }
+
+
+function print_options_checkboxes($user) {
+	global $db, $current_user;
+
+	if ($user->id != $current_user->user_id) $disabled = 'disabled="true"';
+	else $disabled = false;
+
+	$selected_set = $db->get_col("SELECT pref_value FROM prefs WHERE pref_user_id = $user->id and pref_key = 'comment' ");
+	if ($selected_set) {
+		foreach ($selected_set as $cat) {
+			$selected["$cat"] = true;
+		}
+	} else {
+		$empty = true;
+	}
+
+	echo '<form action="" method="POST" autocomplete="off" >';
+	echo '<fieldset style="clear: both;">';
+  echo '<input type="hidden" value="1" name="comment_options_form" >';
+	echo '<legend>'._('comentarios').'</legend>'."\n";
+
+  echo '<dl class="categorylist" id="meta-comment-order'.'"><dt>';
+  echo '<label><input name="karma_order" type="checkbox" value="1" '
+    .($selected['korder']?'checked="true"':'""').' /> ';
+  echo 'Ordenados por karma </label></dt>'."\n";
+  echo '</dl>'."\n";
+
+	echo '<br style="clear: both;"/>' . "\n";
+	echo '</fieldset>';
+	if (!$disabled) {
+		echo '<input class="button" type="submit" value="'._('grabar').'"/>';
+	}
+	echo '</form>';
+}
+
 
 function print_categories_checkboxes($user) {
 	global $db, $current_user;

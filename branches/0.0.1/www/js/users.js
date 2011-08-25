@@ -42,6 +42,20 @@ $(document).ready( function() {
       }
   });
 
+  $("#selectCommentOrder").change( function() {
+      $.ajax({
+          url: base_url + 'backend/set_comment_order.php',
+          data: { order:$(this).val() },
+          success: function() {
+            window.location.reload();
+          },
+          error: function() {
+            alert("Erro trocando a orde dos comentarios");
+          },
+          dataType:'text'
+      });
+  });
+
   //login_dialog();
 
 });
