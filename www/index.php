@@ -37,7 +37,7 @@ $globals['ads'] = true;
 $cat=$_REQUEST['category'];
 
 
-do_header(_('Chuza(r)'));
+do_header(_('Chuza!'));
 if ($chuzamail) {
     do_tabs('main','chuzamail');
 } else {
