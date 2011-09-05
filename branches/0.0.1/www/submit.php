@@ -163,6 +163,7 @@ function do_submit1() {
 	// Check the number of links sent by a user
 	$queued_24_hours = (int) $db->get_var("select count(*) from links where link_status!='published' and link_date > date_sub(now(), interval 24 hour) and link_author=$current_user->user_id");
 
+  if (!$globals['development'])
 	if ($globals['limit_user_24_hours'] && $queued_24_hours > $globals['limit_user_24_hours']) {
 		echo '<p class="error">'._('debes esperar, tienes demasiados envíos en cola de las últimas 24 horas'). " ($queued_24_hours), "._('disculpa las molestias'). ' </p>';
 		syslog(LOG_NOTICE, "Meneame, too many queued in 24 hours ($current_user->user_login): $_POST[url]");
@@ -197,6 +198,7 @@ function do_submit1() {
 	// Check the user does not have too many drafts
 	$minutes = intval($globals['draft_time'] / 60) + 10;
 	$drafts = (int) $db->get_var("select count(*) from links where link_author=$current_user->user_id  and link_date > date_sub(now(), interval $minutes minute) and link_status='discard' and link_votes = 0");
+  if (!$globals['development'])
 	if ($drafts > $globals['draft_limit']) {
 		echo '<p class="error"><strong>'._('demasiados borradores').':</strong></p>';
 		echo '<p>'._('has hecho demasiados intentos, debes esperar o continuar con ellos desde la'). ' <a href="shakeit.php?meta=_discarded">'. _('cola de descartadas').'</a></p>';
@@ -211,6 +213,7 @@ function do_submit1() {
 
 
 	// Check for banned IPs
+  if (!$globals['development'])
 	if(($ban = check_ban($globals['user_ip'], 'ip', true)) || ($ban = check_ban_proxy())) {
 		echo '<p class="error"><strong>'._('dirección IP no permitida para enviar').':</strong> '.$globals['user_ip'].'</p>';
 		echo '<p><strong>'._('Razón').'</strong>: '.$ban['comment'].'</p>';
@@ -522,6 +525,37 @@ function do_submit1() {
 	echo '<label for="tags" accesskey="2">'._('etiquetas').':</label>'."\n";
 	echo '<p><span class="note"><strong>'._('pocas palabras, genéricas, cortas y separadas por «,» (coma)').'</strong> Ejemplo: <em>web, programación, software libre</em></span>'."\n";
 	echo '<br/><input type="text" id="tags" name="tags" value="'.$link_tags.'" size="70" maxlength="70" /></p>'."\n";
+
+
+  echo '<link rel="stylesheet" type="text/css" media="all" href="'.$globals['base_static'].'css/ui-lightness/jquery-ui-1.8.16.custom.css"/>' . "\n";
+	echo '<script src="'.$globals['base_url'].'js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>' . "\n";
+  echo '<script type="text/javascript">
+$(document).ready( function() {
+';
+  echo "$.datepicker.regional['pt-BR'] = {
+                closeText: 'Fechar',
+                prevText: '&#x3c;Anterior',
+                nextText: 'Pr&oacute;ximo&#x3e;',
+                currentText: 'Hoje',
+                monthNames: ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho',
+                'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun',
+                'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda-feira','Ter&ccedil;a-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sabado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+                dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+                dateFormat: 'dd/mm/yy', firstDay: 0,
+                isRTL: false};
+        $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+    ";
+echo '
+    $("#datepicker1").datepicker();
+    $("#datepicker2").datepicker();
+});
+</script>';
+
+  echo '<label>'._('Datas do Evento').'</label> <span class="note">(opcional) desde </span> ';
+  echo '<input type="text" id="datepicker1" size="8"><span class="note"> '._('ata').'</span> <input type="text" id="datepicker2" size="8"></span>';
 
 	print_simpleformat_buttons('bodytext');
 

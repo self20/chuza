@@ -283,8 +283,10 @@ function do_header($title, $id='home') {
   echo '</ul>';
 
 	echo '<ul class="last">'."\n";
-	$u = get_user_uri($current_user->user_login, 'categories');
-	echo '<li><a href="'.$u.'">'._('personalizar').'</a></li>'."\n";
+  if ($current_user->user_login) {
+    $u = get_user_uri($current_user->user_login, 'categories');
+    echo '<li><a href="'.$u.'">'._('personalizar').'</a></li>'."\n";
+  }
 	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
 	//echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
 	//echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
@@ -1122,6 +1124,11 @@ function do_best_posts() {
 		memcache_madd($key, $output, 300);
 	}
 }
+
+function do_calendar() {
+  echo '<iframe style="padding: 0px 0px 20px 30px;" src="https://www.google.com/calendar/embed?showTitle=0&amp;showTz=0&amp;height=200&amp;wkst=1&amp;hl=pt_PT&amp;bgcolor=%23FFFFFF&amp;src=9uoh0j1p4kkfhv23dhnoivo1g4%40group.calendar.google.com&amp;color=%23125A12&amp;ctz=Europe%2FLisbon" style=" border-width:0 " width="240" height="200" frameborder="0" scrolling="no"></iframe>';
+}
+
 
 function print_share_icons($full_link, $short_link = false, $title = '') {
 	global $globals;

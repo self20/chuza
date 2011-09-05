@@ -96,6 +96,7 @@ do_mnu_categories_horizontal($_REQUEST['category']);
 echo '<div id="sidebar">';
 do_banner_right();
 do_banner_promotions();
+
 if ($globals['show_popular_published']) do_best_stories();
 
 do_most_commented();
@@ -103,6 +104,8 @@ do_most_commented();
 if ($page < 2) {
 	do_best_comments();
 }
+if ($globals['show_calendar']) do_calendar();
+
 do_categories_cloud('published');
 do_vertical_tags('published');
 
