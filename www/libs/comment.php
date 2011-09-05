@@ -136,7 +136,7 @@ class Comment {
     if ($no_padding) {
       $padding = 0;//(int)$this->level * 30;
     } else {
-      $padding = 19;//(int)$this->level * 30;
+      $padding = 26;//(int)$this->level * 30;
     }
 
 		echo '<div id="c-'.$html_id.'" class="cmt" style="padding-left:'.$padding.'px;" >';
@@ -182,7 +182,39 @@ class Comment {
 			}
 		}
 		$this->link_permalink =  $link->get_relative_permalink();
-		echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;">';
+
+    /*
+    $bgcolor = Array("R"=>hexdec("C5"),"G"=>hexdec("E7"),"B"=>hexdec("A4"));
+    $n = $this->nested_level - 1;
+    $bgcolor["R"] = min($bgcolor["R"] + (((255 - $bgcolor["R"]) / 5) * $n), 255);
+    $bgcolor["G"] = min($bgcolor["G"] + (((255 - $bgcolor["G"]) / 5) * $n), 255);
+    $bgcolor["B"] = min($bgcolor["B"] + (((255 - $bgcolor["B"]) / 5) * $n), 255);
+    $bgcolor = dechex($bgcolor["R"]) . dechex($bgcolor["G"]) . dechex($bgcolor["B"]); 
+     */
+    $color_list = Array( '#C5E7A4',
+      '#C4E6A2',
+      '#A2E6A2',
+      '#A2E6C4',
+      '#A2E6E6',
+      '#A2C4E6',
+      '#A2A2E6',
+      '#C4A2E6',
+      '#E6A2E6',
+      '#E6A2C4',
+      '#E6A2A2',
+      '#E6C4A2',
+      '#E6E6A2',
+      '#A6DA72',
+      '#87CD42',
+      '#A672DA',
+      '#8742CD'
+    );
+
+    $bgcolor = $color_list[$this->nested_level];
+    if (empty($bgcolor)) 
+      $bgcolor = end($color_list);
+
+		echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;background-color:'.$bgcolor.' !important;">';
 		//echo '<a href="'.$this->link_permalink.'/000'.$this->order.'"><strong>#'.$this->order.'</strong></a>';
     echo '<a href="#" class="f-'.$this->id.' fold" style="font-family:verdana;font-size:x-small;" ></strong>(-)</strong></a>';
 
@@ -199,9 +231,12 @@ class Comment {
 		//echo '</div>';
 
 		// The comments info bar
-		echo '<div class="'.$comment_meta_class.'" style="margin-bottom:0px;margin-top:8px;">';
+		echo '<div class="'.$comment_meta_class.' comment_mc" >';
 		// Check that the user can vote
 		echo '<div class="comment-votes-info">';
+
+    echo '<a class="comment_vi" href="#c-'.$this->c_order.'" >#'.$this->c_order.'</a> ';
+
 		if ($this->type != 'admin' && $this->user_level != 'disabled') {
 			// Print the votes info (left)
 
@@ -223,6 +258,7 @@ class Comment {
 				echo '</a>';
 			}
 		}
+
 
 		// Comment reply
 		if ($current_user->user_id > 0 && $globals['link'] && $globals['link']->date > $globals['now'] - $globals['time_enabled_comments']) {
