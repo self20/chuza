@@ -1971,6 +1971,14 @@ a.sameauthor {
   cursor:default;
 }
 
+div.comment_mc {
+  margin: 8px 0px 0px 0px !important;
+}
+
+a.comment_vi {
+  color:darkgray;
+  padding-right:5px;
+}
 
 /* Definitions for mobile, iPad and TVs */
 @media print,tv,handheld,all and (max-device-width: 780px) {
