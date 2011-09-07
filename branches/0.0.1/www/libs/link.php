@@ -44,7 +44,7 @@ class Link {
 	var $thumb_status = 'unknown';
 
 	// sql fields to build an object from mysql
-	const SQL = " link_id as id, link_author as author, link_blog as blog, link_status as status, link_votes as votes, link_negatives as negatives, link_anonymous as anonymous, link_votes_avg as votes_avg, link_comments as comments, link_karma as karma, link_randkey as randkey, link_category as category, link_url as url, link_uri as uri, link_url_title as title, link_title as title, link_tags as tags, link_content as content, UNIX_TIMESTAMP(link_date) as date,  UNIX_TIMESTAMP(link_sent_date) as sent_date, UNIX_TIMESTAMP(link_published_date) as published_date, UNIX_TIMESTAMP(link_modified) as modified, link_content_type as content_type, link_ip as ip, link_thumb_status as thumb_status, link_thumb_x as thumb_x, link_thumb_y as thumb_y, link_thumb as thumb, user_login as username, user_email as email, user_avatar as avatar, user_karma as user_karma, user_level as user_level, user_adcode, cat.category_name as category_name, cat.category_uri as category_uri, meta.category_id as meta_id, meta.category_name as meta_name, favorite_link_id as favorite FROM links LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'link' and favorite_link_id = links.link_id) LEFT JOIN categories as cat on (cat.category_id = links.link_category) LEFT JOIN categories as meta on (meta.category_id = cat.category_parent), users "; 
+	const SQL = " link_id as id, link_author as author, link_blog as blog, link_status as status, link_votes as votes, link_negatives as negatives, link_anonymous as anonymous, link_votes_avg as votes_avg, link_comments as comments, link_karma as karma, link_randkey as randkey, link_category as category, link_url as url, link_uri as uri, link_url_title as title, link_title as title, link_tags as tags, link_content as content, UNIX_TIMESTAMP(link_date) as date,  UNIX_TIMESTAMP(link_sent_date) as sent_date, UNIX_TIMESTAMP(link_published_date) as published_date, UNIX_TIMESTAMP(link_modified) as modified, link_content_type as content_type, link_ip as ip, link_thumb_status as thumb_status, link_thumb_x as thumb_x, link_thumb_y as thumb_y, link_thumb as thumb, link_start_date as start_date, link_end_date as end_date, user_login as username, user_email as email, user_avatar as avatar, user_karma as user_karma, user_level as user_level, user_adcode, cat.category_name as category_name, cat.category_uri as category_uri, meta.category_id as meta_id, meta.category_name as meta_name, favorite_link_id as favorite FROM links LEFT JOIN favorites ON (@user_id > 0 and favorite_user_id =  @user_id and favorite_type = 'link' and favorite_link_id = links.link_id) LEFT JOIN categories as cat on (cat.category_id = links.link_category) LEFT JOIN categories as meta on (meta.category_id = cat.category_parent), users "; 
 
 
 	static function from_db($id) {
@@ -318,6 +318,27 @@ class Link {
 		return $this->type;
 	}
 
+  static function format_link_date( $str )
+  {
+    $stamp = strtotime( $str );
+   
+    if (!is_numeric($stamp))
+    {
+       return 'NULL';
+    }
+    $month = date( 'm', $stamp );
+    $day   = date( 'd', $stamp );
+    $year  = date( 'Y', $stamp );
+   
+    if (checkdate($month, $day, $year))
+    {
+       return "'".$year.$month.$day."'";
+    }
+   
+    return 'NULL';
+  } 
+
+
 	function store() {
 		global $db, $current_user, $globals;
 
@@ -331,9 +352,12 @@ class Link {
 		$link_thumb_x = intval($this->thumb_x);
 		$link_thumb_y = intval($this->thumb_y);
 		$link_thumb_status = $db->escape($this->thumb_status);
+    $link_start_date = Link::format_link_date($this->start_date);
+    $link_end_date = Link::format_link_date($this->end_date);
+
 		$db->transaction();
 		$this->store_basic();
-		$db->query("UPDATE links set link_url='$link_url', link_uri='$link_uri', link_url_title='$link_url_title', link_title='$link_title', link_content='$link_content', link_tags='$link_tags', link_thumb='$link_thumb', link_thumb_x=$link_thumb_x, link_thumb_y=$link_thumb_y, link_thumb_status='$link_thumb_status' WHERE link_id=$this->id");
+		$db->query("UPDATE links set link_url='$link_url', link_uri='$link_uri', link_url_title='$link_url_title', link_title='$link_title', link_content='$link_content', link_tags='$link_tags', link_thumb='$link_thumb', link_thumb_x=$link_thumb_x, link_thumb_y=$link_thumb_y, link_thumb_status='$link_thumb_status', link_start_date=$link_start_date, link_end_date=$link_end_date WHERE link_id=$this->id");
 		$db->commit();
 	}
 
@@ -394,7 +418,7 @@ class Link {
 			default:
 				$cond = "link_id = $this->id";
 		}
-		if(($result = $db->get_row("SELECT link_id as id, link_author as author, link_blog as blog, link_status as status, link_votes as votes, link_negatives as negatives, link_anonymous as anonymous, link_votes_avg as votes_avg, link_comments as comments, link_karma as karma, link_randkey as randkey, link_category as category, link_uri as uri, link_title as title, UNIX_TIMESTAMP(link_date) as date,  UNIX_TIMESTAMP(link_sent_date) as sent_date, UNIX_TIMESTAMP(link_published_date) as published_date, UNIX_TIMESTAMP(link_modified) as modified, link_content_type as content_type, link_ip as ip FROM links WHERE $cond"))) {
+		if(($result = $db->get_row("SELECT link_id as id, link_author as author, link_blog as blog, link_status as status, link_votes as votes, link_negatives as negatives, link_anonymous as anonymous, link_votes_avg as votes_avg, link_comments as comments, link_karma as karma, link_randkey as randkey, link_category as category, link_uri as uri, link_title as title, UNIX_TIMESTAMP(link_date) as date,  UNIX_TIMESTAMP(link_sent_date) as sent_date, UNIX_TIMESTAMP(link_published_date) as published_date, UNIX_TIMESTAMP(link_modified) as modified, link_content_type as content_type, link_ip as ip, link_start_date as start_date, link_end_date as end_date FROM links WHERE $cond"))) {
 			foreach(get_object_vars($result) as $var => $value) $this->$var = $value;
 			return true;
 		}
@@ -516,6 +540,17 @@ class Link {
 			}
 			echo '</p>';
 		}
+
+    if ($this->start_date && !$this->end_date) {
+      echo '<div>';
+      echo _('Data:').' <strong>'.$this->start_date.'</strong>';
+      echo '</div>';
+    } elseif ($this->start_date && $this->end_date) {
+      echo '<div>';
+      echo _('Do').' <strong>'.$this->start_date.'</strong> '._('ata o').' <strong>'.$this->end_date.'</strong>';
+      echo '</div>';
+    }
+
 
 		// Print a summary of the best comment
 		// with a least one vote and younger than a day
