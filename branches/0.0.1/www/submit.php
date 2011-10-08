@@ -549,13 +549,13 @@ $(document).ready( function() {
         $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
     ";
 echo '
-    $("#datepicker1").datepicker();
-    $("#datepicker2").datepicker();
+    $("[name=datepicker1]").datepicker();
+    $("[name=datepicker2]").datepicker();
 });
 </script>';
 
   echo '<label>'._('Datas do Evento').'</label> <span class="note">(opcional) desde </span> ';
-  echo '<input type="text" id="datepicker1" size="8"><span class="note"> '._('ata').'</span> <input type="text" id="datepicker2" size="8"></span>';
+  echo '<input type="text" name="datepicker1" size="8"><span class="note"> '._('ata').'</span> <input type="text" name="datepicker2" size="8"></span>';
 
 	print_simpleformat_buttons('bodytext');
 
@@ -592,6 +592,7 @@ echo '
 function do_submit2() {
 	global $db, $dblang, $globals;
 
+
 	$linkres=new Link;
 	$linkres->id=$link_id = intval($_POST['id']);
 	$linkres->read();
@@ -614,6 +615,13 @@ function do_submit2() {
 	$linkres->title = clean_text(preg_replace('/(\w) *[;.,] *$/', "$1", $_POST['title']), 40);  // It also deletes punctuaction signs at the end
 	$linkres->tags = tags_normalize_string($_POST['tags']);
 	$linkres->content = clean_text_with_tags($_POST['bodytext']);
+  // EVENTS
+  $d = $_POST["datepicker1"];
+  $linkres->start_date = substr($d,3,2).'-'.substr($d, 0, 2).'-'.substr($d,6,4);
+
+  $d = $_POST["datepicker2"];
+  $linkres->end_date = substr($d,3,2).'-'.substr($d, 0, 2).'-'.substr($d,6,4);
+
 	if (link_errors($linkres)) {
 		echo '<form class="genericform">'."\n";
 		echo '<p><input class="button" type=button onclick="window.history.go(-1)" value="&#171; '._('retroceder').'"/></p>'."\n";

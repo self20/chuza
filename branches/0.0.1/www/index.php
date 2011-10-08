@@ -104,7 +104,8 @@ do_most_commented();
 if ($page < 2) {
 	do_best_comments();
 }
-if ($globals['show_calendar']) do_calendar();
+// Depreted: Sidebar calendar
+//if ($globals['show_calendar']) do_calendar();
 
 do_categories_cloud('published');
 do_vertical_tags('published');
