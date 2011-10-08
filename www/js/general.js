@@ -508,5 +508,19 @@ $(document).ready( function() {
     });
     */
 
+    $('#seeeverything').click( function(e) {
+      e.preventDefault();
+
+      var currentStatus = $('#seeeverything').html();
+      if (currentStatus.substr(-1,1) == '»') {
+        $('#catlistmenu').css('white-space','normal');
+        $('#seeeverything').html($('#menosText').val());
+      } else {
+        $('#catlistmenu').css('white-space','nowrap');
+        $('#seeeverything').html($('#maisText').val());
+      }
+
+    });
+
 });
 
