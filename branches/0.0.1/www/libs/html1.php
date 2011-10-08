@@ -274,12 +274,13 @@ function do_header($title, $id='home') {
 	echo '</ul>' . "\n";
 	echo '</div>' . "\n";
 
-	echo '<div id="newnavbar" style="background-color:#669933;padding-top:4px;height:24px;border-width:1px 0px 0px 0px; border-color:white; border-style:solid; " >'."\n";
+	echo '<div id="newnavbar" >'."\n";
 	echo '<ul class="first">'."\n";
 	echo '<li><a href="'.$globals['base_url'].'submit.php">'._('enviar noticia').'</a></li>'."\n";
 	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
+	echo '<li id="lastlititle" ><a href="'.$globals['base_url'].'equipa/?page=calendario">'._('calendario').'</a></li>'."\n";
   echo '</ul>';
 
 	echo '<ul class="last">'."\n";
@@ -566,7 +567,8 @@ function get_toggler_plusminus($container_id, $enabled = false) {
 	}
 	echo "bindTogglePlusMinus('toggle_i_$n', 'toggle_l_$n', '$container_id')";
 	echo "</script>\n";
-	return "<a class='toggler' id='toggle_l_$n' href=''><img src='$image' id='toggle_i_$n' alt='' width='18' height='18'/></a>";
+  return "";
+	//return "<a class='toggler' id='toggle_l_$n' href=''><img src='$image' id='toggle_i_$n' alt='' width='18' height='18'/></a>";
 	$n++;
 }
 
@@ -574,7 +576,9 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	global $db, $dblang, $globals;
 
 	echo '<div id="topcatlist" class="catsub-block"';
-	if (! $what_cat_id) echo ' style="display:none;"';
+	//if (! $what_cat_id) echo ' style="display:none;"';
+
+  echo '><div id="catlistmenu" style=""';
 	echo "><ul>\n";
 
 	$query=preg_replace('/category=[0-9]*/', '', $_SERVER['QUERY_STRING']);
@@ -618,6 +622,13 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	}
 
 	echo '</ul>';
+  echo '</div>';
+
+  echo '<div id="maisswitch"> <a id="seeeverything" href="#">'._('Máis').' &raquo;</a></div>';
+  // for translation
+  echo '<input type="hidden" id="maisText" value="'._('Máis').' &raquo;" />';
+  echo '<input type="hidden" id="menosText" value="'._('Menos').' &laquo;" />';
+
 	echo '</div>' . "\n";
 
 }

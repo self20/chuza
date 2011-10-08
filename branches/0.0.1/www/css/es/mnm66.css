@@ -272,6 +272,40 @@ line-height: 20px;
 display: block;
 }
 
+#catlistmenu {
+white-space:nowrap;
+overflow:hidden;
+width:1150px;
+padding-left:5px;
+}
+
+#topcatlist ul li a {
+color:#669933;
+}
+
+#seeeverything {
+text-decoration:none;
+font-weight:bold;
+color:#669933;
+}
+
+#maisswitch {
+float:right;
+position:relative;
+top:-14px;
+}
+
+#lastlititle {
+border:0px !important;
+}
+
+#newnavbar {
+background-color:#669933;
+padding-top:4px;
+height:24px;
+border-width:0px;
+}
+
 #newnavbar ul {
 list-style-type: none;
 margin: 0;
