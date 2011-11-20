@@ -368,7 +368,7 @@ class Comment {
 
     $result = 'CREATE'; // vote doesn't exits?
 
-		if ($old_value = $vote->exists(true)) { // save old vote value
+		if ($old_value = $vote->exists(false)) { // save old vote value
       $result = 'REPLACE';
       $vote->delete_comment_vote($old_value); // always destroy current vote
 
@@ -388,11 +388,14 @@ class Comment {
 			}
 		}
 
+    $value>0?$svalue='+'.$value:$svalue=$value;
+
 		$vote->value = $value;
 		$db->transaction();
 		if($vote->insert()) {
 			if ($current_user->user_id != $this->author) {
-				$db->query("update comments set comment_votes=comment_votes+1, comment_karma=comment_karma+$value, comment_date=comment_date where comment_id=$this->id");
+        //echo "update comments set comment_votes=comment_votes+1, comment_karma=comment_karma$svalue, comment_date=comment_date where comment_id=$this->id";
+				$db->query("update comments set comment_votes=comment_votes+1, comment_karma=comment_karma$svalue, comment_date=comment_date where comment_id=$this->id");
 			}
 		} else {
 			$vote->value = false;
@@ -508,7 +511,12 @@ class Comment {
 		global $current_user, $globals;
 
 		if (!$link->votes > 0) return;
-		if($link->date < $globals['now']-$globals['time_enabled_comments'] || $link->comments >= $globals['max_comments']) {
+    if ($link->association && !in_array($current_user->user_id, $globals['association_users'])) {
+      // so a xente da asociacion pode comentar aqui
+			echo '<div class="commentform warn">'."\n";
+			echo _('Tes que ser da asociación para poder comentar nesta noticia')."\n";
+			echo '</div>'."\n";
+    } elseif($link->date < $globals['now']-$globals['time_enabled_comments'] || $link->comments >= $globals['max_comments']) {
 			// Comments already closed
 			echo '<div class="commentform warn">'."\n";
 			echo _('comentarios cerrados')."\n";

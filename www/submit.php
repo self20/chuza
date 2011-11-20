@@ -23,7 +23,7 @@ if(isset($_POST["phase"])) {
       // Se o usuario non votou catro veces no ultimo dia, non se lle permite enviar noticias
       $user_votes = $db->get_row("SELECT COUNT(vote_id) as n_votes FROM votes WHERE vote_date > DATE_SUB(NOW(), INTERVAL 1 DAY) AND vote_user_id = ".$current_user->user_id);
 
-      if ($user_votes->n_votes < 4) {
+      if ($user_votes->n_votes < 4 && !$globals['development']) {
         header('Location: http://chuza.gl?uspammer=x');
         exit;
       }
@@ -720,9 +720,24 @@ function check_link_key() {
 	return $_POST['key'] == md5($_POST['randkey'].$current_user->user_id.$current_user->user_email.$site_key.get_server_name());
 }
 
+
+function strtodate($str) {
+  return strtotime(str_replace('-','/',$str));
+}
+
 function link_errors($linkres) {
 	$error = false;
+
 	// Errors
+
+  $start_date = strtodate($linkres->start_date);
+  $end_date = strtodate($linkres->end_date);
+
+  if ($start_date>$end_date) {
+		print_form_submit_error(_("A segunda data non pode ser anterior á primeira"));
+		$error = true;
+  }
+
 	if(! check_link_key() || intval($_POST['randkey']) != $linkres->randkey) {
 		print_form_submit_error(_("clave incorrecta"));
 		$error = true;

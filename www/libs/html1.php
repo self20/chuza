@@ -624,12 +624,14 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	echo '</ul>';
   echo '</div>';
 
-  echo '<div id="maisswitch"> <a id="seeeverything" href="#">'._('Máis').' &raquo;</a></div>';
-  // for translation
-  echo '<input type="hidden" id="maisText" value="'._('Máis').' &raquo;" />';
-  echo '<input type="hidden" id="menosText" value="'._('Menos').' &laquo;" />';
+  if (count($categories) > 12) {
+      echo '<div id="maisswitch"> <a id="seeeverything" href="#">'._('Máis').' &raquo;</a></div>';
+    // for translation
+    echo '<input type="hidden" id="maisText" value="'._('Máis').' &raquo;" />';
+    echo '<input type="hidden" id="menosText" value="'._('Menos').' &laquo;" />';
 
-	echo '</div>' . "\n";
+    echo '</div>' . "\n";
+  }
 
 }
 
