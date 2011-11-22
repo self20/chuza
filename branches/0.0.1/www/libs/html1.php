@@ -135,7 +135,7 @@ function do_header($title, $id='home') {
         $check_ip= $globals['user_ip_int'];
         $check_ip = 2406088703;
 
-        $redis = new redisent\Redis('localhost');
+        $redis = new Predis_Client();
 
         $r = $redis->zrevrangebyscore($globals['enviroment'].'ips', $check_ip, '0', 'WITHSCORES', 'LIMIT', '0','1');
         preg_match('/(^[^-]*)/', $r[0], $matches);
