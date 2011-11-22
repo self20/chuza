@@ -7,7 +7,8 @@ include(mnminclude.'external_post.php');
 include_once(mnminclude.'log.php');
 include_once(mnminclude.'ban.php');
 
-include_once(mnminclude.'/redisent/redisent.php');
+include_once(mnminclude.'/predis/Predis.php');
+include_once(mnminclude.'/predis/Predis_Compatibility.php');
 
 
 $TYPE = 2;
@@ -73,7 +74,9 @@ switch($TYPE) {
      * Use redis
      */
 
-    $redis = new redisent\Redis('localhost');
+
+    //$redis = new 'redisent\Redis'('localhost');
+    $redis = new Predis_Client();
     
     $k = 1;
     foreach($iptable as &$val) {

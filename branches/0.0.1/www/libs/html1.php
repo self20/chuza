@@ -9,7 +9,8 @@
 
 @include mnminclude.'ads-credits-functions.php';
 
-include_once(mnminclude.'/redisent/redisent.php');
+include_once mnminclude.'/predis/Predis.php';
+include_once(mnminclude.'/predis/Predis_Compatibility.php');
 
 // Warning, it redirects to the content of the variable
 if (!empty($globals['lounge'])) {
