@@ -11,6 +11,8 @@ include_once(mnminclude.'/predis/Predis.php');
 include_once(mnminclude.'/predis/Predis_Compatibility.php');
 
 
+$redis = new Predis_Client();
+
 $TYPE = 2;
 
 $file = "IpToCountry.csv";
@@ -21,16 +23,21 @@ $f = fopen($file, "r");
 
 $iptable = Array();
 
+$k = 0;
 while( $csv = fgetcsv($f, 255) ) {
   if ($csv[0][0] != '#') {
-    $iptable[] = $csv;
-    //echo $csv[0][0];
+    print_r($csv[0].$csv[6]."/n");
+
+    $redis->zadd($globals['enviroment'].'ips', $csv[0], $csv[6].'-'.$k);
+    $k++;
+
   } else {
   }
 
 }
 
 fclose($f);
+die;
 
 print_r($iptable[0]);
 print_r($iptable[1]);
@@ -76,13 +83,6 @@ switch($TYPE) {
 
 
     //$redis = new 'redisent\Redis'('localhost');
-    $redis = new Predis_Client();
-    
-    $k = 1;
-    foreach($iptable as &$val) {
-      $redis->zadd($globals['enviroment'].'ips', $val[0], $val[6].'-'.$k);
-      $k++;
-    }
 
     break;
 
