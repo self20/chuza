@@ -9,6 +9,8 @@
 
 @include mnminclude.'ads-credits-functions.php';
 
+include_once(mnminclude.'/redisent/redisent.php');
+
 // Warning, it redirects to the content of the variable
 if (!empty($globals['lounge'])) {
 	header('Location: http://'.get_server_name().$globals['base_url'].$globals['lounge']);
@@ -111,6 +113,8 @@ function do_header($title, $id='home') {
     // escolhe norma
 
     $stdRow = false;
+
+
     // if change by request
     if ($_REQUEST['standard']) {
         $stdRow = $globals['standards'][$_REQUEST['standard']];
@@ -122,13 +126,27 @@ function do_header($title, $id='home') {
             setcookie("chuza_current_standard", (int)$_REQUEST['standard'], time()+(3600 * 24 *  365 * 3)); // 3 anos de cookie
         }
 
-	} elseif($current_user->authenticated) { // user authenticated but NOT request change
+    } elseif($current_user->authenticated) { // user authenticated but NOT request change
         $stdRow = $globals['standards'][(int)$current_user->standard];
     } else { // set default standard for non authenticated users
-        if (!$_COOKIE['chuza_current_standard']) $_COOKIE['chuza_current_standard'] = 1;
-        $stdRow = $globals['standards'][$_COOKIE['chuza_current_standard']];
+
+    // search in redis
+        $check_ip= $globals['user_ip_int'];
+        $check_ip = 2406088703;
+
+        $redis = new redisent\Redis('localhost');
+
+        $r = $redis->zrevrangebyscore($globals['enviroment'].'ips', $check_ip, '0', 'WITHSCORES', 'LIMIT', '0','1');
+        preg_match('/(^[^-]*)/', $r[0], $matches);
+
+        if (in_array($matches[0], $globals['lusophonia'])) {
+            $stdRow = 1;
+        } else {
+            if (!$_COOKIE['chuza_current_standard']) $_COOKIE['chuza_current_standard'] = 1;
+            $stdRow = $globals['standards'][$_COOKIE['chuza_current_standard']];
+        }
     }
-    
+
 
     if ($stdRow) {
         putenv ('LANGUAGE='.$stdRow['short_name']);
