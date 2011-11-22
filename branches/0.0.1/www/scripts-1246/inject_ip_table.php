@@ -10,7 +10,7 @@ include_once(mnminclude.'ban.php');
 include_once(mnminclude.'/redisent/redisent.php');
 
 
-$TYPE = 1;
+$TYPE = 2;
 
 $file = "IpToCountry.csv";
 
@@ -77,7 +77,7 @@ switch($TYPE) {
     
     $k = 1;
     foreach($iptable as &$val) {
-      $redis->zadd('ips', $val[0], $val[6].'-'.$k);
+      $redis->zadd($globals['enviroment'].'ips', $val[0], $val[6].'-'.$k);
       $k++;
     }
 
