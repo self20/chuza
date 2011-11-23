@@ -326,7 +326,9 @@ class Comment {
     echo '<div style="float:left;">';
     echo '<span id="c-votes-'.$this->id.'">';
 
-    if ($this->author == $current_user->user_id) {
+    if ($this->link_object->association && !in_array($current_user->user_id,$globals['association_users'])) {
+      // do nothing if user is not an association member
+    } elseif ($this->author == $current_user->user_id) {
 			echo '<a href="javascript:return false;" class="sameauthor" title="'._('informativo, opinión razonada, buen humor...').'"><img src="'.$globals['base_static'].'img/common/vote-up-gy02.png" width="18" height="16" alt="'._('voto positivo').'"/></a><br/>';
 	 		echo '<a href="javascript:return false;" class="sameauthor" title="'._('abuso, insulto, acoso, spam, magufo...').'"><img style="padding-top:5px;" src="'.$globals['base_static'].'img/common/vote-down-gy02.png" width="18" height="16" alt="'._('voto negativo').'"/></a>&nbsp;';
     } elseif ( $current_user->user_karma > $globals['min_karma_for_comment_votes'] && ! $this->voted) {
