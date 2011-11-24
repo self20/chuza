@@ -133,7 +133,6 @@ function do_header($title, $id='home') {
 
     // search in redis
         $check_ip= $globals['user_ip_int'];
-        $check_ip = 2406088703;
 
         $redis = new Predis_Client();
 
