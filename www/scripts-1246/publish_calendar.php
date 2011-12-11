@@ -30,7 +30,7 @@ createEvent($client, $link->title, $link->content, $link->start_date, $link->end
 //error_reporting(E_ALL);
 
 include_once('../config.php');
-include(mnminclude.'external_post.php');
+include_once(mnminclude.'external_post.php');
 include_once(mnminclude.'log.php');
 include_once(mnminclude.'ban.php');
 include_once(mnminclude.'link.php');
