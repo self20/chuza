@@ -4,6 +4,10 @@ include(mnminclude.'external_post.php');
 include_once(mnminclude.'log.php');
 include_once(mnminclude.'ban.php');
 
+include_once('publish_calendar.php');
+
+$client = initCalendar();
+
 define('DEBUG', false);
 
 header("Content-Type: text/html");
@@ -362,7 +366,7 @@ function print_row($link, $changes, $log = '') {
 
 
 function publish($link) {
-	global $globals, $db;
+	global $globals, $db, $client;
 
 	//return;
 	if (DEBUG) return;
@@ -406,6 +410,8 @@ function publish($link) {
 	if ($globals['pubsub']) {
 		pubsub_post();
 	}
+
+  createEvent($client, $link->title, $link->content, $link->start_date, $link->end_date);
 
 }
 
