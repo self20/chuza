@@ -202,6 +202,7 @@ if ($links) {
 		$changes = 0;
 		if (DEBUG ) $link->message .= "Meta: $link->meta_id coef: ".$meta_coef[$link->meta_id]." Init values: previous: $link->old_karma calculated: $link->karma new: $karma_new<br>\n";
 
+/*
 		// Verify last published from the same site
 		$hours = 4;
 		$min_pub_coef = 0.8;
@@ -211,7 +212,7 @@ if ($links) {
 			$karma_new *= $pub_coef;
 			$link->message .= 'Last published: '. intval((time() - $last_site_published)/3600) . ' hours ago.<br/>';
 		}
-
+*/
 		
 		if(($ban = check_ban($link->url, 'hostname', false, true))) {
 			// Check if the  domain is banned
