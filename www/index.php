@@ -106,6 +106,8 @@ if ($page < 2) {
 }
 // Depreted: Sidebar calendar
 //if ($globals['show_calendar']) do_calendar();
+if ($globals['show_gzradio']) do_gzradio();
+if ($globals['show_bottom_sidebar_banner']) do_bottom_sidebar_banner();
 
 do_categories_cloud('published');
 do_vertical_tags('published');
