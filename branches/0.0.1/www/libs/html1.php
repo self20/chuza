@@ -1163,7 +1163,7 @@ function do_calendar() {
 
 function do_gzradio() {
   echo '<div style="padding: 18px 28px 18px 28px;">';
-  echo '<object width="245" height="90"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=74a78d7e-e1db-456c-97bb-16ebc930157e&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" /><param name="wmode" value="transparent" /><embed src="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=74a78d7e-e1db-456c-97bb-16ebc930157e&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" width="245" height="90"></embed></object>';
+  echo '<object width="240" height="300"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" /><param name="wmode" value="transparent" /><embed src="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" width="240" height="300"></embed></object>';
   echo '</div>';
 }
 
