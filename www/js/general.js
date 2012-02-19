@@ -507,6 +507,11 @@ $(document).ready( function() {
 
     });
     */
+    $('#gzradio').click( function(e) {
+      e.preventDefault();
+
+      window.open('/player','RadioChuza', 'width=300,height=440');
+    });
 
     $('#seeeverything').click( function(e) {
       e.preventDefault();

@@ -1446,7 +1446,7 @@ font-weight: bold;
 }
 
 .comment-info {
-text-align: right;
+text-align: left;
 }
 
 .comment-info a {
@@ -2049,4 +2049,12 @@ width: 470px;
 body { font-size: small }
 }
 /* END Definitions for mobile, iPad and TVs */
+
+.comment-image {
+  max-width:240px;
+  max-height:320px;
+  padding:10px;
+}
+
+
 

@@ -41,6 +41,7 @@ function do_standard() {
 }
 
 function do_tabs($tab_name, $tab_selected = false, $extra_tab = false) {
+  return false; // DO NOT RENDER TABS 
 	global $globals, $db, $current_user;
 
 	$reload_text = _('recargar');
@@ -303,10 +304,13 @@ function do_header($title, $id='home') {
   echo '</ul>';
 
 	echo '<ul class="last">'."\n";
+
+
   if ($current_user->user_login) {
     $u = get_user_uri($current_user->user_login, 'categories');
     echo '<li><a href="'.$u.'">'._('personalizar').'</a></li>'."\n";
   }
+  
 	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
 	//echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
 	//echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
@@ -639,7 +643,6 @@ function do_mnu_categories_horizontal($what_cat_id) {
 			echo "</a></li>\n";
 		}
 	}
-
 	echo '</ul>';
   echo '</div>';
 
@@ -648,6 +651,7 @@ function do_mnu_categories_horizontal($what_cat_id) {
     // for translation
     echo '<input type="hidden" id="maisText" value="'._('Máis').' &raquo;" />';
     echo '<input type="hidden" id="menosText" value="'._('Menos').' &laquo;" />';
+
 
     echo '</div>' . "\n";
   }
@@ -1162,8 +1166,18 @@ function do_calendar() {
 }
 
 function do_gzradio() {
-  echo '<div style="padding: 18px 28px 18px 28px;">';
-  echo '<object width="240" height="300"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" /><param name="wmode" value="transparent" /><embed src="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" width="240" height="300"></embed></object>';
+  global $globals;
+
+  echo '<div style="padding: 18px 28px 18px 28px;cursor:pointer;" id="gzradio" >';
+  echo '<div style="position:absolute;
+          width:240px;height:300px;
+          background-color:white;
+          opacity:0;filter: alpha(opacity=0);">
+        &nbsp;
+    </div>';
+
+  echo $globals['radioPlayer'];
+  
   echo '</div>';
 }
 

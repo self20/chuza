@@ -332,7 +332,12 @@ function text_to_html_callback($matches) {
 				return $matches[1].'<a href="'.$globals['base_url'].'search.php?w='.$globals['hashtype'].'&amp;q=%23'.substr($matches[2], 1).'&amp;o=date">#'.substr($matches[2], 1).'</a>';
 			}
 		case 'h':
-			return $matches[1].preg_replace('/(https*:\/\/)(www\.){0,1}([^ \t\n\r\]\&]{5,70})([^ \t\n\r]*)([^ :.\t,\n\r\(\"\'\]\?])(.*)/u', '<a href="$1$2$3$4$5" title="$1$2$3$4$5" rel="nofollow">$3$5</a>$6', $matches[2]);
+      $t = strtolower(substr($matches[2],-3,3));
+      if ( $t == "gif" || $t == "jpg" || $t == "png") {
+        return '<a href="'.htmlentities($matches[2]).'"><img src="'.htmlentities($matches[2]).'"  class="comment-image" /></a>';
+      } else {
+        return $matches[1].preg_replace('/(https*:\/\/)(www\.){0,1}([^ \t\n\r\]\&]{5,70})([^ \t\n\r]*)([^ :.\t,\n\r\(\"\'\]\?])(.*)/u', '<a href="$1$2$3$4$5" title="$1$2$3$4$5" rel="nofollow">$3$5</a>$6', $matches[2]);
+      }
 		
 	}
 	return $matches[1].$matches[2];
