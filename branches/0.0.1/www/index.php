@@ -1,4 +1,4 @@
-<?
+<?php
 // The Meneame source code is Free Software, Copyright (C) 2005-2009 by
 // Ricardo Galli <gallir at gmail dot com> and Menéame Comunicacions S.L.
 //
@@ -20,7 +20,10 @@
 // 		http://www.affero.org/oagpl.html
 // AFFERO GENERAL PUBLIC LICENSE is also included in the file called "COPYING".
 
+ini_set("error_reporting","on");
+error_reporting(E_ALL);
 include('config.php');
+echo 1;
 include(mnminclude.'html1.php');
 
 meta_get_current();
@@ -99,6 +102,8 @@ do_banner_promotions();
 
 if ($globals['show_popular_published']) do_best_stories();
 
+if ($globals['show_gzradio']) do_gzradio();
+
 do_most_commented();
 
 if ($page < 2) {
@@ -106,7 +111,6 @@ if ($page < 2) {
 }
 // Depreted: Sidebar calendar
 //if ($globals['show_calendar']) do_calendar();
-if ($globals['show_gzradio']) do_gzradio();
 if ($globals['show_bottom_sidebar_banner']) do_bottom_sidebar_banner();
 
 do_categories_cloud('published');
@@ -168,6 +172,9 @@ function print_index_tabs($option=-1) {
 	}
 
 	echo '<ul class="subheader">'."\n";
+
+
+
 	if ($current_user->has_personal) {
 		echo '<li '.$active[7].'><span><a href="'.$globals['base_url'].'">'._('personal'). '</a>'.$toggle_active[7].'</span></li>'."\n";
 	}

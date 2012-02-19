@@ -133,13 +133,26 @@ class Comment {
 		if ($single_link) $html_id = $this->order;
 		else $html_id = $this->id;
 
+
+    if ($this->nested_level == 1) 
+      $no_padding = true;
+
     if ($no_padding) {
       $padding = 0;//(int)$this->level * 30;
     } else {
       $padding = 26;//(int)$this->level * 30;
     }
 
-		echo '<div id="c-'.$html_id.'" class="cmt" style="padding-left:'.$padding.'px;" >';
+		//echo '<div id="c-'.$html_id.'" class="'.(($this->nested_level>1)?'cmt':'cmt').'" style="margin-left:'.$padding.'px;" >';
+    echo '<style>';
+    echo '
+div.cmt {
+  border-width:0px 0px 0px 1px;
+  border-style:dotted;
+  border-color:#AADB7A;
+}';
+    echo '</style>';
+		echo '<div id="c-'.$html_id.'" class="'.(($this->nested_level>1)?'cmt':'').'" style="margin-left:'.$padding.'px;" >';
 
     /*
 		if ($this->type != 'admin' && $this->user_level != 'disabled') {
@@ -214,7 +227,8 @@ class Comment {
     if (empty($bgcolor)) 
       $bgcolor = end($color_list);
 
-		echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;background-color:'.$bgcolor.' !important;">';
+		//echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;background-color:'.$bgcolor.' !important;">';
+		echo '<div class="'.$comment_class.'" style="margin-bottom:10px;padding-bottom:5px;background-color:white;min-width:600px;">';
 		//echo '<a href="'.$this->link_permalink.'/000'.$this->order.'"><strong>#'.$this->order.'</strong></a>';
     echo '<a href="#" class="f-'.$this->id.' fold" style="font-family:verdana;font-size:x-small;" ></strong>(-)</strong></a>';
 
@@ -425,6 +439,7 @@ class Comment {
 
 		} 
 		if ($length > 0 && mb_strlen($this->content) > $length + $length/2) {
+
 			$this->content = preg_replace('/[&<\{]\w*$/', '', mb_substr($this->content, 0 , $length));
 			// Check all html tags are closed
 			if (preg_match('/<\w+>/', $this->content)) {
@@ -582,7 +597,7 @@ class Comment {
 		require_once(mnminclude.'ban.php');
 
 		$error = '';
-		if(check_ban_proxy()) return _('dirección IP no permitida');
+		if(check_ban_proxy() && !$globals['development']) return _('dirección IP no permitida');
 
 		// Check if is a POST of a comment
 
