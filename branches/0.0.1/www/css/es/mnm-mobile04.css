@@ -37,7 +37,7 @@ color: #03a;
 
 a:hover, a:focus {
 text-decoration: underline;
-color: #ff6400;
+color: #669933;
 }
 
 a:active {
@@ -52,7 +52,7 @@ color: #551a8b;
 min-width: 300px;
 height: 25px;
 overflow: hidden;
-background: #ff6400;
+background: #669933;
 }
 
 #logo {
@@ -61,7 +61,7 @@ float: left;
 width: 125px;
 height: 24px;
 text-indent: -9999px;
-background: #ff6400 url('../../img/mnm/logobg01.png') no-repeat left top;
+background: #669933 url('../../img/mnm/logobg01.png') no-repeat left top;
 }
 
 #headtools {
@@ -117,7 +117,7 @@ margin: 10px 0 0 0;
 padding-left: 5px;
 border-bottom: 1px solid;
 white-space: nowrap;
-border-color: #ff6400;
+border-color: #669933;
 }
 
 .tabmain li {
@@ -140,8 +140,8 @@ border-right: 1px solid;
 border-left: 1px solid;
 text-decoration: none;
 background: #fff;
-border-color: #ff6400;
-color: #ff6400;
+border-color: #669933;
+color: #669933;
 }
 
 .tabmain li a:hover {
@@ -204,7 +204,7 @@ padding: 3px 10px 3px 30px ;
 margin: 5px 0 5px 0;
 font-size: 85%;
 background: #FEFBEA url(../../img/common/error_s.png) 5px 50% no-repeat;
-border-color: #FF6400;
+border-color: #669933;
 }
 
 .error {
@@ -212,13 +212,13 @@ font-weight: bold;
 font-size: 120%;
 margin: 5px 0 0 0;
 padding: 25px 0 0 0;
-color: #FF6400;
+color: #669933;
 background: url(../../img/common/error.png) no-repeat;
 }
 
 .error-text {
 font-size: 100%;
-color: #FF6400;
+color: #669933;
 }
 
 /* news */
@@ -235,7 +235,7 @@ margin: 4px 0 0 0;
 padding: 0;
 overflow: hidden;
 white-space: nowrap;
-color: #FF6400;
+color: #669933;
 }
 
 .news-details a:link, .news-details a:visited {
@@ -251,7 +251,7 @@ vertical-align: top;
 display: inline;
 border-left: 1px solid;
 padding: 0 4px 0 6px;
-border-left-color: #FF6400;
+border-left-color: #669933;
 }
 
 .news-details .comments {
@@ -300,16 +300,16 @@ color: #FFF;
 }
 
 .mnm-published {
-background: #FF6400;
+background: #669933;
 }
 
 .mnm-queued, .mnm-queued a, .mnm-queued a:visited {
-color: #FF6400;
+color: #669933;
 }
 
 .mnm-queued {
 background: #FFF;
-border-color: #FF6400;
+border-color: #669933;
 }
 
 .mnm-discarded {
@@ -331,7 +331,7 @@ margin-top: 2px;
 display: block;
 padding: 2px 0 2px 0;
 font-size: 8pt;
-color: #FF6400;
+color: #669933;
 }
 
 .menealo span {
@@ -404,11 +404,11 @@ line-height: 130%;
 overflow: hidden;
 background: #FFF1E2;
 color: #202020;
-border-color: #FF6400;
+border-color: #669933;
 }
 
 .comment-body strong {
-color: #FF6400;
+color: #669933;
 }
 
 .comment-body.high {
@@ -470,7 +470,7 @@ margin: 2px 2px;
 margin: 15px 0 25px 0;
 clear: left;
 font-size: 125%;
-border-top-color: #FF6400;
+border-top-color: #669933;
 }
 
 /* to avoid non standard <br clear=..> */
@@ -489,7 +489,7 @@ float: left;
 padding: 5px 15px 5px 15px;
 margin-right: 3px;
 border: 1px solid;
-color: #FF6400;
+color: #669933;
 border-color: #FFF;
 background: #FFF;
 }
@@ -503,27 +503,27 @@ padding-left: 2px;
 border: 1px solid;
 font-weight: bold;
 background: #FFBE94;
-color: #FF6400;
-border-color: #FF6400;
+color: #669933;
+border-color: #669933;
 }
 
 .pages span.current a {
 padding: 0;
 border: 0px;
-background: #FF6400;
-color: #FF6400;
+background: #669933;
+color: #669933;
 }
 
 .pages a {
 border: 1px solid;
 text-decoration: none;
-border-color: #FF6400;
+border-color: #669933;
 }
 
 .pages a:hover, .pages-margin a:hover {
 border-color: #FF9400;
 background: #FFBE94;
-color: #FF6400;
+color: #669933;
 }
 
 .pages a.nextprev {
@@ -559,8 +559,8 @@ border: 1px solid;
 font-weight: bold;
 margin: 4px 0 4px 0;
 padding: 2px 4px 2px 4px;
-border-color: #FF6400;
-color: #FF6400;
+border-color: #669933;
+color: #669933;
 font-size: 120%;
 }
 
@@ -599,6 +599,6 @@ font-weight: bold;
 
 label {
 font-weight: bold;
-color: #FF6400;
+color: #669933;
 }
 
