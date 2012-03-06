@@ -5,7 +5,7 @@ Comments: This file contains only styles without colors or images. A separate fi
 
 body {
 font-family: sans-serif;
-margin: 0;
+margin: 0;	
 padding: 0;
 background-color: #fff;
 }
@@ -146,7 +146,7 @@ color: #669933;
 
 .tabmain li a:hover {
 text-decoration: none;
-background: #feefe5
+background: #8ACC6D
 }
 
 .tabmain li.tabmain-this {
@@ -157,7 +157,7 @@ background: #fff;
 .tabmain li.tabmain-this a {
 font-size: 0.8em;
 height: 21px;
-background: #feefe5;
+background: #8ACC6D;
 }
 
 
@@ -239,7 +239,7 @@ color: #669933;
 }
 
 .news-details a:link, .news-details a:visited {
-color: #FF7C00;
+color: #669920;
 }
 
 .news-details span {
@@ -323,7 +323,7 @@ background-color: #fff;
 
 .menealo a {
 border: 1px solid;
-border-color: #ffcbaa;
+border-color: #88CF43;
 }
 
 .menealo a, .menealo span {
@@ -336,12 +336,12 @@ color: #669933;
 
 .menealo span {
 border: 1px solid;
-border-color: #FFCBAA;
+border-color: #88CF43;
 }
 
 .menealo span.negative {
 font-size: 7pt;
-background: #FFCBAA;
+background: #88CF43;
 letter-spacing: -0.1pt;
 text-shadow: 1px 1px 0 #fff;
 }
@@ -502,7 +502,7 @@ padding-left: 2px;
 .pages span.current {
 border: 1px solid;
 font-weight: bold;
-background: #FFBE94;
+background: #FFCF43;
 color: #669933;
 border-color: #669933;
 }
@@ -522,7 +522,7 @@ border-color: #669933;
 
 .pages a:hover, .pages-margin a:hover {
 border-color: #FF9400;
-background: #FFBE94;
+background: #FFCF43;
 color: #669933;
 }
 
@@ -544,14 +544,14 @@ width:100%;
 
 input, textarea {
 margin: 0 0 10px 0;
-background: #feefe5;
+background: #8ACC6D;
 border: 1px solid #FF9400;
 color: #303030;
 }
 
 select {
 background: #FFF;
-color: #FF7C00;
+color: #669920;
 }
 
 button, input[type="submit"] {
