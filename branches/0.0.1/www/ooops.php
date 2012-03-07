@@ -16,18 +16,18 @@ switch($errn) {
     $errp = _('petición desconocida');
     break;
   case 401:
-    $errp = _('no autorizado');
+    $errp = _('non autorizado');
     break;
   case 403:
     $errp = _('acceso prohibido');
     break;
   case 404:
-    $errp = _('la página no existe');
+    $errp = _('a páxina non existe');
     break;
   case 500:
   case 501:
   case 503:
-    $errp = _('error de servidor');
+    $errp = _('erro do servidor');
     break;
   default:
 	$errn = false;
