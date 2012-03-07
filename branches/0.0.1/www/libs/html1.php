@@ -300,6 +300,7 @@ function do_header($title, $id='home') {
 	echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
 	echo '<li><a href="'.$globals['base_url'].'shakeit.php">'._('pendentes').'</a></li>'."\n";
+	echo '<li><a href="'.$globals['base_url'].'topstories.php">'._('Populares').'</a></li>'."\n"; //Novas populares
 	echo '<li id="lastlititle" ><a href="'.$globals['base_url'].'equipa/?page=calendario">'._('calendario').'</a></li>'."\n";
   echo '</ul>';
 
