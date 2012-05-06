@@ -159,6 +159,7 @@ function do_header($title, $id='home') {
         $current_user->standard = 1;
     }
 
+
     bindtextdomain ('meneame', mnminclude.'/languages');
     textdomain('meneame');
     // fim de escolher norma
@@ -597,7 +598,7 @@ function get_toggler_plusminus($container_id, $enabled = false) {
 }
 
 function do_mnu_categories_horizontal($what_cat_id) {
-	global $db, $dblang, $globals;
+	global $db, $dblang, $globals, $current_user;
 
 	echo '<div id="topcatlist" class="catsub-block"';
 	//if (! $what_cat_id) echo ' style="display:none;"';
@@ -622,7 +623,8 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	} else {
 		$category_condition = "category_parent > 0";
 	}
-	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition ORDER BY category_name ASC");
+	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition AND category_lang LIKE '".$db->escape($globals['standards'][$current_user->standard]['trans_code'])."' ORDER BY category_name ASC");
+
 	if ($categories) {
 		$i = 0;
 		foreach ($categories as $category) {
