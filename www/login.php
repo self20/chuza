@@ -87,7 +87,7 @@ function do_login() {
 		echo '<p>'._('Gracias a la <a href="sneak.php">fisgona</a> puedes ver en tiempo real toda la actividad de menéame. Además como usuario registrado podrás chatear con mucha más gente de la comunidad menéame').'</p>'."\n";
 		echo '</li>'."\n";
 		echo '</ul>'."\n";
-		echo '<h3><a href="register.php" style="color:#FF6400; text-decoration:underline; display:block; width:8em; text-align:center; margin:0 auto; padding:0.5em 1em; border:3px double #FFE2C5; background:#FFF3E8;">Regístrate ahora</a></h3>'."\n";
+		echo '<h3><a href="register.php" style="color:#FF6400; text-decoration:underline; display:block; width:8em; text-align:center; margin:0 auto; padding:0.5em 1em; border:3px double #FFE2C5; background:#FFF3E8;">'._('Rexístrate agora').'</a></h3>'."\n";
 		echo '</div>'."\n";
 		
 		echo '<div class="genericform" style="float:left; width:40%; margin: 0">'."\n";	
