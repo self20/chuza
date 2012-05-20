@@ -56,6 +56,30 @@ border: 1px solid #669933;
 color: #303030;
 }
 
+
+/* new comments */
+.comment-container {
+  max-width:240px;
+  max-height:320px;
+  display:inline;
+  margin-top:2px;
+  margin-bottom:2px;
+}
+
+.comment-image {
+  max-width:240px;
+  max-height:280px;
+}
+
+div.comment-foot {
+  text-align:center !important;
+  background-color:#c5e7a4 !important;
+  color:white !important;
+  max-width:240px;
+  max-height:40px;
+}
+
+
 .button, button, input[type="button"], input[type="submit"] {
 border: 1px solid;
 font-weight: bold;
@@ -2049,12 +2073,5 @@ width: 470px;
 body { font-size: small }
 }
 /* END Definitions for mobile, iPad and TVs */
-
-.comment-image {
-  max-width:240px;
-  max-height:320px;
-  padding:10px;
-}
-
 
 
