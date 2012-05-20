@@ -334,7 +334,15 @@ function text_to_html_callback($matches) {
 		case 'h':
       $t = strtolower(substr($matches[2],-3,3));
       if ( $t == "gif" || $t == "jpg" || $t == "png") {
-        return '<a href="'.htmlentities($matches[2]).'"><img src="'.htmlentities($matches[2]).'"  class="comment-image" /></a>';
+        $d = getDomainFromImage(htmlentities($matches[2]));
+        return '<div class="comment-container">'
+		.'<div  >'
+		.'<a href="'.htmlentities($matches[2]).'"><img src="'.htmlentities($matches[2]).'"  class="comment-image" /></a>'
+		.'</div>'
+    .'<div class="comment-foot" >'
+		.$d
+		.'</div>'
+	.'</div>';
       } else {
         return $matches[1].preg_replace('/(https*:\/\/)(www\.){0,1}([^ \t\n\r\]\&]{5,70})([^ \t\n\r]*)([^ :.\t,\n\r\(\"\'\]\?])(.*)/u', '<a href="$1$2$3$4$5" title="$1$2$3$4$5" rel="nofollow">$3$5</a>$6', $matches[2]);
       }
@@ -343,6 +351,11 @@ function text_to_html_callback($matches) {
 	return $matches[1].$matches[2];
 }
 
+function getDomainFromImage($s) {
+  $matches = array();
+  preg_match('/\/\/([^\/]*)\//', $s, $matches);
+  return $matches[1];
+}
 
 // Clean all special chars and html/utf entities
 function text_sanitize($string) {
