@@ -140,7 +140,7 @@ class Comment {
     if ($no_padding) {
       $padding = 0;//(int)$this->level * 30;
     } else {
-      $padding = 26;//(int)$this->level * 30;
+      $padding = 33;//(int)$this->level * 30;
     }
 
 		//echo '<div id="c-'.$html_id.'" class="'.(($this->nested_level>1)?'cmt':'cmt').'" style="margin-left:'.$padding.'px;" >';
@@ -628,7 +628,7 @@ div.cmt {
     $parentComment = new Comment();
     $parentComment->id = intval($comment->parent);
     $parentComment->read_basic();
-    if ($parentComment->nested_level > 9) {
+    if ($parentComment->nested_level > $globals['NESTED_COMMENTS_MAX_LEVEL']) {
 				return _('Chegache ao nivel límite de comentarios aniñados...');
     }
     $comment->nested_level = $parentComment->nested_level + 1;

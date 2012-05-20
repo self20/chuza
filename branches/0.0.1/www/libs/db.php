@@ -40,9 +40,13 @@ function __autoload($class) {
 	}
 }
 
+spl_autoload_register('__autoload');
+
 global $globals;
+//var_dump($globals);
 $db = new RGDB($globals['db_user'], $globals['db_password'], $globals['db_name'], $globals['db_server']);
 // we now do "lazy connection.
+
 $db->persistent = $globals['mysql_persistent'];
 //$db->master_persistent = $globals['mysql_master_persistent'];
 
