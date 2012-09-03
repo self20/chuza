@@ -132,10 +132,10 @@ class LinkMobile extends Link{
 		if ($this->votes_enabled == false) {
 			echo '<span>'._('cerrado').'</span>';
 		} elseif( !$this->voted) {
-			echo '<a href="javascript:menealo('."$current_user->user_id,$this->id".')" id="a-shake-'.$this->id.'">'._('menéalo').'</a>';
+			echo '<a href="javascript:menealo('."$current_user->user_id,$this->id".')" id="a-shake-'.$this->id.'">'._('chuzar').'</a>';
 		} else {
 			if ($this->voted > 0) {
-				$mess = _('¡chachi!');
+				$mess = _('chuzado!');
 				$sty = '';
 			} else {
 				$mess = get_negative_vote($this->voted);

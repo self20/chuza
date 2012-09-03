@@ -290,18 +290,44 @@ function do_header($title, $id='home') {
 	}
 
 	//echo '<li><a href="'.$globals['base_url'].'faq-'.$dblang.'.php">' . _('acerca de menéame').'</a></li>' . "\n";
+    
+  $s = $_SERVER['SCRIPT_NAME'];  
+  
+  $matches = array();
+  preg_match('/\/([^\/]*)$/', $s, $matches);
+
+  switch($matches[1]) {
+    case "topstories.php":
+      $classTopstories = "enfatized";
+      break;
+    case "index.php":
+      $classCover= "enfatized";
+      break;
+    case "shakeit.php":
+      $classPendent= "enfatized";
+      break;
+    case "sneak.php":
+      $classSneak= "enfatized";
+      break;
+  }
+
+  if (strpos($_SERVER['REQUEST_URI'], 'chios') !== FALSE) {
+    $classChios = "enfatized";
+    $classCover= ""; // previously assigned wrongly
+  }
+ 
 
 	echo '</ul>' . "\n";
 	echo '</div>' . "\n";
 
 	echo '<div id="newnavbar" >'."\n";
 	echo '<ul class="first">'."\n";
-	echo '<li><a href="'.$globals['base_url'].'submit.php">'._('enviar noticia').'</a></li>'."\n";
 	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'shakeit.php">'._('pendentes').'</a></li>'."\n";
-	echo '<li><a href="'.$globals['base_url'].'topstories.php">'._('Populares').'</a></li>'."\n"; //Novas populares
+	echo '<li class="'.$classCover.'"><a href="'.$globals['base_url'].'">'._('portada').'</a></li>'."\n";
+	echo '<li class="'.$classPendent.'"><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
+	echo '<li class="'.$classTopstories.'"><a href="'.$globals['base_url'].'topstories.php">'._('Populares').'</a></li>'."\n"; //Novas populares
+	echo '<li class="'.$classSneak.'"><a href="'.$globals['base_url'].'sneak.php">'._('fisgona').'</a></li>'."\n";
+	echo '<li class="'.$classChios.'" ><a href="'.$globals['base_url'].'chios/">'._('nótame').'</a></li>'."\n";
 	echo '<li id="lastlititle" ><a href="'.$globals['base_url'].'equipa/?page=calendario">'._('calendario').'</a></li>'."\n";
   echo '</ul>';
 
@@ -311,6 +337,7 @@ function do_header($title, $id='home') {
   if ($current_user->user_login) {
     $u = get_user_uri($current_user->user_login, 'categories');
     echo '<li><a href="'.$u.'">'._('personalizar').'</a></li>'."\n";
+    echo '<li><a href="'.$globals['base_url'].'submit.php">'._('enviar noticia').'</a></li>'."\n";
   }
   
 	//echo '<li style=""><a href="'.$globals['base_url'].'shakeit.php">'._('pendientes').'</a></li>'."\n";
@@ -623,7 +650,8 @@ function do_mnu_categories_horizontal($what_cat_id) {
 	} else {
 		$category_condition = "category_parent > 0";
 	}
-	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition AND category_lang LIKE '".$db->escape($globals['standards'][$current_user->standard]['trans_code'])."' ORDER BY category_name ASC");
+	//$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition AND category_lang LIKE '".$db->escape($globals['standards'][$current_user->standard]['trans_code'])."' ORDER BY category_name ASC");
+	$categories = $db->get_results("SELECT SQL_CACHE category_id, category_name FROM categories WHERE $category_condition ORDER BY category_name ASC");
 
 	if ($categories) {
 		$i = 0;
@@ -996,7 +1024,7 @@ function do_most_commented() {
 	if ($globals['mobile']) return;
 
 	$key = 'most_commented_'.$globals['css_main'].'_'.$globals['meta_current'];
-	if(memcache_mprint($key)) return;
+	//if(memcache_mprint($key)) return;
 
 	$foo_link = new Link();
 
@@ -1008,10 +1036,10 @@ function do_most_commented() {
 		$title = _('máis comentadas');
 	}
 	$output = '<div class="sidebox"><div class="header"><h4><a href="'.$globals['base_url'].'topstories.php">'.$title.'</a></h4></div>';
-
+  
 	$min_date = date("Y-m-d H:i:00", $globals['now'] - 129600); // 36 hours 
 
-	$res = $db->get_results("select link_id, link_comments from links where $category_list and link_date > '$min_date' order by link_comments desc limit 10");
+	$res = $db->get_results("select link_id, link_comments from links where link_date > '$min_date' order by link_comments desc limit 10");
 	if ($res) {
 		$link = new Link();
 		foreach ($res as $l) {
@@ -1026,13 +1054,13 @@ function do_most_commented() {
 				$link->thumb_y = round($link->thumb_y / 2);
 				$output .= "<img src='$thumb' width='$link->thumb_x' height='$link->thumb_y' alt='' class='thumbnail'/>";
 			}
-			$output .= '<h5><a href="'.$url.'">'.$link->title.'</a></h5>';
+			$output .= '<h5><a href="'.$url.'">'.$link->title.'</a><span style="color:#669933;"> - '.$link->comments._(' comentarios').'<h5>';
 			$output .= '</div>'; // class="cell";
 
 		}
 		$output .= '</div>'."\n";
 		echo $output;
-		memcache_madd($key, $output, 180);
+		//memcache_madd($key, $output, 180);
 	}
 }
 
@@ -1177,6 +1205,7 @@ function do_gzradio() {
           background-color:white;
           opacity:0;filter: alpha(opacity=0);">
         &nbsp;
+
     </div>';
 
   echo $globals['radioPlayer'];

@@ -115,6 +115,38 @@ function do_edit() {
 	echo '<p><span class="note"><strong>'._('pocas palabras, genéricas, cortas y separadas por «,» (coma)').'</strong></span>'."\n";
 	echo '<br/><input type="text" id="tags" name="tags" value="'.$link_tags.'" size="70" maxlength="70" /></p>'."\n";
 
+
+  echo '<link rel="stylesheet" type="text/css" media="all" href="'.$globals['base_static'].'css/ui-lightness/jquery-ui-1.8.16.custom.css"/>' . "\n";
+	echo '<script src="'.$globals['base_url'].'js/jquery-ui-1.8.16.custom.min.js" type="text/javascript" charset="utf-8"></script>' . "\n";
+  echo '<script type="text/javascript">
+$(document).ready( function() {
+';
+  echo "$.datepicker.regional['pt-BR'] = {
+                closeText: 'Fechar',
+                prevText: '&#x3c;Anterior',
+                nextText: 'Pr&oacute;ximo&#x3e;',
+                currentText: 'Hoje',
+                monthNames: ['Janeiro','Fevereiro','Mar&ccedil;o','Abril','Maio','Junho',
+                'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+                monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun',
+                'Jul','Ago','Set','Out','Nov','Dez'],
+                dayNames: ['Domingo','Segunda-feira','Ter&ccedil;a-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sabado'],
+                dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+                dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+                dateFormat: 'dd/mm/yy', firstDay: 0,
+                isRTL: false};
+        $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
+    ";
+echo '
+    $("[name=datepicker1]").datepicker();
+    $("[name=datepicker2]").datepicker();
+});
+</script>';
+
+  echo '<label>'._('Datas do Evento').'</label> <span class="note">(opcional) desde </span> ';
+  echo '<input type="text" name="datepicker1" size="8"><span class="note"> '._('ata').'</span> <input type="text" name="datepicker2" size="8"></span>';
+
+
 	print_simpleformat_buttons('bodytext');
 
 	$body_left = 550 - mb_strlen(html_entity_decode($link_content, ENT_COMPAT, 'UTF-8'), 'UTF-8');
@@ -172,6 +204,15 @@ function do_save() {
 		}
 		$linkres->status = $_POST['status'];
 	}
+
+  // EVENTS
+  $d = $_POST["datepicker1"];
+  $linkres->start_date = substr($d,3,2).'-'.substr($d, 0, 2).'-'.substr($d,6,4);
+
+  $d = $_POST["datepicker2"];
+  $linkres->end_date = substr($d,3,2).'-'.substr($d, 0, 2).'-'.substr($d,6,4);
+
+
 	if (!link_edit_errors($linkres)) {
 		if (empty($linkres->uri)) $linkres->get_uri();
 		$linkres->store();

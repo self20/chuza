@@ -56,6 +56,10 @@ border: 1px solid #669933;
 color: #303030;
 }
 
+/* new menu */
+li.enfatized {
+  font-weight:bold;
+}
 
 /* new comments */
 .comment-container {
