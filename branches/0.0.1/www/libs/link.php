@@ -546,7 +546,7 @@ class Link {
 		}
 
 
-    if (($this->start_date && !$this->end_date) || ($this->start_date==$this->end_date)) {
+    if ($this->start_date && (!$this->end_date || ($this->start_date==$this->end_date))) {
       echo '<div>';
       echo _('Data:').' <strong>'.Link::format_date($this->start_date).'</strong>';
       echo '</div>';
