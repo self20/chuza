@@ -380,6 +380,8 @@ function do_submit1() {
 
 	// check for users spamming several sites and networks
 	// it does not allow a low "entropy"
+  // DISABLED BY MANEL: let the user send news from the same sources
+  /*
 	if ($sents > 30) {
 		$ratio = (float) $db->get_var("select count(distinct link_blog)/count(*) from links where link_author=$current_user->user_id and link_date > date_sub(now(), interval 60 day)");
 		$threshold = 1/log($sents, 2);
@@ -394,9 +396,12 @@ function do_submit1() {
 			}
 		}
 	}
+  */
 
 	// Check the user does not send too many images or vídeos
 	// they think this is a fotolog
+  // DISABLED BY MANEL: this could be a fotolog
+  /*
 	if ($sents > 5 && ($linkres->content_type == 'image' || $linkres->content_type == 'video')) {
 		$image_links = intval($db->get_var("select count(*) from links where link_author=$current_user->user_id and link_date > date_sub(now(), interval 60  day) and link_content_type in ('image', 'video')"));
 		if ($image_links > $sents * 0.7) {
@@ -408,8 +413,11 @@ function do_submit1() {
 			return;
 		}
 	}
+   */
 
 	// Avoid users sending too many links to the same site in last hours
+  // DISABLED BY MANEL
+  /*
 	$hours = 24;
 	$same_blog = $db->get_var("select count(*) from links where link_date > date_sub(now(), interval $hours hour) and link_author=$current_user->user_id and link_blog=$linkres->blog and link_votes > 0");
 	if ($same_blog > 2) {
@@ -419,8 +427,11 @@ function do_submit1() {
 		echo '</div>'. "\n";
 		return;
 	}
+   */
 
 	// avoid auto-promotion (autobombo)
+  // DISABLED BY MANEL: autobombo permitido
+  /*
 	$minutes = 30;
 	$same_blog = $db->get_var("select count(*) from links where link_date > date_sub(now(), interval $minutes minute) and link_author=$current_user->user_id and link_blog=$linkres->blog and link_votes > 0");
 	if ($same_blog > 0 && $current_user->user_karma < 12) {
@@ -432,8 +443,11 @@ function do_submit1() {
 		echo '</div>'. "\n";
 		return;
 	}
+   */
 
 	// Avoid spam (autobombo), count links in last two months
+  // DISABLED BY MANEL: autobombo permitido
+  /*
 	$same_blog = $db->get_var("select count(*) from links where link_author=$current_user->user_id and link_date > date_sub(now(), interval 60 day) and link_blog=$linkres->blog");
 
 	$check_history =  $sents > 3 && $same_blog > 0 && ($ratio = $same_blog/$sents) > 0.5;
@@ -451,12 +465,15 @@ function do_submit1() {
 			syslog(LOG_NOTICE, "Meneame, warn, high ratio, continue ($current_user->user_login): $linkres->url");
 		}
 	}
+   */
 
 
 
 	$links_12hs = $db->get_var("select count(*) from links where link_date > date_sub(now(), interval 12 hour)");
 
 	// check there is no an "overflow" from the same site
+  // DISABLED BY MANEL: could be an overflow 
+  /*
 	$site_links = intval($db->get_var("select count(*) from links where link_date > date_sub(now(), interval 12 hour) and link_blog=$linkres->blog and link_status in ('queued')"));
 	if ($site_links > 8 && $site_links > $links_12hs * 0.04) { // Only 4% from the same site
 		syslog(LOG_NOTICE, "Meneame, forbidden due to overflow to the same site ($current_user->user_login): $linkres->url");
@@ -466,8 +483,11 @@ function do_submit1() {
 		echo '</div>'. "\n";
 		return;
 	}
+   */
 
 	// check there is no an "overflow" of images
+  // DISABLED BY MANEL: let the overflow begin
+  /*
 	if ($linkres->content_type == 'image' || $linkres->content_type == 'video') {
 		$image_links = intval($db->get_var("select count(*) from links where link_date > date_sub(now(), interval 12 hour) and link_content_type in ('image', 'video')"));
 		if ($image_links > 5 && $image_links > $links_12hs * 0.08) { // Only 8% images and videos
@@ -479,6 +499,7 @@ function do_submit1() {
 			return;
 		}
 	}
+   */
 
 	if(($ban = check_ban($linkres->url, 'punished_hostname', false, true))) {
 		echo '<p class="error"><strong>'._('Aviso').' '.$ban['match']. ':</strong> <em>'.$ban['comment'].'</em></p>';
