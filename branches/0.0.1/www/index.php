@@ -99,6 +99,13 @@ echo '<div id="sidebar">';
 do_banner_right();
 do_banner_promotions();
 
+echo "<div class='sidebox'>";
+echo "<div class='header'><h4>"._("Asociaci&oacute;n Cultural Chuza!")."</h4></div>";
+echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='#'><h3>Colabora</h3></a></div>";
+echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='#'><h3>Asociate!</h3></a></div>";
+echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='#'><h3>Pre-reserva de camisolas</h3></a></div>";
+echo "</div>";
+
 if ($globals['show_popular_published']) do_best_stories();
 
 if ($globals['show_gzradio']) do_gzradio();
