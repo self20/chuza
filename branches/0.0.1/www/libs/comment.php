@@ -243,6 +243,7 @@ div.cmt {
 			echo '</span>';
 		}
 		//echo '</div>';
+    
 
 		// The comments info bar
 		echo '<div class="'.$comment_meta_class.' comment_mc" >';
@@ -292,6 +293,7 @@ div.cmt {
 
 
 
+    
 		// Print comment info (right)
 		echo '<div class="comment-info">';
 
@@ -327,6 +329,7 @@ div.cmt {
 		echo '<img src="'.$avatar.'" width="20" height="20" alt="" title="'.$this->username.',&nbsp;karma:&nbsp;'.$this->user_karma.'" />';
 
 		echo '</div>';
+     
 		echo '</div></div>';
 	}
 

@@ -179,7 +179,11 @@ function print_index_tabs($option=-1) {
 	}
 	echo '<li '.$active[0].'><span><a href="'.$globals['base_url'].$globals['meta_skip'].'">'._('todas'). '</a>'.$toggle_active[0].'</span></li>'."\n";
 	// Do metacategories list
-	$metas = $db->get_results("SELECT SQL_CACHE category_id, category_name, category_uri FROM categories WHERE category_parent = 0 AND category_lang LIKE '".$db->escape($globals['standards'][$current_user->standard]['trans_code'])."'  ORDER BY category_id ASC");
+  //print_r($globals['standards'][$current_user->standard]['trans_code']);
+  //print_r($current_user->standard);
+  //print_r($globals['standards']);
+	//$metas = $db->get_results("SELECT SQL_CACHE category_id, category_name, category_uri FROM categories WHERE category_parent = 0 AND category_lang LIKE '".$db->escape($globals['standards'][$current_user->standard]['trans_code'])."'  ORDER BY category_id ASC");
+	$metas = $db->get_results("SELECT SQL_CACHE category_id, category_name, category_uri FROM categories WHERE category_parent = 0 ORDER BY category_id ASC");
 	if ($metas) {
 		foreach ($metas as $meta) {
 			if ($meta->category_id == $globals['meta_current']) {
