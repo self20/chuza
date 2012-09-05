@@ -1054,7 +1054,7 @@ function do_most_commented() {
 				$link->thumb_y = round($link->thumb_y / 2);
 				$output .= "<img src='$thumb' width='$link->thumb_x' height='$link->thumb_y' alt='' class='thumbnail'/>";
 			}
-			$output .= '<h5><a href="'.$url.'">'.$link->title.'</a><span style="color:#669933;"> - '.$link->comments._(' comentarios').'<h5>';
+			$output .= '<h5><a href="'.$url.'">'.$link->title.'</a><h5>';
 			$output .= '</div>'; // class="cell";
 
 		}
