@@ -413,7 +413,7 @@ $globals['show_bottom_sidebar_banner'] = false;
 
 $globals['NESTED_COMMENTS_MAX_LEVEL'] = 99;
 
-$globals['radioPlayer'] = '
-<object width="240" height="300"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" /><param name="wmode" value="transparent" /><embed src="http://www.radionomy.com/Flash/BannerEmbed.swf?RadUID=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlesColor=7D7D7D&amp;color=FFFFFF&amp;autoPlay=no&amp;lang=es" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" width="240" height="300"></embed></object>
+$globals['radioplayer'] = '
+<object width="240" height="300"><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.radionomy.com/flash/bannerembed.swf?raduid=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlescolor=7d7d7d&amp;color=ffffff&amp;autoplay=no&amp;lang=es" /><param name="wmode" value="transparent" /><embed src="http://www.radionomy.com/flash/bannerembed.swf?raduid=72ab2fe1-8e52-4e34-8a88-27ad3e7af8d4&amp;titlescolor=7d7d7d&amp;color=ffffff&amp;autoplay=no&amp;lang=es" wmode="transparent" type="application/x-shockwave-flash" allowscriptaccess="always" width="240" height="300"></embed></object>
    ';
 
