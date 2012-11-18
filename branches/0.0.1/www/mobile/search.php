@@ -28,7 +28,7 @@ echo '<div id="newswrap">'."\n";
 
 if(!empty($_REQUEST['q'])) {
 	echo '<div style="background:#FFE2C5;margin: 4px; padding:4px;">'._('búsqueda'). ': <em>'.$search_txt.'</em>';
-	echo '&nbsp;&nbsp;'._('encontrados').': '.$response['rows'].', '._('tiempo total').': '.sprintf("%1.3f",$response['time']).' '._('segundos').'</div>';
+	echo '&nbsp;&nbsp;'._('encontrados').': '.$response['rows'].', '._('tempo total').': '.sprintf("%1.3f",$response['time']).' '._('segundos').'</div>';
 }
 
 echo '<form action="'.$globals['base_url'].'search.php" method="get">' . "\n";
