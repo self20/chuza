@@ -170,14 +170,14 @@ function save_profile() {
 	$user->names=clean_text($_POST['names']);
 	if(!empty($_POST['password']) || !empty($_POST['password2'])) {
 		if(! check_password($_POST["password"]) ) {
-    	    $messages .= '<p class="form-error">'._('Clave demasiado corta, debe ser de 6 o más caracteres e incluir mayúsculas, minúsculas y números').'</p>';
+    	    $messages .= '<p class="form-error">'._('Clave demasiado corta, debe ser de 6 ou máis caracteres e incluir maísculas, minúsculas e números').'</p>';
         	$errors=1;
 	    } else if(trim($_POST['password']) !== trim($_POST['password2'])) {
-			$messages .= '<p class="form-error">'._('las claves no son iguales, no se ha modificado').'</p>';
+			$messages .= '<p class="form-error">'._('As claves non son iguais, non se modificou').'</p>';
 			$errors = 1;
 		} else {
 			$user->pass=md5(trim($_POST['password']));
-			$messages .= '<p  class="form-error">'._('La clave se ha cambiado').'</p>';
+			$messages .= '<p  class="form-error">'._('Clave cambiada').'</p>';
 			$pass_changed = true;
 		}
 	}
@@ -189,14 +189,14 @@ function save_profile() {
 		if(avatars_check_upload_size('image')) {
 			$avatar_mtime = avatars_manage_upload($user->id, 'image');
 			if (!$avatar_mtime) {
-				$messages .= '<p class="form-error">'._('error guardando la imagen').'</p>';
+				$messages .= '<p class="form-error">'._('error gardando a imaxen').'</p>';
 				$errors = 1;
 				$user->avatar = 0;
 			} else {
 				$user->avatar = $avatar_mtime;
 			}
 		} else {
-			$messages .= '<p class="form-error">'._('el tamaño de la imagen excede el límite').'</p>';
+			$messages .= '<p class="form-error">'._('o tamaño da imaxen excede o límite').'</p>';
 			$errors = 1;
 			$user->avatar = 0;
 		}
