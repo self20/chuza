@@ -15,7 +15,7 @@ $globals['ads'] = true;
 $page_size = 15;
 
 $from = 1; // For 48 hours
-$range_names  = array(_('24 horas'), _('48 horas'), _('una semana'), _('un mes'), _('un año'), _('todas'));
+$range_names  = array(_('24 horas'), _('48 horas'), _('unha semana'), _('un mes'), _('un ano'), _('todas'));
 $range_values = array(1, 2, 7, 30, 365, 0);
 
 $current_page = get_current_page();
@@ -46,7 +46,7 @@ if (!($memcache_key && ($rows = memcache_mget($memcache_key.'rows')) && ($links 
 }
 
 
-do_header(_('populares').' '.$range_names[$from].' | ' . _('menéame mobile'));
+do_header(_('populares').' '.$range_names[$from].' | ' . _('Chuza! mobile'));
 $globals['tag_status'] = 'published';
 do_tabs('main', 'popular');
 
