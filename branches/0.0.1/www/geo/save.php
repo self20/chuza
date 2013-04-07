@@ -13,7 +13,7 @@ header('Content-Type: text/plain; charset=UTF-8');
 stats_increment('ajax');
 
 if(!($id=intval($_REQUEST['id']))) {
-	error(_('falta el id'). " $link");
+	error(_('falta o id'). " $link");
 }
 
 $type = $_REQUEST['type'];
@@ -29,7 +29,7 @@ if ($type == 'user') {
 		error(_('Artículo inexistente'));
 	}
 	if (! $link->is_map_editable() ) {
-		error(_("noticia no modificable"));
+		error(_("noticia no editable"));
 	}
 } else {
 	error(_('tipo incorrecto'));
@@ -46,7 +46,7 @@ if(geo_insert($type, $id, $lat, $lng, $text)) {
 		log_conditional_insert('link_geo_edit', $link->id, $current_user->user_id, 3600);
 	}
 } else {
-	error(_('no se insertó en la base de datos'));
+	error(_('non se insertou na base de datos'));
 }
 
 
