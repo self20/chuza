@@ -14,7 +14,7 @@ $globals['ads'] = true;
 geo_init('onLoad', false, 2);
 array_push($globals['post_js'], 'markermanager.js');
 
-do_header(_('mapa de las últimas noticias') . ' | ' . _('menéame'));
+do_header(_('mapa das últimas novas') . ' | ' . _('Chuza!'));
 do_tabs('main', 'map');
 
 /*** SIDEBAR ****/
@@ -26,7 +26,7 @@ echo '</div>' . "\n";
 
 echo '<div id="newswrap">'."\n";
 
-echo '<div class="topheading"><h2>'._('noticias de las últimas 24 horas').'</h2></div>';
+echo '<div class="topheading"><h2>'._('noticias das últimas 24 horas').'</h2></div>';
 
 echo '<div style="margin:0 0 10px 20px; text-align:center">';
 

@@ -25,7 +25,7 @@ echo '</div>' . "\n";
 
 echo '<div id="newswrap">'."\n";
 
-echo '<div class="topheading"><h2>actividad de los usuarios geolocalizados</h2></div>';
+echo '<div class="topheading"><h2>actividade dos usuarios  xeolocalizados</h2></div>';
 
 echo '<div id="map" style="width: 95%; height: 500px;margin:0 0 0 20px"></div></div>'
 ?>
