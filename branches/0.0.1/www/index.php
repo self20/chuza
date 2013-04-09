@@ -20,8 +20,8 @@
 // 		http://www.affero.org/oagpl.html
 // AFFERO GENERAL PUBLIC LICENSE is also included in the file called "COPYING".
 
-ini_set("error_reporting","on");
-error_reporting(E_ALL);
+//ini_set("error_reporting","on");
+//error_reporting(E_ALL); // only on debug
 include('config.php');
 include(mnminclude.'html1.php');
 
