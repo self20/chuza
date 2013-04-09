@@ -527,5 +527,33 @@ $(document).ready( function() {
 
     });
 
+	// Manel 
+	// Dia das troulas 2012 - Hidden
+
+	/*
+	// wrap words in spans
+	$('.news-body p').each(function() {
+	    var $this = $(this);
+	    $this.html($this.text().replace(/([aeiou])/g, "<span>$1</span>"));
+	});
+
+	// bind to each span
+	$('.news-body p span').hover(
+		function() {
+			var o = $(this).offset();
+			$(this).css("position","fixed").css("top",o.top+"px").css("left",o.left+"px");
+			$(this).animate({
+				'top':"+=50",	
+			}, 9000,
+			"linear",
+			function() {});
+		},
+		function() {
+		}
+
+	);
+	*/
+
 });
+
 

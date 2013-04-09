@@ -411,7 +411,7 @@ function publish($link) {
 		pubsub_post();
 	}
 
-  if ($client && $link->start_date) {
+  if ($link->start_date) {
     createEvent($client, $link->title, $link->content, $link->start_date, $link->end_date);
   }
 
