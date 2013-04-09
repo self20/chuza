@@ -10,3 +10,7 @@ RewriteRule ^notame(/.*)$ sneakme/index.php$1 [L,NS]
 RewriteRule ^chios$ sneakme/index.php?$1 [L,NS]
 RewriteRule ^chios(/.*)$ sneakme/index.php$1 [L,NS]
 </IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^m.test.chuza.gl$ [NC]
+RewriteRule ^(.*)$ http://test.chuza.gl/mobile$1 [R=301,L]

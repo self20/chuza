@@ -1420,7 +1420,8 @@ padding: 5px 5px 10px 10px;
 line-height: 130%;
 overflow: hidden;
 min-height: 25px;
-background: #FFF1E2;
+/*background: #FFF1E2;*/
+background: #D0FFE0;
 color: #202020;
 border-color: #88cf43;
 border-radius: 5px;
