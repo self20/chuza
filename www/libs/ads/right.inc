@@ -1,7 +1,8 @@
 <center>
 <div style="padding:15px;" >
-<a href="http://www.concelloderiotorto.org/">
-<img src= "/img/ads/banner_example.png" />
+<a href="http://www.turismoderiotorto.com/">
+<img src= "/img/ads/chouza_feriapeq.gif" />
+<!-- <img src= "/img/ads/chouza_generpeq.gif" /> -->
 </a>
 </div>
 
