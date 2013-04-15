@@ -56,7 +56,8 @@ function do_banner_right() { // side banner A
 //
 	if($globals['external_ads'] && $globals['ads']) {
 		//Banner riotorto
-		$hoxe 		= date("Ymd");
+		//$hoxe 		= date("Ymd");
+		$hoxe 		=  '20130423';
 		$dataLimite1 = '20130422';
 		$dataLimite2 = '20130522';
 		if ($hoxe < $dataLimite1)
