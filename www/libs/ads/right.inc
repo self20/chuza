@@ -7,13 +7,19 @@
 </div>
 
 <br>
+<?php 
 
 $hoxe 		= date("Ymd");
-$dataLimite = '20130402';
+$dataLimite = '20130422';
 if ($hoxe < $dataLimite)
 {
+	echo '<p>Hello World</p>'; 
 	proba
 }
+
+?> 
+
+
 
 
 <div style="padding:15px;" >
