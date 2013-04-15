@@ -55,8 +55,35 @@ function do_banner_right() { // side banner A
 // IMPORTANT! adapt this section to your contracted banners!!
 //
 	if($globals['external_ads'] && $globals['ads']) {
+		//Banner riotorto
+		$hoxe 		= date("Ymd");
+		$dataLimite1 = '20130422';
+		$dataLimite2 = '20130522';
+		if ($hoxe < $dataLimite1)
+		{
+			@include('ads/riotorto1.inc');
+		} elseif ($hoxe < $dataLimite2){
+			@include('ads/riotorto2.inc');
+		}
+		
+		
+		//Afiliación
 		@include('ads/right.inc');
 	}
+	
+<?php 
+
+$hoxe 		= date("Ymd");
+$dataLimite = '20130422';
+if ($hoxe < $dataLimite)
+{
+	echo '<p>Hello World</p>'; 
+	
+}
+
+?> 
+	
+	
 }
 
 function do_banner_promotions() { 
