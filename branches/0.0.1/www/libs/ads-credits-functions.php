@@ -62,7 +62,9 @@ function do_banner_right() { // side banner A
 		if ($hoxe < $dataLimite1)
 		{
 			@include('ads/riotorto1.inc');
-		} elseif ($hoxe < $dataLimite2){
+		} 
+		
+		if ($hoxe > $dataLimite1 & $hoxe < $dataLimite2){
 			@include('ads/riotorto2.inc');
 		}
 		
