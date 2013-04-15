@@ -7,17 +7,7 @@
 </div>
 
 <br>
-<?php 
 
-$hoxe 		= date("Ymd");
-$dataLimite = '20130422';
-if ($hoxe < $dataLimite)
-{
-	echo '<p>Hello World</p>'; 
-	proba
-}
-
-?> 
 
 
 
