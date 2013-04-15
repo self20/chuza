@@ -71,17 +71,7 @@ function do_banner_right() { // side banner A
 		@include('ads/right.inc');
 	}
 	
-<?php 
 
-$hoxe 		= date("Ymd");
-$dataLimite = '20130422';
-if ($hoxe < $dataLimite)
-{
-	echo '<p>Hello World</p>'; 
-	
-}
-
-?> 
 	
 	
 }
