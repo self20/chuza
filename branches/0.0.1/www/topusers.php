@@ -57,6 +57,11 @@ switch ($sortby) {
 		$from_where = " FROM votes, users WHERE vote_type='links' and vote_user_id=user_id GROUP BY vote_user_id";
 		$order_by = " ORDER BY count DESC ";
 		break;
+	case 6:
+		$select = "SELECT SQL_CACHE user_id, count(*) as count ";
+		$from_where = " FROM links, users WHERE  link_status = 'published' AND link_author=user_id  AND link_sent_date>'2013-06-01 00:00:00'  GROUP BY link_author";
+		$order_by = " ORDER BY count DESC ";
+		break;
 }
 // Sort by votes
 
