@@ -37,9 +37,9 @@ $globals['external_ads'] = true;
 //$globals['external_user_ads'] = false;
 
 $globals['db_server'] = 'localhost';
-$globals['db_name'] = 'chuza';
+$globals['db_name'] = 'chuza_desenrolo';
 $globals['db_user'] = 'root';
-$globals['db_password'] = '';
+$globals['db_password'] = 'chuza66';
 $globals['db_use_transactions'] = true; // Disable it if you use MyISAM and have high loads
 
 //Specify the static web server, wiith port included, use same document root as the main server (i.e. base_url is used
@@ -54,8 +54,8 @@ $globals['static_server'] = '';
 $globals['is_meneame'] = true;
 
 // Specify you base url, "/" if is the root document
-$globals['base_dir'] = '/home/galiza/Sites/chuza/www/';
-$globals['base_url'] = '/chuza/www/';
+$globals['base_dir'] = '/home/desenrolo/www/';
+$globals['base_url'] = '/';
 $globals['top_logo'] = 'img/mnm/eli.png';
 $globals['thumbnail_logo'] = 'img/mnm/eli_thumbnail.png';
 $globals['legal'] = $globals['base_url'].'legal.php';
