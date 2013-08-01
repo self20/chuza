@@ -130,7 +130,7 @@ function do_footer_plus_meneame() {
 	if (! $globals['is_meneame']) return;
 	echo '<h5>+chuza</h5>'."\n";
 	echo '<ul id="moremenelist">'."\n";
-	//echo '<li><a href="http://m.chuza.gl/">'._('versión móvil').'</a></li>'."\n";
+	echo '<li><a href="http://m.chuza.gl/">'._('versión móbil').'</a></li>'."\n";
 	//echo '<li><a href="http://tv.chuza.net/">'._('menéame TV').'</a></li>'."\n";
 	echo '<li><a href="http://twitter.com/chuza">'._('síguenos en twitter').'</a></li>'."\n";
 	//echo '<li><a href="http://meneame.jaiku.com/">'._('síguenos en jaiku').'</a></li>'."\n";
