@@ -190,8 +190,8 @@ function avatar_get_from_db($user, $size=0) {
 				return false;
 			}
 			file_put_contents ($file_base . '-80.jpg', $img);
-			$original = $file_base . '-80.jpg';
 		}
+		$original = $file_base . '-80.jpg';
 	}
 
 	if ($size > 0 && $size != 80 ) {
