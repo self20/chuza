@@ -9,8 +9,17 @@ RewriteRule ^notame$ sneakme/index.php?$1 [L,NS]
 RewriteRule ^notame(/.*)$ sneakme/index.php$1 [L,NS]
 RewriteRule ^chios$ sneakme/index.php?$1 [L,NS]
 RewriteRule ^chios(/.*)$ sneakme/index.php$1 [L,NS]
+
+redirect 301 m.test.chuza.gl http://test.chuza.gl
+
+
+#RewriteCond %{HTTP_HOST} ^m\.test.chuza\.gl$
+#RewriteCond %{REQUEST_URI} !^/mobile/
+#RewriteRule (.*) /$1
+
+
 </IfModule>
 
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^m.test.chuza.gl$ [NC]
-RewriteRule ^(.*)$ http://test.chuza.gl/mobile$1 [R=301,L]
+#RewriteEngine On
+#RewriteCond %{HTTP_HOST} ^m.test.chuza.gl$ [NC]
+#RewriteRule ^(.*)$ http://test.chuza.gl/mobile$1 [R=301,L]
