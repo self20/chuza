@@ -35,7 +35,7 @@ $globals['base_user_url'] = 'user/';
 $globals['mobile_version'] = true; // Mark we are using mobile version
 
 $globals['js_main'] = 'mobile01.js.php';
-$globals['css_main'] = 'css/es/mnm-mobile04.css';
+$globals['css_main'] = 'cssmobile/es/mnm-mobile04.css';
 $globals['css_color'] = '';
 $globals['html_main'] = 'html1-mobile.php';
 
