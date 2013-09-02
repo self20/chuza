@@ -112,6 +112,13 @@ function do_register1() {
 	if (!check_user_fields()) return;
 	echo '<br style="clear:both" />';
 
+	// fuck spammers
+	$re_test = Array();
+	preg_match("/.*(outlook.com)|(fr)|(co.uk)|(ru)|(ua)$/i", clean_input_string($_POST["email"]), $re_test);
+	if($re_test) {
+		register_error(_("Dominio nom permitido. Ponte em contato com nos em chuza.gl@gmail.com"));
+		return;
+	}
 
 	echo '<form action="'.get_auth_link().'register.php" method="post" id="thisform">' . "\n";
 	echo '<fieldset><legend><span class="sign">'._('validación').'</span></legend>'."\n";
