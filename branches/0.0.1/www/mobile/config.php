@@ -45,7 +45,9 @@ $globals['html_main'] = 'html1-mobile.php';
 @include($_SERVER['SERVER_ADDR'].'-local.php');
 
 
-$globals['base_static'] = $globals['static_server'] . $globals['base_url'];
+//$globals['base_static'] = $globals['static_server'] . $globals['base_url'];
+
+$globals['base_static'] = 'imgmobile/mnm/meneito.png';
 
 include mnminclude.'db.php';
 include mnminclude.'utils.php';
