@@ -11,6 +11,16 @@ include('../config.php');
 header('Content-Type: text/plain; charset=UTF-8');
 $type=clean_input_string($_REQUEST['type']);
 $name=clean_input_string($_GET['name']);
+
+function check_spammer_email($name) {
+	// fuck spammers
+	$re_test = Array();
+	preg_match("/.*(outlook.com)|(fr)|(co.uk)|(ru)|(ua)$/i", $name, $re_test);
+	if($re_test)
+		return true;
+}
+
+
 #echo "$type, $name...";
 switch ($type) {
 	case 'username':
@@ -42,6 +52,12 @@ switch ($type) {
 			echo _('dirección de correo duplicada, o fue usada recientemente');
 			return;
 		}
+
+		if (check_spammer_email($name)) {
+			echo _('Este enderezo de correo pertence a umha lista de dominios nom validos. Por favor, contacta-nos em chuza.gl@gmail.com');
+			return;
+		}
+
 		echo "OK";
 		break;
 

@@ -14,12 +14,13 @@ redirect 301 m.test.chuza.gl http://test.chuza.gl
 
 
 #RewriteCond %{HTTP_HOST} ^m\.test.chuza\.gl$
-#RewriteCond %{REQUEST_URI} !^/mobile/
+#RewriteCond %{REQUEST_URI} !^/mobile/index.php
 #RewriteRule (.*) /$1
+
 
 
 </IfModule>
 
 #RewriteEngine On
-#RewriteCond %{HTTP_HOST} ^m.test.chuza.gl$ [NC]
+RewriteCond %{HTTP_HOST} ^m.test.chuza.gl$ [NC]
 #RewriteRule ^(.*)$ http://test.chuza.gl/mobile$1 [R=301,L]
