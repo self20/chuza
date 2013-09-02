@@ -12,10 +12,11 @@ RewriteRule ^chios(/.*)$ sneakme/index.php$1 [L,NS]
 
 redirect 301 m.test.chuza.gl http://test.chuza.gl
 
+#Re escribimo o dominio m.chuza.gl
+RewriteCond %{HTTP_HOST} ^m.chuza\.gl.*
+RewriteCond %{REQUEST_URI} !/mobile
+RewriteRule ^(.*)$ mobile/$1 [L]
 
-#RewriteCond %{HTTP_HOST} ^m\.test.chuza\.gl$
-#RewriteCond %{REQUEST_URI} !^/mobile/index.php
-#RewriteRule (.*) /$1
 
 
 
