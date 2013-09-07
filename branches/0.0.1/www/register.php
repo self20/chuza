@@ -84,6 +84,9 @@ function do_register0() {
     }
     echo '</select></p>';
 
+	// fuck spammers
+	echo '<p style="display:none;"><input type="text" name="email2" /></p>';
+
 	echo '<p><label><span class="note">'._('has leído y aceptas las ');
 	do_legal(_('condiciones de uso'), 'target="_blank"', false);
 	echo ' <input type="checkbox" id="acceptlegal" name="acceptlegal" value="accept" tabindex="5"/></span></label></p>' . "\n";
@@ -109,13 +112,15 @@ function do_register1() {
 		register_error(_("no has aceptado las condiciones de uso"));
 		return;
 	}
+
 	if (!check_user_fields()) return;
 	echo '<br style="clear:both" />';
 
 	// fuck spammers
 	$re_test = Array();
-	preg_match("/.*(outlook.com)|(fr)|(co.uk)|(ru)|(ua)$/i", clean_input_string($_POST["email"]), $re_test);
-	if($re_test) {
+	preg_match("/.*(outlook.com)|(fr)|(co.uk)|(ru)|(ua)|(aol.com)|(.tk)|(hotmail.*)$/i", clean_input_string($_POST["email2"]), $re_test);
+
+	if($re_test || !empty($_POST['phone'])) {
 		register_error(_("Dominio nom permitido. Ponte em contato com nos em chuza.gl@gmail.com"));
 		return;
 	}
