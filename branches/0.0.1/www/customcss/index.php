@@ -44,13 +44,22 @@ echo '</div>'
 <script type="text/javascript">
 $(document).ready( function() {
   $("#css_form").submit(function(e) {
-e.preventDefault();
-$.post('/customcss/process.php',
-  $(this).serializeArray(),
-  function(d) {
-	console.log(d);
-}
-  );  
+	e.preventDefault();
+	$.post('/customcss/process.php',
+	  $(this).serializeArray(),
+	  function(d) {
+		  var response = $.parseJSON(d);
+		  if (response.error) {
+			  alert(response.error);
+		  } else {
+			  $("#css_form").hide()
+				  .parent()
+				  .append("<h3>" + response.success + "</h3>");
+		  }
+	  }, function(d) {
+		  console.log(arguments);
+	  } 
+	);  
 });
 });
 </script>
