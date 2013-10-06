@@ -99,6 +99,33 @@ echo '<div id="sidebar">';
 do_banner_right();
 do_banner_promotions();
 
+//if (($current_user->user_id > 0) {
+if ($globals['CUSTOMCSS']) {
+	$s="SELECT * FROM customcss WHERE 1=1";
+	$results = $db->get_results($s);
+
+	echo "<div class='sidebox'>";
+	echo "<div class='header'><h4>"._("Estilos")."</h4></div>";
+	echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='/customcss'><h3>Crea o teu estilo</h3></a></div>";
+	echo "<div class='cell' style='border-bottom:1px solid #669933;'>";
+	echo "<select name='customcss' id='customcss' style='width:180px;'>";
+	echo "<option>"._("...")."</option>";
+	$current_id = $_REQUEST['customcss'] or $_COOKIE['customcss'];
+	foreach($results as $result) {
+		echo "<option value='".$result->css_id."'>"
+			.$result->css_name
+			.($_current_id && $current_id==$result->css_id? 'selected="selected"':'') 
+			."</option>";
+	}
+	echo "</select>";
+	echo "<input type='button' id='chooseCustomCss' value='".
+		_("Escoller").
+		"' style=\"margin-left:18px;\" />";
+	echo "</div>";
+	echo "</div>";
+}
+//}
+
 echo "<div class='sidebox'>";
 echo "<div class='header'><h4>"._("Asociaci&oacute;n Cultural Chuza!")."</h4></div>";
 
@@ -109,6 +136,7 @@ echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='http:/
 echo "<div class='cell' style='border-bottom:1px solid #669933;'><a href='http://chuza.gl/equipa/index.php?page=proxectos-da-asociacion'><h3>Proxectos de chuza!</h3></a></div>";
 
 echo "</div>";
+
 
 if ($globals['show_popular_published']) do_best_stories();
 

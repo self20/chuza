@@ -487,26 +487,6 @@ tooltip.ajax_request = function(script, id, maxcache) {
 
 $(document).ready( function() {
 
-    /*
-    // load reduggy.net feed from client - REDUGGY HAS GONE
-    var box = $("#reduggyBoxContent");
-    if (!box.length == 0) return;
-
-    $.getJSON('http://query.yahooapis.com/v1/public/yql?q='+encodeURIComponent("select * from rss where url='http://reduggy.net/rss2.php' limit 10")+'&format=json&callback=?', function(data) {
-
-        if (data.query.results) {
-
-          var r = data.query.results.item;
-          var s = "";
-
-          for (var k in r) {
-              s+='<li><a href="'+r[k].link+'" >'+r[k].title+'</a> &nbsp; <a href="http://chuza.gl/submit.php?url='+encodeURIComponent(r[k].url)+'"><img src="/img/mnm/no-gravatar-2-20.jpg" /></a> </li>';
-          }
-          box.html(s);
-        }
-
-    });
-    */
     $('#gzradio').click( function(e) {
       e.preventDefault();
 
@@ -527,32 +507,11 @@ $(document).ready( function() {
 
     });
 
-	// Manel 
-	// Dia das troulas 2012 - Hidden
-
-	/*
-	// wrap words in spans
-	$('.news-body p').each(function() {
-	    var $this = $(this);
-	    $this.html($this.text().replace(/([aeiou])/g, "<span>$1</span>"));
+	$("#chooseCustomCss").click( function() {
+		var url = window.location.href.substring(0, window.location.href.indexOf('&'));
+		url = url.replace(/[?]+/, '');
+		window.location.href = url + "?&customcss=" + $("select#customcss").val();
 	});
-
-	// bind to each span
-	$('.news-body p span').hover(
-		function() {
-			var o = $(this).offset();
-			$(this).css("position","fixed").css("top",o.top+"px").css("left",o.left+"px");
-			$(this).animate({
-				'top':"+=50",	
-			}, 9000,
-			"linear",
-			function() {});
-		},
-		function() {
-		}
-
-	);
-	*/
 
 });
 

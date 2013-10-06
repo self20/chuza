@@ -363,6 +363,16 @@ function do_css_includes() {
 	foreach ($globals['extra_css'] as $css) {
 		echo '<link rel="stylesheet" type="text/css" media="all" href="'.$globals['base_static'].'css/'.$css.'"/>' . "\n";
 	}
+	
+	if ($globals['CUSTOMCSS']) {
+		if ($_REQUEST['customcss']) {
+		    setcookie("chuza_customcss", (int)$_REQUEST['customcss'], time()+(3600 * 24 *  365 * 3)); // 3 anos de cookie
+			echo '<link rel="stylesheet" type="text/css" media="screen" href="/customcss/render.php?customcss='.(int)$_REQUEST['customcss'].'" />'."\n";
+		} else if ($_COOKIE['customcss'] ) {
+			echo '<link rel="stylesheet" type="text/css" media="screen" href="/customcss/render.php?customcss='.(int)$_COOKIE['customcss'].'" />'."\n";
+		}
+	}
+
 	// IE6 hacks
 	echo '<!--[if lte IE 6]>'."\n";
 	echo '<link rel="stylesheet" type="text/css" media="screen" href="'.$globals['base_static'].'css/ie6-hacks.css" />'."\n";
